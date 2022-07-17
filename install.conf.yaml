@@ -1,0 +1,21 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+      force: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc: .zshrc
+    ~/.tmux.conf: .tmux.conf
+    ~/.alacritty.yml: .alacritty.yml
+    ~/.p10k.zsh: .p10k.zsh
+    ~/.ideavimrc: .ideavimrc
+    ~/.vimrc: .vimrc
+    ~/.vim: .vim
+    ~/.config/nvim: nvim
+    ~/.config/Code/User/settings.json: vscode/settings.json
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
