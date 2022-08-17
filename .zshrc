@@ -1,21 +1,24 @@
-export EDITOR=nvim
-
-# Use powerline
-USE_POWERLINE="true"
-bindkey -v
-
-# Source manjaro-zsh-configuration
-if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
-    source /usr/share/zsh/manjaro-zsh-config
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -e ~/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+    source ~/powerlevel10k/powerlevel10k.zsh-theme
 fi
-# Use manjaro zsh prompt
-if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
-    source /usr/share/zsh/manjaro-zsh-prompt
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 if [[ -e ~/.p10k.zsh ]]; then
     source ~/.p10k.zsh
 fi
+# End p10k
+
+export EDITOR=nvim
+
+# Use powerline
+# USE_POWERLINE="true"
+bindkey -v
 
 if [[ -e /usr/share/fzf/key-bindings.zsh ]]; then
     if [[ -e /usr/bin/rg ]]; then
