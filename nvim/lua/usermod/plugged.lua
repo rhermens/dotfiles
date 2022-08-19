@@ -40,6 +40,6 @@ Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' }
 -- This is the way
 Plug 'github/copilot.vim'
 -- Syntax tree hightlighting
-Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+Plug('nvim-treesitter/nvim-treesitter')
 
 vim.call('plug#end')
