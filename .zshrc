@@ -16,8 +16,6 @@ fi
 
 export EDITOR=nvim
 
-# Use powerline
-# USE_POWERLINE="true"
 bindkey -v
 
 if [[ -e /usr/share/fzf/key-bindings.zsh ]]; then
@@ -53,6 +51,7 @@ alias vim="nvim"
 alias step="step-cli"
 
 export GOPATH=$HOME/Code/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/local/go/bin
 
 # The next line updates PATH for the Google Cloud SDK.

@@ -81,7 +81,6 @@ cmp.setup {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'pyright', 'tsserver', 'volar', 'emmet_ls', 'csharp_ls', 'cssls', 'dockerls', 'intelephense', 'vuels', 'omnisharp' }
 
 require('nvim-lsp-installer').setup {
     automatic_installation = true

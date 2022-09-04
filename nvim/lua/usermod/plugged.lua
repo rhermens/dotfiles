@@ -1,6 +1,6 @@
 
 local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.vim/plugged')
+vim.call('plug#begin')
 
 -- Theme
 Plug 'tomasiser/vim-code-dark'
@@ -36,10 +36,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
 -- <Leader> b tree
-Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' })
+Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps', on = { 'CHADopen' } })
 -- This is the way
-Plug 'github/copilot.vim'
+-- Plug 'github/copilot.vim'
 -- Syntax tree hightlighting
-Plug('nvim-treesitter/nvim-treesitter')
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSUpdate' })
 
 vim.call('plug#end')

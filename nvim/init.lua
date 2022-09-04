@@ -1,3 +1,4 @@
+require('usermod.airline')
 require('usermod.plugged')
 require('usermod.settings')
 require('usermod.keymaps')
