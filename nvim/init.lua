@@ -8,4 +8,6 @@ if vim.g.vscode == nil then
     require("usermod.lsp")
     require("usermod.treesitter")
     require("usermod.chadtree")
+    require("usermod.lualine")
+    require("usermod.dap")
 end

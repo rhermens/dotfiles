@@ -4,8 +4,12 @@ vim.call('plug#begin')
 
 -- Theme
 Plug 'tomasiser/vim-code-dark'
+Plug('folke/tokyonight.nvim', { branch = 'main' })
+
 -- Status bar
-Plug 'vim-airline/vim-airline'
+-- Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
+
 -- :Git
 Plug 'tpope/vim-fugitive'
 -- gc commenting
@@ -34,6 +38,10 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
+
+-- DAP (Debug adapter protocol)
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 -- <Leader> b tree
 Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps', on = { 'CHADopen' } })
