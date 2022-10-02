@@ -33,7 +33,7 @@ set.swapfile = false
 set.backup = false
 set.writebackup = false
 
-set.cmdheight = 2
+set.cmdheight = 1
 set.updatetime = 300
 set.shortmess:append({ c = true })
 
@@ -49,5 +49,5 @@ vim.g.mapleader = ' '
 -- colorscheme codedark
 -- colorscheme toykonight
 vim.cmd [[
-    colorscheme onedark
+    colorscheme tokyonight
 ]]

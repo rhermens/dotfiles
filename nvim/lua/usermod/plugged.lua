@@ -3,13 +3,9 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
 -- Theme
--- Plug 'tomasiser/vim-code-dark'
--- Plug('folke/tokyonight.nvim', { branch = 'main' })
-Plug 'morhetz/gruvbox'
-Plug 'navarasu/onedark.nvim'
+Plug('folke/tokyonight.nvim', { branch = 'main' })
 
 -- Status bar
--- Plug 'vim-airline/vim-airline'
 Plug 'nvim-lualine/lualine.nvim'
 
 -- :Git
@@ -23,6 +19,9 @@ Plug 'ryanoasis/vim-devicons'
 -- Fuzzy finder
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
+-- Buffer tabs
+Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
 
 -- Tab lines
 Plug 'Yggdroot/indentLine'
@@ -42,8 +41,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
 -- DAP (Debug adapter protocol)
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
+-- Plug 'mfussenegger/nvim-dap'
+-- Plug 'rcarriga/nvim-dap-ui'
 
 -- <Leader> b tree
 Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps', on = { 'CHADopen' } })

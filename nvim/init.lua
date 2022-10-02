@@ -9,5 +9,6 @@ if vim.g.vscode == nil then
     require("usermod.treesitter")
     require("usermod.chadtree")
     require("usermod.lualine")
+    require("usermod.bufferline")
     require("usermod.dap")
 end
