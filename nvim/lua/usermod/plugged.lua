@@ -3,8 +3,10 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
 -- Theme
-Plug 'tomasiser/vim-code-dark'
-Plug('folke/tokyonight.nvim', { branch = 'main' })
+-- Plug 'tomasiser/vim-code-dark'
+-- Plug('folke/tokyonight.nvim', { branch = 'main' })
+Plug 'morhetz/gruvbox'
+Plug 'navarasu/onedark.nvim'
 
 -- Status bar
 -- Plug 'vim-airline/vim-airline'

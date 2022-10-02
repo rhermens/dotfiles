@@ -49,5 +49,5 @@ vim.g.mapleader = ' '
 -- colorscheme codedark
 -- colorscheme toykonight
 vim.cmd [[
-    colorscheme tokyonight
+    colorscheme onedark
 ]]
