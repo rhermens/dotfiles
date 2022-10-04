@@ -60,3 +60,6 @@ if [ -f '~/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '~/gcloud/google-clou
 # The next line enables shell command completion for gcloud.
 if [ -f '~/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '~/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
 
+if [ -f '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]; then
+    source '/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+fi
