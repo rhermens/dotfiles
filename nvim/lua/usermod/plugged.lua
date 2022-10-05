@@ -24,7 +24,10 @@ Plug 'junegunn/fzf.vim'
 Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
 
 -- Tab lines
-Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+-- Scrollbar
+Plug 'petertriho/nvim-scrollbar'
 
 -- Bracket pairs ed
 Plug 'jiangmiao/auto-pairs'
@@ -45,7 +48,7 @@ Plug 'williamboman/nvim-lsp-installer'
 -- Plug 'rcarriga/nvim-dap-ui'
 
 -- <Leader> b tree
-Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps', on = { 'CHADopen' } })
+Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' })
 -- This is the way
 -- Plug 'github/copilot.vim'
 -- Syntax tree hightlighting

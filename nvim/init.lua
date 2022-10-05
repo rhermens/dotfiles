@@ -10,5 +10,6 @@ if vim.g.vscode == nil then
     require("usermod.chadtree")
     require("usermod.lualine")
     require("usermod.bufferline")
+    require("usermod.scrollbar")
     -- require("usermod.dap")
 end
