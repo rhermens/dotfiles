@@ -21,7 +21,7 @@ alias vim="nvim"
 source ~/.zsh/dev.zsh
 source ~/.zsh/fzf.zsh
 
-if [[ -e ~/antigen/antigen.zsh ]]; then
+if [[ -f ~/antigen/antigen.zsh ]] && [[ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
     source ~/antigen/antigen.zsh
 
     antigen bundle zsh-users/zsh-syntax-highlighting
