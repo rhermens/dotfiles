@@ -2,6 +2,9 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
+-- Syntax tree hightlighting
+Plug 'nvim-treesitter/nvim-treesitter'
+
 -- Theme
 Plug('folke/tokyonight.nvim', { branch = 'main' })
 
@@ -17,8 +20,10 @@ Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
 
 -- Fuzzy finder
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
+-- Plug 'junegunn/fzf'
+-- Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug('nvim-telescope/telescope.nvim', { tag = '0.1.x' })
 
 -- Buffer tabs
 Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
@@ -51,7 +56,5 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' })
 -- This is the way
 -- Plug 'github/copilot.vim'
--- Syntax tree hightlighting
-Plug 'nvim-treesitter/nvim-treesitter'
 
 vim.call('plug#end')
