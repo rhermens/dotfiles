@@ -13,7 +13,7 @@ require('telescope').setup{
             hidden = true
         },
         git_files = {
-            show_untracked = true
+            show_untracked = true,
         }
     }
 }

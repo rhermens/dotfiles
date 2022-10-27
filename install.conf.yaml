@@ -11,6 +11,7 @@
     ~/.tmux.conf: .tmux.conf
     ~/.alacritty.yml: .alacritty.yml
     ~/.p10k.zsh: .p10k.zsh
+    ~/.omnisharp: .omnisharp
     ~/.ideavimrc: .ideavimrc
     ~/.vimrc: .vimrc
     ~/.vim: .vim
