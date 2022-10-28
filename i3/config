@@ -22,8 +22,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status && ~/.config/i3/volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status && ~/.config/i3/volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status && ~/.config/i3/volume.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status && ~/.config/i3/volume.sh
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && ~/.config/i3/volume.sh
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status && ~/.config/i3/volume.sh
 
@@ -32,8 +32,10 @@ floating_modifier $mod
 
 # Bind app keys
 bindsym $mod+Return exec alacritty 
+bindsym $mod+Shift+Return exec ~/.config/i3/new-workspace.sh; exec alacritty
 bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+F2 exec alacritty -e lf
+bindsym $mod+Shift+F1 exec ~/.config/i3/new-workspace.sh; exec google-chrome-stable
+bindsym $mod+F2 exec alacritty -e ranger
 
 # kill focused window
 bindsym $mod+Shift+q kill
