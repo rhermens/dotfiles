@@ -12,5 +12,5 @@ if vim.g.vscode == nil then
     require("usermod.lualine")
     require("usermod.bufferline")
     require("usermod.scrollbar")
-    -- require("usermod.dap")
+    require("usermod.dap")
 end

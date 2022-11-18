@@ -49,12 +49,12 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
 -- DAP (Debug adapter protocol)
--- Plug 'mfussenegger/nvim-dap'
--- Plug 'rcarriga/nvim-dap-ui'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 
 -- <Leader> b tree
 Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' })
 -- This is the way
--- Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 
 vim.call('plug#end')
