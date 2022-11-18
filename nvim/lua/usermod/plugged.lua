@@ -55,6 +55,6 @@ Plug 'williamboman/nvim-lsp-installer'
 -- <Leader> b tree
 Plug('ms-jpq/chadtree', { branch = 'chad', ['do'] = 'python3 -m chadtree deps' })
 -- This is the way
--- Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 
 vim.call('plug#end')
