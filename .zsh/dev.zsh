@@ -14,6 +14,9 @@ if [[ -e ~/.dotnet/dotnet ]]; then
     export PATH=$PATH:$DOTNET_ROOT/tools
     export PATH=$PATH:$DOTNET_ROOT
 fi
+if [[ -e ~/netcoredbg/netcoredbg ]]; then
+    export PATH=$PATH:$HOME/netcoredbg
+fi
 
 p () {
     cd "/home/roy/Code/$@"

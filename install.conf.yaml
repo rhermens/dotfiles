@@ -8,6 +8,7 @@
 
 - link:
     ~/.zshrc: .zshrc
+    ~/.zshenv: .zshenv
     ~/.tmux.conf: .tmux.conf
     ~/.alacritty.yml: .alacritty.yml
     ~/.p10k.zsh: .p10k.zsh
@@ -21,6 +22,7 @@
     ~/.config/i3: i3
     ~/.config/i3status: i3status
     ~/.config/dunst: dunst
+    ~/.config/fontconfig: fontconfig
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
