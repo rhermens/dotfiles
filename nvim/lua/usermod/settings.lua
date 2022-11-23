@@ -47,8 +47,11 @@ set.shell = "/usr/bin/zsh"
 -- set.t_ut = nil
 vim.g.mapleader = ' '
 
+
+
 -- colorscheme codedark
 -- colorscheme toykonight
 vim.cmd [[
     colorscheme tokyonight
 ]]
+
