@@ -23,6 +23,7 @@
     ~/.config/i3status: i3status
     ~/.config/dunst: dunst
     ~/.config/fontconfig: fontconfig
+    ~/.local/share/applications/google-chrome-debug.desktop: desktop/google-chrome-debug.desktop
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

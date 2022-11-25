@@ -3,6 +3,10 @@ if [[ -e /usr/share/nvm/init-nvm.sh ]]; then
     source /usr/share/nvm/init-nvm.sh
 fi
 
+if [[ -e ~/chrome-shell/shell/keybindings.zsh ]]; then
+    source ~/chrome-shell/shell/keybindings.zsh
+fi
+
 if [[ -e "$HOME/.nvm/nvm.sh" ]]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
