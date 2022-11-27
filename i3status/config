@@ -9,7 +9,7 @@
 general {
         colors = true
         interval = 5
-        separator = "     "
+        separator = " | "
 }
 
 order += "memory"
