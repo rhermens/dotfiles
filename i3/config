@@ -4,6 +4,7 @@
 
 set $mod Mod4
 set $term st
+set $browser google-chrome-stable --remote-debugging-port=9222
 
 # Font for window titles. Will also be used by the bar unless a different font
 font pango:monospace 12
@@ -37,8 +38,8 @@ floating_modifier $mod
 # Bind app keys
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec ~/.config/i3/new-workspace.sh; exec $term
-bindsym $mod+F1 exec google-chrome-stable
-bindsym $mod+Shift+F1 exec ~/.config/i3/new-workspace.sh; exec google-chrome-stable
+bindsym $mod+F1 exec $browser
+bindsym $mod+Shift+F1 exec ~/.config/i3/new-workspace.sh; exec $browser 
 bindsym $mod+F2 exec nautilus
 
 bindsym $mod+Mod1+l exec --no-startup-id loginctl lock-session
