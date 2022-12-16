@@ -14,5 +14,6 @@ if vim.g.vscode == nil then
     require("usermod.scrollbar")
     require("usermod.copilot")
     require("usermod.chromeshell")
-    -- require("usermod.dap")
+    require("usermod.dap")
+    require("usermod.autopairs")
 end

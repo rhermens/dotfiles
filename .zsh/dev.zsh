@@ -1,4 +1,5 @@
 
+
 if [[ -e /usr/share/nvm/init-nvm.sh ]]; then
     source /usr/share/nvm/init-nvm.sh
 fi
@@ -20,6 +21,10 @@ if [[ -e ~/.dotnet/dotnet ]]; then
 fi
 if [[ -e ~/netcoredbg/netcoredbg ]]; then
     export PATH=$PATH:$HOME/netcoredbg
+fi
+
+if [[ -e ~/.cargo/env ]]; then
+    . "$HOME/.cargo/env"
 fi
 
 p () {

@@ -35,7 +35,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'petertriho/nvim-scrollbar'
 
 -- Bracket pairs ed
-Plug 'jiangmiao/auto-pairs'
+-- Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 
 -- EditorConfig
 Plug 'gpanders/editorconfig.nvim'
