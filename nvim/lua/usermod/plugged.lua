@@ -20,10 +20,10 @@ Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
 
 -- Fuzzy finder
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
--- Plug 'nvim-lua/plenary.nvim'
--- Plug('nvim-telescope/telescope.nvim', { tag = '0.1.x' })
+-- Plug 'junegunn/fzf'
+-- Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug('nvim-telescope/telescope.nvim', { branch = '0.1.x' })
 
 -- Buffer tabs
 Plug('akinsho/bufferline.nvim', { tag = 'v2.*' })
