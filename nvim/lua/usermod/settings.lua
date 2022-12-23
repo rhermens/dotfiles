@@ -3,7 +3,7 @@ local set = vim.opt
 
 set.encoding = 'utf-8'
 set.fileformats = 'unix,dos'
-set.path:append('**')
+-- set.path:append('**')
 set.title = true
 set.errorbells = false
 set.termguicolors = true

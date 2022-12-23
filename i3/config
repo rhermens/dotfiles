@@ -40,7 +40,8 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec ~/.config/i3/new-workspace.sh; exec $term
 bindsym $mod+F1 exec $browser
 bindsym $mod+Shift+F1 exec ~/.config/i3/new-workspace.sh; exec $browser 
-bindsym $mod+F2 exec nautilus
+# bindsym $mod+F2 exec nautilus
+bindsym $mod+F2 exec $term ranger
 
 bindsym $mod+Mod1+l exec --no-startup-id loginctl lock-session
 

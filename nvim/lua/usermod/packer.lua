@@ -43,8 +43,9 @@ require('packer').startup(function (use)
     use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
 
     -- DAP (Debug adapter protocol)
     use 'mfussenegger/nvim-dap'
