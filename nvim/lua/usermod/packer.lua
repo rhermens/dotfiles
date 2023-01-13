@@ -19,8 +19,6 @@ require('packer').startup(function (use)
     use 'ryanoasis/vim-devicons'
 
     -- Fuzzy finder
-    -- Plug 'junegunn/fzf'
-    -- Plug 'junegunn/fzf.vim'
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' }}
 
     -- Buffer tabs
@@ -39,13 +37,16 @@ require('packer').startup(function (use)
     use 'gpanders/editorconfig.nvim'
 
     -- LSP
+    use 'neovim/nvim-lspconfig'
+    -- -- Snip
     use 'saadparwaiz1/cmp_luasnip'
     use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    -- -- Mason
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
-    use 'neovim/nvim-lspconfig'
 
     -- DAP (Debug adapter protocol)
     use 'mfussenegger/nvim-dap'
