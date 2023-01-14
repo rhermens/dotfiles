@@ -39,11 +39,11 @@ require('packer').startup(function (use)
     -- LSP
     use 'neovim/nvim-lspconfig'
     -- -- Snip
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'L3MON4D3/LuaSnip'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
     -- -- Mason
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'

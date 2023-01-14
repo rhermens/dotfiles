@@ -8,18 +8,22 @@ M.project_files = function()
 end
 
 require('telescope').setup{
+    defaults = {
+        file_ignore_patterns = { "node_modules", "vendor", ".git" }
+    },
     pickers = {
         find_files = {
-            hidden = true
+            hidden = true,
+            no_ignore = true,
         },
         git_files = {
-            recurse_submodules = true
+            recurse_submodules = true,
         }
     }
 }
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', M.project_files, {})
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})

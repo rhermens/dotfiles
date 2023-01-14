@@ -35,16 +35,13 @@ local lsp_flags = {
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- luasnip setup
-local luasnip = require 'luasnip'
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body)
+            vim.fn["vsnip#anonymous"](args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -76,9 +73,10 @@ cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
         { name = 'nvim_lsp_signature_help' },
-        { name = 'luasnip' },
+        { name = 'vsnip' },
     },
 }
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
