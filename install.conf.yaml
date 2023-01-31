@@ -26,6 +26,7 @@
     ~/.local/share/applications/google-chrome-debug.desktop: desktop/google-chrome-debug.desktop
     ~/.Xresources: .Xresources
     ~/.config/rofi: rofi
+    ~/.config/ranger: ranger
     ~/Pictures/Wallpapers: wallpapers
 
 - shell:

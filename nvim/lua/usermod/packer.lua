@@ -12,6 +12,8 @@ require('packer').startup(function (use)
 
     -- :Git
     use 'tpope/vim-fugitive'
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
     -- gc commenting
     use 'tpope/vim-commentary'
 
@@ -54,6 +56,7 @@ require('packer').startup(function (use)
 
     -- <Leader> b tree
     use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
+
     -- This is the way
     use 'github/copilot.vim'
 end)
