@@ -52,6 +52,7 @@ require('packer').startup(function (use)
 
     -- DAP (Debug adapter protocol)
     use 'mfussenegger/nvim-dap'
+    use 'jay-babu/mason-nvim-dap.nvim'
     use 'rcarriga/nvim-dap-ui'
 
     -- <Leader> b tree

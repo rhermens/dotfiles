@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "i3utils"]
+	path = i3utils
+	url = git@github.com:rhermens/i3utils.git

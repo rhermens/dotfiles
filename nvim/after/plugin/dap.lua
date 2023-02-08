@@ -1,6 +1,12 @@
 local dap = require('dap')
+require('mason-nvim-dap').setup({
+    automatic_setup = true
+})
+
 -- Keybinds
 vim.keymap.set('n', '<Leader>z', dap.toggle_breakpoint)
+vim.keymap.set('n', '<F5>', dap.continue)
+vim.keymap.set('n', '<F6>', require('dapui').toggle)
 
 -- UI
 require("dapui").setup({
@@ -76,20 +82,39 @@ require("dapui").setup({
     }
 })
 
--- Adapters
-dap.adapters.coreclr = {
-    type = 'executable',
-    command = 'netcoredbg',
-    args = {'--interpreter=vscode'}
+require 'mason-nvim-dap'.setup_handlers {
+    function(source_name) 
+        require('mason-nvim-dap.automatic_setup')(source_name)
+    end,
+    cs = function(source_name)
+        dap.adapters.coreclr = {
+            type = 'executable',
+            command = 'netcoredbg',
+            args = {'--interpreter=vscode'}
+        }
+        dap.configurations.cs = {
+            {
+                type = "coreclr",
+                name = "Launch - netcodedbg",
+                request = "launch",
+                program = function ()
+                    return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                end,
+            }
+        }
+    end,
+    php = function(source_name)
+        require('mason-nvim-dap.automatic_setup')(source_name)
+        dap.configurations.php = {
+            {
+                type = "php",
+                name = "Listen for Xdebug",
+                request = "launch",
+                port = 9003,
+                pathMappings = {
+                    ["/var/www/html"] = "${workspaceFolder}"
+                }
+            }
+        }
+    end,
 }
-dap.configurations.cs = {
-    {
-        type = "coreclr",
-        name = "Launch - netcodedbg",
-        request = "launch",
-        program = function ()
-            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-        end,
-    }
-}
-
