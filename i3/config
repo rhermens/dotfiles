@@ -70,7 +70,7 @@ bindsym $mod+Ctrl+j split h
 # split in vertical orientation
 bindsym $mod+Ctrl+k split v
 # Swap screens
-bindsym $mod+Shift+s exec ~/.config/i3/swapspace.sh
+bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
