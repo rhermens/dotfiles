@@ -1,10 +1,14 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
 set $mod Mod4
 set $term st
 set $browser google-chrome-stable --remote-debugging-port=9222
+
+set_from_resource $background background #24283b
+set_from_resource $foreground foreground #c0caf5
+set_from_resource $color8 color8 #414868
+set_from_resource $color12 color12 #7aa2f7
 
 # Font for window titles. Will also be used by the bar unless a different font
 font pango:monospace 12
@@ -20,7 +24,7 @@ exec_always --no-startup-id picom -b --config ~/.config/i3/picom.conf
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c "1F2335" --nofork
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c $background --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -155,31 +159,29 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border pixel 1
-# for_window [class="awakened-poe-trade"] 
-for_window [class="awakened-poe-trade"] move scratchpad
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        i3bar_command i3bar
-        position top
+    i3bar_command i3bar
+    position top
 
-        status_command ~/.config/i3/statuscmd.sh
-        tray_output primary
+    status_command ~/.config/i3/statuscmd.sh
+    tray_output primary
 
-        height 30
-        tray_padding 7
-        workspace_min_width 30
-        separator_symbol "|"
+    height 30
+    tray_padding 7
+    workspace_min_width 30
+    separator_symbol "|"
 
-        colors {
-                background #1F2335
-                statusline #C0CAF5
+    colors {
+        background $background
+        statusline $foreground
 
-                focused_workspace #3B4261 #3B4261 #7AA2F7
-                active_workspace #1F2335 #1F2335 #C0CAF5
-                inactive_workspace #1F2335 #1F2335 #C0CAF5
-        }
+        focused_workspace $color8 $color8 $color12
+        active_workspace $background $background $foreground
+        inactive_workspace $background $background $foreground
+    }
 }
 
 # smart_gaps on
