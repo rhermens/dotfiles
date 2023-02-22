@@ -16,6 +16,7 @@ fi
 
 if [[ -e ~/.dotnet/dotnet ]]; then
     export DOTNET_WATCH_SUPPRESS_EMOJIS=1
+    export ASPNETCORE_ENVIRONMENT=Development
     export DOTNET_ROOT=$HOME/.dotnet
     export PATH=$PATH:$DOTNET_ROOT/tools
     export PATH=$PATH:$DOTNET_ROOT

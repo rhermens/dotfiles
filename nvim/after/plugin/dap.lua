@@ -7,6 +7,8 @@ require('mason-nvim-dap').setup({
 vim.keymap.set('n', '<Leader>z', dap.toggle_breakpoint)
 vim.keymap.set('n', '<F5>', dap.continue)
 vim.keymap.set('n', '<F6>', require('dapui').toggle)
+vim.keymap.set('n', '<F7>', dap.set_exception_breakpoints)
+vim.keymap.set('n', '<Leader>k', require('dapui').eval)
 
 -- UI
 require("dapui").setup({
@@ -86,21 +88,29 @@ require 'mason-nvim-dap'.setup_handlers {
     function(source_name) 
         require('mason-nvim-dap.automatic_setup')(source_name)
     end,
-    cs = function(source_name)
+    coreclr = function(source_name)
         dap.adapters.coreclr = {
             type = 'executable',
             command = 'netcoredbg',
-            args = {'--interpreter=vscode'}
+            args = {'--interpreter=vscode'},
         }
         dap.configurations.cs = {
             {
                 type = "coreclr",
+                name = "Attach - netcodedbg",
+                request = "attach",
+                mode = "local",
+                processId = require('dap.utils').pick_process
+            },
+            {
+                type = "coreclr",
                 name = "Launch - netcodedbg",
                 request = "launch",
-                program = function ()
+                program = function()
                     return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
                 end,
             }
+
         }
     end,
     php = function(source_name)
