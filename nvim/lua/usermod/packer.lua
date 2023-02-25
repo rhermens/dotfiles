@@ -38,6 +38,9 @@ require('packer').startup(function (use)
     -- EditorConfig
     use 'gpanders/editorconfig.nvim'
 
+    -- C#
+    use 'Hoffs/omnisharp-extended-lsp.nvim'
+
     -- LSP
     use 'neovim/nvim-lspconfig'
     -- -- Snip

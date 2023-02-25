@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 
-    vim.keymap.set('n', 'gd', telescope_builtin.lsp_definitions, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'gi', telescope_builtin.lsp_implementations, bufopts)
     vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, bufopts)
     vim.keymap.set('n', '<space>D', telescope_builtin.lsp_type_definitions, bufopts)
@@ -93,6 +93,16 @@ require("mason-lspconfig").setup_handlers {
             on_attach = on_attach,
             flags = lsp_flags,
             capabilities = capabilities,
+        }
+    end,
+    ["omnisharp"] = function (server_name) -- dedicated handler
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+            flags = lsp_flags,
+            capabilities = capabilities,
+            handlers = {
+                ["textDocument/definition"] = require('omnisharp_extended').handler
+            }
         }
     end,
 }
