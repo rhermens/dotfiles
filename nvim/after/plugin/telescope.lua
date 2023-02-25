@@ -29,3 +29,4 @@ vim.keymap.set('n', '<C-g>', builtin.live_grep, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
 
+vim.keymap.set('n', '<Leader>gs', builtin.git_status, {})
