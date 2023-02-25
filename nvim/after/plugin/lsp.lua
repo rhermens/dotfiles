@@ -14,9 +14,11 @@ local on_attach = function(client, bufnr)
     local telescope_builtin = require('telescope.builtin')
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
+    local definition = client.name == 'omnisharp' and require('omnisharp_extended').telescope_lsp_definitions or telescope_builtin.lsp_definitions
+
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gd', definition, bufopts)
     vim.keymap.set('n', 'gi', telescope_builtin.lsp_implementations, bufopts)
     vim.keymap.set('n', 'gr', telescope_builtin.lsp_references, bufopts)
     vim.keymap.set('n', '<space>D', telescope_builtin.lsp_type_definitions, bufopts)
