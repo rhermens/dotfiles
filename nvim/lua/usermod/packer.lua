@@ -19,6 +19,7 @@ require('packer').startup(function (use)
 
     -- File extension icons (coc-explorer)
     use 'ryanoasis/vim-devicons'
+    use 'nvim-tree/nvim-web-devicons'
 
     -- Fuzzy finder
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' }}
@@ -59,7 +60,7 @@ require('packer').startup(function (use)
     use 'rcarriga/nvim-dap-ui'
 
     -- <Leader> b tree
-    use { 'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps' }
+    use { 'nvim-tree/nvim-tree.lua' }
 
     -- This is the way
     use 'github/copilot.vim'

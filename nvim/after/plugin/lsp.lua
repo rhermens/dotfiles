@@ -97,12 +97,38 @@ require("mason-lspconfig").setup_handlers {
             capabilities = capabilities,
         }
     end,
+    ["rust-analyzer"] = function (server_name) -- dedicated handler
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+            flags = lsp_flags,
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    imports = {
+                        granularity = {
+                            group = "module",
+                        },
+                        prefix = "self"
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
+                        enable = true,
+                    },
+                },
+            }
+        }
+    end,
     ["omnisharp"] = function (server_name) -- dedicated handler
         require("lspconfig")[server_name].setup {
             on_attach = on_attach,
             flags = lsp_flags,
             capabilities = capabilities,
             handlers = {
+                -- Download source
                 ["textDocument/definition"] = require('omnisharp_extended').handler
             }
         }
