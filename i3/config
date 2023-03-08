@@ -172,9 +172,9 @@ bar {
     status_command ~/.config/i3/statuscmd.sh
     tray_output primary
 
-    height 30
+    height 25
     tray_padding 7
-    workspace_min_width 30
+    workspace_min_width 25
     separator_symbol "|"
 
     colors {
