@@ -133,4 +133,19 @@ require("mason-lspconfig").setup_handlers {
             }
         }
     end,
+    ["jdtls"] = function (server_name) -- dedicated handler
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+            flags = lsp_flags,
+            capabilities = capabilities,
+            cmd = {
+                "jdtls",
+                "-data",
+                vim.fn.stdpath("cache") .. "/jdtls/workspace",
+                "-configuration",
+                vim.fn.stdpath("config") .. "/jdtls/config",
+                "--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
+            },
+        }
+    end,
 }
