@@ -141,9 +141,9 @@ require("mason-lspconfig").setup_handlers {
             cmd = {
                 "jdtls",
                 "-data",
-                vim.fn.stdpath("cache") .. "/jdtls/workspace",
+                os.getenv('HOME') .. "/.jdtls/workspace/" .. vim.fn.getcwd(),
                 "-configuration",
-                vim.fn.stdpath("config") .. "/jdtls/config",
+                os.getenv('HOME') .. "/.jdtls/config",
                 "--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
             },
         }

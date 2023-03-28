@@ -23,7 +23,7 @@ exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id picom -b --config ~/.config/i3/picom.conf
 
 # Master-stack splitting
-exec_always --no-startup-id ~/dotfiles/i3utils/i3masterstack.py
+#exec_always --no-startup-id ~/dotfiles/i3utils/i3masterstack.py
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
