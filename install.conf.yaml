@@ -28,6 +28,7 @@
     ~/.Xresources: .Xresources
     ~/.config/rofi: rofi
     ~/.config/ranger: ranger
+    ~/.config/gtk-3.0: gtk-3.0
     ~/Pictures/Wallpapers: wallpapers
 
 - shell:
