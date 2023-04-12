@@ -84,47 +84,49 @@ require("dapui").setup({
     }
 })
 
-require 'mason-nvim-dap'.setup_handlers {
-    function(source_name) 
-        require('mason-nvim-dap.automatic_setup')(source_name)
-    end,
-    coreclr = function(source_name)
-        dap.adapters.coreclr = {
-            type = 'executable',
-            command = 'netcoredbg',
-            args = {'--interpreter=vscode'},
-        }
-        dap.configurations.cs = {
-            {
-                type = "coreclr",
-                name = "Attach - netcodedbg",
-                request = "attach",
-                mode = "local",
-                processId = require('dap.utils').pick_process
-            },
-            {
-                type = "coreclr",
-                name = "Launch - netcodedbg",
-                request = "launch",
-                program = function()
-                    return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-                end,
+require('mason-nvim-dap').setup({
+    handlers = {
+        function(source_name) 
+            require('mason-nvim-dap.automatic_setup')(source_name)
+        end,
+        coreclr = function(source_name)
+            dap.adapters.coreclr = {
+                type = 'executable',
+                command = 'netcoredbg',
+                args = {'--interpreter=vscode'},
             }
+            dap.configurations.cs = {
+                {
+                    type = "coreclr",
+                    name = "Attach - netcodedbg",
+                    request = "attach",
+                    mode = "local",
+                    processId = require('dap.utils').pick_process
+                },
+                {
+                    type = "coreclr",
+                    name = "Launch - netcodedbg",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+                    end,
+                }
 
-        }
-    end,
-    php = function(source_name)
-        require('mason-nvim-dap.automatic_setup')(source_name)
-        dap.configurations.php = {
-            {
-                type = "php",
-                name = "Listen for Xdebug",
-                request = "launch",
-                port = 9003,
-                pathMappings = {
-                    ["/var/www/html"] = "${workspaceFolder}"
+            }
+        end,
+        php = function(source_name)
+            require('mason-nvim-dap.automatic_setup')(source_name)
+            dap.configurations.php = {
+                {
+                    type = "php",
+                    name = "Listen for Xdebug",
+                    request = "launch",
+                    port = 9003,
+                    pathMappings = {
+                        ["/var/www/html"] = "${workspaceFolder}"
+                    }
                 }
             }
-        }
-    end,
-}
+        end
+    }
+})

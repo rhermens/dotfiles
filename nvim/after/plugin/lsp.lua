@@ -97,7 +97,7 @@ require("mason-lspconfig").setup_handlers {
             capabilities = capabilities,
         }
     end,
-    ["rust-analyzer"] = function (server_name) -- dedicated handler
+    ["rust_analyzer"] = function (server_name) -- dedicated handler
         require("lspconfig")[server_name].setup {
             on_attach = on_attach,
             flags = lsp_flags,
