@@ -20,6 +20,7 @@ alias vim="nvim"
 
 source ~/.zsh/dev.zsh
 source ~/.zsh/fzf.zsh
+source ~/.zsh/fn.zsh
 
 if [[ -f ~/antigen/antigen.zsh ]] && [[ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
     source ~/antigen/antigen.zsh

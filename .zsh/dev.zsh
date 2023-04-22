@@ -14,6 +14,14 @@ if [[ -e "$HOME/.nvm/nvm.sh" ]]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# pnpm
+export PNPM_HOME="/home/roy/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 if [[ -e ~/.dotnet/dotnet ]]; then
     export DOTNET_WATCH_SUPPRESS_EMOJIS=1
     export ASPNETCORE_ENVIRONMENT=Development
@@ -28,10 +36,6 @@ fi
 if [[ -e ~/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
-
-p () {
-    cd "/home/roy/Code/$@"
-}
 
 alias step="step-cli"
 
