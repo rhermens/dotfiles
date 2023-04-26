@@ -1,10 +1,17 @@
 
 p () {
     cd "/home/roy/Code/$@"
-    tmux rename -t $(tmux display-message -p '#S') $@
+
+    if [ ! -z $@ ]; then
+        tmux rename -t $(tmux display-message -p '#S') $@
+    fi
 }
 
 pt () {
+    if [ -z $@ ]; then;
+        return
+    fi
+    
     tmux has-session -t $@
     if [ $? -eq 0 ]; then
         tmux switch-client -t $@
