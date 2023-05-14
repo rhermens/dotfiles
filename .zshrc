@@ -22,6 +22,10 @@ source ~/.zsh/dev.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/fn.zsh
 
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    export PATH=/opt/homebrew/bin:$PATH
+fi
+
 if [[ -f ~/antigen/antigen.zsh ]] && [[ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
     source ~/antigen/antigen.zsh
 
