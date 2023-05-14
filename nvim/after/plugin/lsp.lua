@@ -27,9 +27,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
@@ -124,7 +121,11 @@ require("mason-lspconfig").setup_handlers {
     end,
     ["omnisharp"] = function (server_name) -- dedicated handler
         require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
+            on_attach = function (client, bufnr) 
+                -- Ironically, omnisharp does not adhere to LSP spec
+                client.server_capabilities["semanticTokensProvider"] = nil
+                on_attach(client, bufnr)
+            end,
             flags = lsp_flags,
             capabilities = capabilities,
             handlers = {

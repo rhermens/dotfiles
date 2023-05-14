@@ -10,7 +10,8 @@ end
 require('telescope').setup{
     pickers = {
         git_files = {
-            recurse_submodules = true,
+            use_git_root = false,
+            show_untracked = true
         }
     }
 }

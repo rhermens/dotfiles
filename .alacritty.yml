@@ -5,9 +5,10 @@ env:
 window:
   startup_mode: Maximized
 
-# font:
-#   normal:
-#     family: Hack Nerd Font Mono
+font:
+  size: 10
+  normal:
+    family: monospace
 
 import:
   - ~/.local/share/nvim/plugged/tokyonight.nvim/extras/alacritty/tokyonight_moon.yml
