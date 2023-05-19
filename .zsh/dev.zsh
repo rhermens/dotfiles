@@ -14,6 +14,12 @@ if [[ -e "$HOME/.nvm/nvm.sh" ]]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+if [[ -e /usr/bin/pyenv ]]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH=$PYENV_ROOT/bin:$PATH
+    eval "$(pyenv init -)"
+fi
+
 # pnpm
 export PNPM_HOME="/home/roy/.local/share/pnpm"
 case ":$PATH:" in
