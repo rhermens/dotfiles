@@ -13,8 +13,7 @@ local on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local telescope_builtin = require('telescope.builtin')
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
-
-    local definition = client.name == 'omnisharp' and require('omnisharp_extended').telescope_lsp_definitions or telescope_builtin.lsp_definitions
+    local definition = telescope_builtin.lsp_definitions
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 
@@ -116,21 +115,6 @@ require("mason-lspconfig").setup_handlers {
                         enable = true,
                     },
                 },
-            }
-        }
-    end,
-    ["omnisharp"] = function (server_name) -- dedicated handler
-        require("lspconfig")[server_name].setup {
-            on_attach = function (client, bufnr) 
-                -- Ironically, omnisharp does not adhere to LSP spec
-                client.server_capabilities["semanticTokensProvider"] = nil
-                on_attach(client, bufnr)
-            end,
-            flags = lsp_flags,
-            capabilities = capabilities,
-            handlers = {
-                -- Download source
-                ["textDocument/definition"] = require('omnisharp_extended').handler
             }
         }
     end,

@@ -1,6 +1,9 @@
 require('packer').startup(function (use)
     use 'wbthomason/packer.nvim'
 
+    -- Profiler
+    use 'dstein64/vim-startuptime'
+
     -- Syntax tree hightlighting
     use { 'nvim-treesitter/nvim-treesitter' }
 
@@ -40,7 +43,7 @@ require('packer').startup(function (use)
     use 'gpanders/editorconfig.nvim'
 
     -- C#
-    use 'Hoffs/omnisharp-extended-lsp.nvim'
+    use { 'Hoffs/omnisharp-extended-lsp.nvim', ft = 'cs' }
 
     -- LSP
     use 'neovim/nvim-lspconfig'
