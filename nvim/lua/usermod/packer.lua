@@ -43,7 +43,7 @@ require('packer').startup(function (use)
     use 'gpanders/editorconfig.nvim'
 
     -- C#
-    use { 'Hoffs/omnisharp-extended-lsp.nvim', ft = 'cs' }
+    use { 'Hoffs/omnisharp-extended-lsp.nvim', ft = { 'cs' } }
 
     -- LSP
     use 'neovim/nvim-lspconfig'

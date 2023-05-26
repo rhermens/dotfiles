@@ -15,10 +15,21 @@ require('telescope').setup{
     }
 }
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<Leader>d', builtin.diagnostics, {})
-vim.keymap.set('n', '<C-p>', project_files, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
+diagnostics = function ()
+    require('telescope.builtin').diagnostics()
+end
+buffers = function ()
+    require('telescope.builtin').buffers()
+end
+help_tags = function ()
+    require('telescope.builtin').help_tags()
+end
+git_status = function ()
+    require('telescope.builtin').git_status()
+end
 
-vim.keymap.set('n', '<Leader>gs', builtin.git_status, {})
+vim.keymap.set('n', '<Leader>d', diagnostics, {})
+vim.keymap.set('n', '<C-p>', project_files, {})
+vim.keymap.set('n', 'fb', buffers, {})
+vim.keymap.set('n', 'fh', help_tags, {})
+vim.keymap.set('n', '<Leader>gs', git_status, {})

@@ -132,5 +132,6 @@ require("mason-lspconfig").setup_handlers {
                 "--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
             },
         }
-    end,
+    end
 }
+
