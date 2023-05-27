@@ -1,9 +1,0 @@
-{
-    "explorer.file.showHiddenFiles": true,
-    "explorer.icon.enableNerdfont": true,
-    "explorer.icon.source": "vim-devicons",
-    "coc.preferences.rootPatterns": [
-        "wp-content",
-        ".git"
-    ]
-}
