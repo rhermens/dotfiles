@@ -70,8 +70,7 @@ cmp.setup {
     }),
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'nvim_lsp_signature_help' },
-        { name = 'vsnip' },
+        { name = 'async_path' },
     },
 }
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
