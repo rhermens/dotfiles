@@ -1,4 +1,3 @@
-
 local on_attach = function(client, bufnr)
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -27,7 +26,7 @@ local lsp_flags = {
     -- This is the default in Nvim 0.7+
     debounce_text_changes = 150,
 }
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 require('lspconfig').omnisharp.setup {
     on_attach = function (client, bufnr) 
@@ -39,6 +38,8 @@ require('lspconfig').omnisharp.setup {
     capabilities = capabilities,
     handlers = {
         -- Download source
-        ["textDocument/definition"] = require('omnisharp_extended').handler
+        ["textDocument/definition"] = function ()
+            return require('omnisharp_extended').handler
+        end
     }
 }
