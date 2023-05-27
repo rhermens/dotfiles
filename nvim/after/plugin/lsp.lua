@@ -76,8 +76,6 @@ cmp.setup {
 }
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local lspconfig = require('lspconfig')
-
 require('mason-lspconfig').setup {
     automatic_installation = true
 }
