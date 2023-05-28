@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eux
+set -eu
 msgTag="volumeNotification"
 
 newvolume="$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | grep -Eo '[0-9]+' )"

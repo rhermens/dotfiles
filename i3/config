@@ -1,14 +1,14 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-set $mod Mod4
-set $term alacritty
-set $browser google-chrome-stable --remote-debugging-port=9222
-
 set_from_resource $background background #24283b
 set_from_resource $foreground foreground #c0caf5
 set_from_resource $color8 color8 #414868
 set_from_resource $color12 color12 #7aa2f7
+
+set $mod Mod4
+set $term alacritty
+set $browser google-chrome-stable --remote-debugging-port=9222
 
 # Font for window titles. Will also be used by the bar unless a different font
 font pango:monospace 12
@@ -27,21 +27,21 @@ exec_always --no-startup-id picom -b --config ~/.config/i3/picom.conf
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c $background --nofork
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c '$background' --nofork
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status && ~/.config/i3/volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status && ~/.config/i3/volume.sh
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && ~/.config/i3/volume.sh
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status && ~/.config/i3/volume.sh
+# set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && ~/.config/i3/volume.sh
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && ~/.config/i3/volume.sh
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.config/i3/volume.sh
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle ~/.config/i3/volume.sh
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
-bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status && ~/.config/i3/volume.sh
-bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status && ~/.config/i3/volume.sh
+bindsym $mod+F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.config/i3/volume.sh
+bindsym $mod+F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.config/i3/volume.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -52,7 +52,7 @@ bindsym $mod+Shift+Return exec ~/dotfiles/i3utils/i3nextworkspace.py; exec $term
 bindsym $mod+F1 exec $browser
 bindsym $mod+Shift+F1 exec ~/dotfiles/i3utils/i3nextworkspace.py; exec $browser 
 # bindsym $mod+F2 exec nautilus
-bindsym $mod+F2 exec $term ranger
+bindsym $mod+F2 exec $term thunar
 
 bindsym $mod+Mod1+l exec --no-startup-id loginctl lock-session
 
