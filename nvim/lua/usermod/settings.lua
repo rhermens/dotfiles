@@ -28,6 +28,8 @@ set.completeopt = 'menu,menuone,noselect'
 set.scrolloff = 8
 set.sidescrolloff = 8
 
+set.clipboard = "unnamedplus"
+
 set.hidden = true
 set.swapfile = false
 set.backup = false
@@ -46,8 +48,6 @@ set.shell = "/usr/bin/zsh"
 -- set.t_Co = 256
 -- set.t_ut = nil
 vim.g.mapleader = ' '
-
-
 
 -- colorscheme codedark
 -- colorscheme toykonight

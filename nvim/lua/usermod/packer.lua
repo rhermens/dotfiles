@@ -47,6 +47,8 @@ require('packer').startup(function (use)
 
     -- LSP
     use 'neovim/nvim-lspconfig'
+    use 'arkav/lualine-lsp-progress'
+
     -- -- Snip
     use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/vim-vsnip'} }
     use 'hrsh7th/cmp-nvim-lsp'
