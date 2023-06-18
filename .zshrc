@@ -14,6 +14,7 @@ if [[ -e ~/.p10k.zsh ]]; then
 fi
 # End p10k
 
+export PATH="/home/roy/.local/bin:$PATH"
 export EDITOR=nvim
 alias ll="ls --color=auto -alF"
 alias vim="nvim"

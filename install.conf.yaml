@@ -18,12 +18,11 @@
     ~/.zsh: .zsh
     ~/.config/nvim: nvim
     ~/.config/Code/User/settings.json: vscode/settings.json
-    ~/.dwm: dwm
     ~/.config/i3: i3
     ~/.config/i3status: i3status
     ~/.config/dunst: dunst
     ~/.config/fontconfig: fontconfig
-    ~/.local/share/applications/google-chrome-debug.desktop: desktop/google-chrome-debug.desktop
+    ~/.config/pypoetry: dev/pypoetry
     ~/.Xresources: .Xresources
     ~/.config/ranger: ranger
     ~/.config/gtk-3.0: gtk-3.0

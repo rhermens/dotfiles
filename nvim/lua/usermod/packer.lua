@@ -59,6 +59,9 @@ require('packer').startup(function (use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
 
+    -- Lint
+    use 'mfussenegger/nvim-lint'
+
     -- DAP (Debug adapter protocol)
     use 'mfussenegger/nvim-dap'
     use 'jay-babu/mason-nvim-dap.nvim'
