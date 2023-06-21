@@ -115,6 +115,22 @@ require("mason-lspconfig").setup_handlers {
             }
         }
     end,
+    ["pylsp"] = function (server_name) -- dedicated handler
+        require("lspconfig")[server_name].setup {
+            on_attach = on_attach,
+            flags = lsp_flags,
+            capabilities = capabilities,
+            settings = {
+                ["pylsp"] = {
+                    plugins = {
+                        rope_autoimport = {
+                            enabled = true,
+                        },
+                    }
+                },
+            }
+        }
+    end,
     ["jdtls"] = function (server_name) -- dedicated handler
         require("lspconfig")[server_name].setup {
             on_attach = on_attach,
@@ -131,4 +147,3 @@ require("mason-lspconfig").setup_handlers {
         }
     end
 }
-
