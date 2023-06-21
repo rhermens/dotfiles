@@ -19,6 +19,10 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Nitrogen
 exec_always --no-startup-id nitrogen --restore
 
+# GNOME Integration
+exec_always --no-startup-id /usr/lib/gsd-xsettings
+exec_always --no-startup-id gnome-flashback
+
 # Compton/Picom
 exec_always --no-startup-id picom -b --config ~/.config/i3/picom.conf
 
