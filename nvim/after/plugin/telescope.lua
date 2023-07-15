@@ -27,9 +27,13 @@ end
 git_status = function ()
     require('telescope.builtin').git_status()
 end
+commands = function ()
+    require('telescope.builtin').commands()
+end
 
 vim.keymap.set('n', '<Leader>d', diagnostics, {})
 vim.keymap.set('n', '<C-p>', project_files, {})
+vim.keymap.set('n', '<C-S-p>', commands, {})
 vim.keymap.set('n', 'fb', buffers, {})
 vim.keymap.set('n', 'fh', help_tags, {})
 vim.keymap.set('n', '<Leader>gs', git_status, {})

@@ -24,6 +24,7 @@
     ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
     ~/.Xresources: .Xresources
+    ~/.xinitrc: .xinitrc
     ~/.config/ranger: ranger
     ~/.config/gtk-3.0: gtk-3.0
     ~/Pictures/Wallpapers: wallpapers
