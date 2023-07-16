@@ -39,6 +39,12 @@ require('packer').startup(function (use)
     -- Bracket pairs ed
     use 'windwp/nvim-autopairs'
 
+    -- <Leader> b tree
+    use { 'nvim-tree/nvim-tree.lua' }
+
+    -- Undo tree
+    use { 'mbbill/undotree' }
+
     -- EditorConfig
     use 'gpanders/editorconfig.nvim'
 
@@ -66,9 +72,6 @@ require('packer').startup(function (use)
     use 'mfussenegger/nvim-dap'
     use 'jay-babu/mason-nvim-dap.nvim'
     use 'rcarriga/nvim-dap-ui'
-
-    -- <Leader> b tree
-    use { 'nvim-tree/nvim-tree.lua' }
 
     -- This is the way
     use 'github/copilot.vim'
