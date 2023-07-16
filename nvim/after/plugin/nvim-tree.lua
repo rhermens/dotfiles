@@ -1,5 +1,7 @@
-
 require("nvim-tree").setup{
+    update_focused_file = {
+        enable = true
+    },
     on_attach = function (bufnr)
         local api = require('nvim-tree.api')
         vim.keymap.set('n', '<C-g>', function () 
@@ -23,3 +25,7 @@ require("nvim-tree").setup{
 }
 
 vim.keymap.set('n', '<Leader>b', ':NvimTreeFocus<CR>', { silent = true })
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = function (data) 
+    require('nvim-tree.api').tree.open()
+end })
