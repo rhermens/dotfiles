@@ -19,6 +19,7 @@ export EDITOR=nvim
 alias ll="ls --color=auto -alF"
 alias vim="nvim"
 
+source ~/.zsh/settings.zsh
 source ~/.zsh/dev.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/fn.zsh
