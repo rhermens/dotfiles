@@ -1,39 +1,28 @@
+local builtin = require("telescope.builtin")
 
 project_files = function()
-    local opts = {}
+    local is_modules = vim.fn.filereadable(vim.fn.getcwd() .. '/.gitmodules') == 1
+    local is_git = vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 1
 
-    local ok = pcall(require"telescope.builtin".git_files, opts)
-    if not ok then require"telescope.builtin".find_files(opts) end
+    if is_git and not is_modules then 
+        require("telescope.builtin").git_files() 
+    else
+        require("telescope.builtin").find_files() 
+    end
 end
 
 require('telescope').setup{
     pickers = {
         git_files = {
             use_git_root = false,
-            show_untracked = true
+            show_untracked = true,
         }
     }
 }
 
-diagnostics = function ()
-    require('telescope.builtin').diagnostics()
-end
-buffers = function ()
-    require('telescope.builtin').buffers()
-end
-help_tags = function ()
-    require('telescope.builtin').help_tags()
-end
-git_status = function ()
-    require('telescope.builtin').git_status()
-end
-commands = function ()
-    require('telescope.builtin').commands()
-end
-
-vim.keymap.set('n', '<Leader>d', diagnostics, {})
+vim.keymap.set('n', '<Leader>d', builtin.diagnostics, {})
+vim.keymap.set('n', '<C-i>', builtin.commands, {})
 vim.keymap.set('n', '<C-p>', project_files, {})
-vim.keymap.set('n', '<C-S-p>', commands, {})
-vim.keymap.set('n', 'fb', buffers, {})
-vim.keymap.set('n', 'fh', help_tags, {})
-vim.keymap.set('n', '<Leader>gs', git_status, {})
+vim.keymap.set('n', 'fb', builtin.buffers, {})
+vim.keymap.set('n', 'fh', builtin.help_tags, {})
+vim.keymap.set('n', '<Leader>gs', builtin.git_status, {})
