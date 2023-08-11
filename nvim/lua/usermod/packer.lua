@@ -54,16 +54,17 @@ require('packer').startup(function (use)
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'arkav/lualine-lsp-progress'
-
-    -- -- Snip
-    use { 'hrsh7th/nvim-cmp', requires = { 'hrsh7th/vim-vsnip'} }
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lsp-signature-help'
-    use 'FelipeLema/cmp-async-path'
-    
-    -- -- Mason
-    use 'williamboman/mason.nvim'
-    use 'williamboman/mason-lspconfig.nvim'
+    use { 'VonHeikemen/lsp-zero.nvim', requires = {
+        'neovim/nvim-lspconfig',
+        -- CMP
+        'hrsh7th/nvim-cmp',
+        'L3MON4D3/LuaSnip',
+        'hrsh7th/cmp-nvim-lsp',
+        'FelipeLema/cmp-async-path',
+        -- Installer
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim'
+    } }
 
     -- Lint
     use 'mfussenegger/nvim-lint'
