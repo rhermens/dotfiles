@@ -34,6 +34,7 @@ set.hidden = true
 set.swapfile = false
 set.backup = false
 set.writebackup = false
+set.undofile = true
 
 set.cmdheight = 1
 set.updatetime = 300
