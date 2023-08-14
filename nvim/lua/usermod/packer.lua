@@ -1,9 +1,6 @@
 require('packer').startup(function (use)
     use 'wbthomason/packer.nvim'
 
-    -- Profiler
-    use 'dstein64/vim-startuptime'
-
     -- Syntax tree hightlighting
     use { 'nvim-treesitter/nvim-treesitter' }
 
@@ -70,9 +67,11 @@ require('packer').startup(function (use)
     use 'mfussenegger/nvim-lint'
 
     -- DAP (Debug adapter protocol)
-    use 'mfussenegger/nvim-dap'
-    use 'jay-babu/mason-nvim-dap.nvim'
-    use 'rcarriga/nvim-dap-ui'
+    use { 'mfussenegger/nvim-dap', requires = {
+        'jay-babu/mason-nvim-dap.nvim',
+        'rcarriga/nvim-dap-ui',
+        'mxsdev/nvim-dap-vscode-js'
+    } }
 
     -- This is the way
     use 'github/copilot.vim'
