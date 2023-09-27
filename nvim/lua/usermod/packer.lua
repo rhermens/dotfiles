@@ -35,6 +35,7 @@ require('packer').startup(function (use)
 
     -- Bracket pairs ed
     use 'windwp/nvim-autopairs'
+    use 'tpope/vim-surround'
 
     -- <Leader> b tree
     use { 'nvim-tree/nvim-tree.lua' }
