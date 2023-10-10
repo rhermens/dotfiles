@@ -5,9 +5,9 @@ project_files = function()
     local is_git = vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 1
 
     if is_git and not is_modules then 
-        require("telescope.builtin").git_files() 
+        return require("telescope.builtin").git_files()
     else
-        require("telescope.builtin").find_files() 
+        return require("telescope.builtin").find_files()
     end
 end
 
@@ -22,6 +22,8 @@ require('telescope').setup{
 
 vim.keymap.set('n', '<Leader>d', builtin.diagnostics, {})
 vim.keymap.set('n', '<Leader>s', builtin.lsp_document_symbols, {})
+vim.keymap.set('n', '<Leader>c', builtin.commands, {})
+vim.keymap.set('n', '<Leader>m', builtin.marks, {})
 vim.keymap.set('n', '<C-p>', project_files, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
