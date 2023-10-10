@@ -21,6 +21,7 @@ require('telescope').setup{
 }
 
 vim.keymap.set('n', '<Leader>d', builtin.diagnostics, {})
+vim.keymap.set('n', '<Leader>s', builtin.lsp_document_symbols, {})
 vim.keymap.set('n', '<C-p>', project_files, {})
 vim.keymap.set('n', 'fb', builtin.buffers, {})
 vim.keymap.set('n', 'fh', builtin.help_tags, {})
