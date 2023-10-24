@@ -21,6 +21,9 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Nitrogen
 exec_always --no-startup-id nitrogen --restore
 
+# Nitrogen
+exec_always --no-startup-id nm-applet --sm-disabled
+
 # Master-stack splitting
 #exec_always --no-startup-id ~/dotfiles/i3utils/i3masterstack.py
 
@@ -80,7 +83,7 @@ bindsym $mod+Ctrl+j split h
 # split in vertical orientation
 bindsym $mod+Ctrl+k split v
 # Swap screens
-bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py
+bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py --primary=DVI-I-2-2 --secondary=DVI-I-1-1
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
