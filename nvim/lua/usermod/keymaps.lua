@@ -18,7 +18,7 @@ vim.keymap.set('n', '<C-j>', ':bprev<CR>')
 vim.keymap.set('n', '<A-j>', ':m .+1 <CR>==')
 vim.keymap.set('n', '<A-k>', ':m .-2 <CR>==')
 vim.keymap.set('v', '<A-j>', ':m \'>+1 <CR>gv=gv')
-vim.keymap.set('v', '<A-k>', ':m \'>-2 <CR>gv=gv')
+vim.keymap.set('v', '<A-k>', ':m-2 <CR>gv=gv')
 
 vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*',
