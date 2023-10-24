@@ -8,6 +8,7 @@ lsp.on_attach(function(client, bufnr)
 
     vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, bufopts)
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
+    vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, bufopts)
 
     lsp.default_keymaps({ buffer = bufnr })
 end)
