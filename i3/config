@@ -83,7 +83,8 @@ bindsym $mod+Ctrl+j split h
 # split in vertical orientation
 bindsym $mod+Ctrl+k split v
 # Swap screens
-bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py --primary=DVI-I-2-2 --secondary=DVI-I-1-1
+# bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py --primary=DVI-I-2-2 --secondary=DVI-I-1-1
+bindsym $mod+Shift+s exec ~/dotfiles/i3utils/i3swap.py
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
