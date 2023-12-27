@@ -10,6 +10,9 @@ require('packer').startup(function (use)
     -- Status bar
     use 'nvim-lualine/lualine.nvim'
 
+    -- Marks
+    use 'chentoast/marks.nvim'
+
     -- :Git
     use 'tpope/vim-fugitive'
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
