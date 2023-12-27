@@ -25,6 +25,7 @@
     ~/.config/pypoetry: dev/pypoetry
     ~/.Xresources: .Xresources
     ~/.xinitrc: .xinitrc
+    ~/.xprofile: .xprofile
     ~/.config/ranger: ranger
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
