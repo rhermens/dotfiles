@@ -4,6 +4,9 @@ require('packer').startup(function (use)
     -- Syntax tree hightlighting
     use { 'nvim-treesitter/nvim-treesitter' }
 
+    -- Placement
+    use { 'folke/zen-mode.nvim' }
+
     -- Theme
     use {'folke/tokyonight.nvim', branch = 'main' }
 
