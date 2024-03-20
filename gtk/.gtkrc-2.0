@@ -4,7 +4,7 @@
 
 include "/home/roy/.gtkrc-2.0.mine"
 gtk-theme-name="Tokyonight-Dark-B"
-gtk-icon-theme-name="Adwaita"
+gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Monospace 10"
 gtk-cursor-theme-name="Breeze"
 gtk-cursor-theme-size=0

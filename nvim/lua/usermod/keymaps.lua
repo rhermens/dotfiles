@@ -8,7 +8,7 @@ vim.keymap.set('i', '<C-v>', '<ESC>"+pa', { remap = true })
 vim.keymap.set('n', '<C-v>', '"+p', { remap = true })
 
 -- Close other buffers
-vim.keymap.set('n', '<Leader>x', ':%bd|e#|bd#<CR>:CHADopen --nofocus<CR>', { remap = true })
+vim.keymap.set('n', '<Leader>x', ':%bd|e#|bd#<CR>', { remap = true })
 
 -- Buffer nav
 vim.keymap.set('n', '<C-k>', ':bnext<CR>')

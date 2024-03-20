@@ -43,6 +43,8 @@ if [[ -e ~/.cargo/env ]]; then
     . "$HOME/.cargo/env"
 fi
 
+[ -f "/home/roy/.ghcup/env" ] && source "/home/roy/.ghcup/env" # ghcup-env
+
 alias step="step-cli"
 
 export GOPATH=$HOME/Code/go
@@ -54,3 +56,10 @@ if [ -f '~/gcloud/google-cloud-sdk/path.zsh.inc' ]; then . '~/gcloud/google-clou
 
 # The next line enables shell command completion for gcloud.
 if [ -f '~/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then . '~/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/home/roy/.bun/_bun" ] && source "/home/roy/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

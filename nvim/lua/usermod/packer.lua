@@ -29,6 +29,9 @@ require('packer').startup(function (use)
 
     -- Fuzzy finder
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' }}
+    
+    -- 
+    use 'nvim-telescope/telescope-file-browser.nvim'
 
     -- Buffer tabs
     use { 'akinsho/bufferline.nvim', tag = 'v2.*' }
@@ -42,9 +45,6 @@ require('packer').startup(function (use)
     -- Bracket pairs ed
     use 'windwp/nvim-autopairs'
     use 'tpope/vim-surround'
-
-    -- <Leader> b tree
-    use { 'nvim-tree/nvim-tree.lua' }
 
     -- Undo tree
     use { 'mbbill/undotree' }
@@ -73,12 +73,12 @@ require('packer').startup(function (use)
     -- Lint
     use 'mfussenegger/nvim-lint'
 
-    -- DAP (Debug adapter protocol)
-    use { 'mfussenegger/nvim-dap', requires = {
-        'jay-babu/mason-nvim-dap.nvim',
-        'rcarriga/nvim-dap-ui',
-        'mxsdev/nvim-dap-vscode-js'
-    } }
+    -- -- DAP (Debug adapter protocol)
+    -- use { 'mfussenegger/nvim-dap', requires = {
+    --     'jay-babu/mason-nvim-dap.nvim',
+    --     'rcarriga/nvim-dap-ui',
+    --     'mxsdev/nvim-dap-vscode-js'
+    -- } }
 
     -- This is the way
     use 'github/copilot.vim'

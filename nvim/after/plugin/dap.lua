@@ -1,62 +1,62 @@
-local dap = require('dap')
+-- local dap = require('dap')
 
--- Keybinds
-vim.keymap.set('n', '<Leader>z', dap.toggle_breakpoint)
-vim.keymap.set('n', '<F5>', dap.continue)
-vim.keymap.set('n', '<F6>', require('dapui').toggle)
-vim.keymap.set('n', '<F7>', dap.set_exception_breakpoints)
-vim.keymap.set('n', '<Leader>k', require('dapui').eval)
+-- -- Keybinds
+-- vim.keymap.set('n', '<Leader>z', dap.toggle_breakpoint)
+-- vim.keymap.set('n', '<F5>', dap.continue)
+-- vim.keymap.set('n', '<F6>', require('dapui').toggle)
+-- vim.keymap.set('n', '<F7>', dap.set_exception_breakpoints)
+-- vim.keymap.set('n', '<Leader>k', require('dapui').eval)
 
-local registry = require('mason-registry')
-local js_adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost', 'node' }
+-- local registry = require('mason-registry')
+-- local js_adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost', 'node' }
 
-for i, type in ipairs(js_adapters) do
-    dap.adapters[type] = {
-        type = "server",
-        host = "localhost",
-        port = "${port}",
-        executable = {
-            command = registry.get_package('js-debug-adapter'):get_install_path() .. '/js-debug-adapter',
-            args = {
-                "${port}"
-            }
-        }
-    }
-end
+-- for i, type in ipairs(js_adapters) do
+--     dap.adapters[type] = {
+--         type = "server",
+--         host = "localhost",
+--         port = "${port}",
+--         executable = {
+--             command = registry.get_package('js-debug-adapter'):get_install_path() .. '/js-debug-adapter',
+--             args = {
+--                 "${port}"
+--             }
+--         }
+--     }
+-- end
 
-dap.configurations.javascript = {
-    {
-        type = 'pwa-node',
-        name = 'Launch current file (js)',
-        request = 'launch',
-        cwd = vim.fn.getcwd(),
-        args = { '${file}' },
-    }
-}
-dap.configurations.typescript = {
-    {
-        type = 'pwa-node',
-        name = 'Launch current file (ts-node)',
-        request = 'launch',
-        cwd = vim.fn.getcwd(),
-        runtimeArgs = { '--loader', 'ts-node/esm' },
-        runtimeExecutable = 'node',
-        args = { '${file}' },
-        sourceMaps = true,
-        skipFiles = { '<node_internals>/**', 'node_modules/**' },
-        resolveSourceMapLocations = {
-            "${workspaceFolder}/**",
-            "!**/node_modules/**",
-        },
-    }
-}
+-- dap.configurations.javascript = {
+--     {
+--         type = 'pwa-node',
+--         name = 'Launch current file (js)',
+--         request = 'launch',
+--         cwd = vim.fn.getcwd(),
+--         args = { '${file}' },
+--     }
+-- }
+-- dap.configurations.typescript = {
+--     {
+--         type = 'pwa-node',
+--         name = 'Launch current file (ts-node)',
+--         request = 'launch',
+--         cwd = vim.fn.getcwd(),
+--         runtimeArgs = { '--loader', 'ts-node/esm' },
+--         runtimeExecutable = 'node',
+--         args = { '${file}' },
+--         sourceMaps = true,
+--         skipFiles = { '<node_internals>/**', 'node_modules/**' },
+--         resolveSourceMapLocations = {
+--             "${workspaceFolder}/**",
+--             "!**/node_modules/**",
+--         },
+--     }
+-- }
 
-require('dap.ext.vscode').load_launchjs(
-    nil,
-    { 
-        ["node"] = { 'javascript', 'typescript' },
-        ["pwa-node"] = { 'javascript', 'typescript' },
-        ["node-terminal"] = { 'javascript', 'typescript' },
-        ["pwa-chrome"] = { 'javascript', 'typescript' }
-    }
-)
+-- require('dap.ext.vscode').load_launchjs(
+--     nil,
+--     { 
+--         ["node"] = { 'javascript', 'typescript' },
+--         ["pwa-node"] = { 'javascript', 'typescript' },
+--         ["node-terminal"] = { 'javascript', 'typescript' },
+--         ["pwa-chrome"] = { 'javascript', 'typescript' }
+--     }
+-- )

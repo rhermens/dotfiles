@@ -10,7 +10,7 @@
     ~/.zshrc: .zshrc
     ~/.zshenv: .zshenv
     ~/.tmux.conf: .tmux.conf
-    ~/.alacritty.yml: .alacritty.yml
+    ~/.alacritty.toml: alacritty/alacritty.toml
     ~/.p10k.zsh: .p10k.zsh
     ~/.omnisharp: .omnisharp
     ~/.ideavimrc: .ideavimrc
@@ -29,6 +29,7 @@
     ~/.config/ranger: ranger
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
+    ~/.config/gtk-4.0/settings.ini: gtk/settings.ini
     ~/.gtkrc-2.0: gtk/.gtkrc-2.0
     ~/Pictures/Wallpapers: wallpapers
 
