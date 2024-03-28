@@ -10,4 +10,4 @@ telescope.setup {
 
 telescope.load_extension('file_browser')
 
-vim.keymap.set('n', '<Leader>b', telescope.extensions.file_browser.file_browser, {})
+vim.keymap.set('n', '<Leader>b', function () telescope.extensions.file_browser.file_browser({ path = "%:p:h", select_buffer = true }) end, {})
