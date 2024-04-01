@@ -193,6 +193,7 @@ bar {
     }
 }
 
-# smart_gaps on
+smart_gaps on
 gaps inner 10
+# gaps inner 0
 gaps outer 0

@@ -12,3 +12,4 @@ family = "monospace"
 
 [window]
 startup_mode = "Maximized"
+dynamic_padding = true
