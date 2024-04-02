@@ -16,7 +16,7 @@ set $browser google-chrome-stable
 font pango:monospace 12
 
 # Compositor
-exec_always --no-startup-id xcompmgr -ncC
+exec_always --no-startup-id xcompmgr -ncCo0
 
 # Dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
