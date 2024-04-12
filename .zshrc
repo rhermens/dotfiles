@@ -37,3 +37,5 @@ if [[ -f ~/antigen/antigen.zsh ]] && [[ ! -f /proc/sys/fs/binfmt_misc/WSLInterop
 
     antigen apply
 fi
+
+eval "$(direnv hook zsh)"

@@ -27,6 +27,7 @@
     ~/.xinitrc: .xinitrc
     ~/.xprofile: .xprofile
     ~/.config/ranger: ranger
+    ~/.config/kitty: kitty
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
     ~/.config/gtk-4.0/settings.ini: gtk/settings.ini
