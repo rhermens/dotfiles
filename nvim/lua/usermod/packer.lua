@@ -4,17 +4,11 @@ require('packer').startup(function (use)
     -- Syntax tree hightlighting
     use { 'nvim-treesitter/nvim-treesitter' }
 
-    -- Placement
-    use { 'folke/zen-mode.nvim' }
-
     -- Theme
     use {'folke/tokyonight.nvim', branch = 'main' }
 
     -- Status bar
     use 'nvim-lualine/lualine.nvim'
-
-    -- Marks
-    use 'chentoast/marks.nvim'
 
     -- :Git
     use 'tpope/vim-fugitive'
@@ -30,8 +24,8 @@ require('packer').startup(function (use)
     -- Fuzzy finder
     use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' }} 
 
-    --
-    use 'nvim-telescope/telescope-file-browser.nvim'
+    -- File browser
+    use 'stevearc/oil.nvim'
 
     -- Buffer tabs
     use { 'akinsho/bufferline.nvim', tag = 'v2.*' }

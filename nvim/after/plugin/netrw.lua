@@ -1,2 +1,0 @@
--- vim.keymap.set('n', '<Leader>b', ':Ex<CR>', { silent = true })
--- vim.g.netrw_altfile = 1
