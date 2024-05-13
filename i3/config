@@ -65,7 +65,7 @@ bindsym $mod+Mod1+l exec --no-startup-id loginctl lock-session
 bindsym $mod+Shift+q kill
 
 # Launcher
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu "dmenu -i -fn monospace -nb #24283b -nf #c0caf5 -sb #414868 -sf #7aa2f7"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu='dmenu -i -fn "monospace" -nb "#24283b" -nf "#c0caf5" -sb "#414868" -sf "#7aa2f7"'
 
 # change focus
 bindsym $mod+h focus left
