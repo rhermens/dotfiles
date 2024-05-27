@@ -28,7 +28,7 @@ require('packer').startup(function (use)
     use 'stevearc/oil.nvim'
 
     -- Buffer tabs
-    use { 'akinsho/bufferline.nvim', tag = 'v2.*' }
+    use { 'akinsho/bufferline.nvim', tag = '*' }
 
     -- Tab lines
     use 'lukas-reineke/indent-blankline.nvim'
