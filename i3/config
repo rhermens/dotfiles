@@ -27,6 +27,9 @@ exec_always --no-startup-id nitrogen --restore
 # Nitrogen
 exec_always --no-startup-id nm-applet --sm-disabled
 
+# Notes git-watch
+exec_always --no-startup-id git-watch ~/notes
+
 # Master-stack splitting
 #exec_always --no-startup-id ~/dotfiles/i3utils/i3masterstack.py
 
