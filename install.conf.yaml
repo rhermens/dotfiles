@@ -7,14 +7,14 @@
 - clean: ['~']
 
 - link:
-    ~/.zshrc: .zshrc
-    ~/.zshenv: .zshenv
-    ~/.tmux.conf: .tmux.conf
-    ~/.p10k.zsh: .p10k.zsh
-    ~/.omnisharp: .omnisharp
-    ~/.ideavimrc: .ideavimrc
-    ~/.vimrc: .vimrc
-    ~/.zsh: .zsh
+    ~/.zsh: zsh/inc
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
+    ~/.p10k.zsh: zsh/p10k.zsh
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.omnisharp: omnisharp
+    ~/.ideavimrc: vim/ideavimrc
+    ~/.vimrc: vim/vimrc
     ~/.config/nvim: nvim
     ~/.config/Code/User/settings.json: vscode/settings.json
     ~/.config/i3: i3
@@ -22,9 +22,9 @@
     ~/.config/dunst: dunst
     ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
-    ~/.Xresources: .Xresources
-    ~/.xinitrc: .xinitrc
-    ~/.xprofile: .xprofile
+    ~/.Xresources: x/Xresources
+    ~/.xinitrc: x/xinitrc
+    ~/.xprofile: x/xprofile
     ~/.config/ranger: ranger
     ~/.config/kitty: kitty
     ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
