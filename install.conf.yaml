@@ -10,7 +10,6 @@
     ~/.zshrc: .zshrc
     ~/.zshenv: .zshenv
     ~/.tmux.conf: .tmux.conf
-    ~/.alacritty.toml: alacritty/alacritty.toml
     ~/.p10k.zsh: .p10k.zsh
     ~/.omnisharp: .omnisharp
     ~/.ideavimrc: .ideavimrc
