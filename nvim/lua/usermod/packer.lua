@@ -55,27 +55,19 @@ require('packer').startup(function (use)
     -- LSP
     use 'neovim/nvim-lspconfig'
     use 'arkav/lualine-lsp-progress'
-    use { 'VonHeikemen/lsp-zero.nvim', requires = {
-        'neovim/nvim-lspconfig',
-        -- CMP
-        'hrsh7th/nvim-cmp',
-        'L3MON4D3/LuaSnip',
-        'hrsh7th/cmp-nvim-lsp',
-        'FelipeLema/cmp-async-path',
-        -- Installer
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim'
-    } }
+
+    -- CMP
+    use 'hrsh7th/nvim-cmp'
+    use 'L3MON4D3/LuaSnip'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'FelipeLema/cmp-async-path'
+
+    -- Installer
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- Lint
     use 'mfussenegger/nvim-lint'
-
-    -- -- DAP (Debug adapter protocol)
-    -- use { 'mfussenegger/nvim-dap', requires = {
-    --     'jay-babu/mason-nvim-dap.nvim',
-    --     'rcarriga/nvim-dap-ui',
-    --     'mxsdev/nvim-dap-vscode-js'
-    -- } }
 
     -- This is the way
     use 'github/copilot.vim'

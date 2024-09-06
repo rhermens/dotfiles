@@ -1,10 +1,10 @@
 local builtin = require("telescope.builtin")
 
-project_files = function()
+local project_files = function()
     local is_modules = vim.fn.filereadable(vim.fn.getcwd() .. '/.gitmodules') == 1
     local is_git = vim.fn.isdirectory(vim.fn.getcwd() .. '/.git') == 1
 
-    if is_git and not is_modules then 
+    if is_git and not is_modules then
         return require("telescope.builtin").git_files()
     else
         return require("telescope.builtin").find_files()
