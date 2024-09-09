@@ -8,13 +8,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, opts)
         vim.keymap.set('n', 'go', require('telescope.builtin').lsp_type_definitions, opts)
 
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
 
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-        vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'x' }, '<F3>', function () vim.lsp.buf.format({ async = true }) end, opts)
+        vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
     end
 })
 
