@@ -54,7 +54,18 @@ require('mason-lspconfig').setup({
 local cmp = require('cmp')
 
 cmp.setup({
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'async_path' },
+    },
     mapping = {
-        ['<CR>'] = cmp.mapping.confirm({ select = false })
-    }
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+    },
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
 })
