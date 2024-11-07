@@ -41,6 +41,7 @@ fi
 
 if [[ -e ~/.cargo/env ]]; then
     . "$HOME/.cargo/env"
+    export PATH=/home/roy/.cargo/bin:$PATH
 fi
 
 [ -f "/home/roy/.ghcup/env" ] && source "/home/roy/.ghcup/env" # ghcup-env
