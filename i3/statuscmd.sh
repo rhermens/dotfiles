@@ -3,5 +3,5 @@
 i3status | while :
 do
         read line
-        echo "$(~/.config/i3/battery.sh)     $line   " || exit 1
+        echo "$(timer current) $(~/.config/i3/battery.sh)     $line   " || exit 1
 done
