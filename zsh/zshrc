@@ -28,12 +28,10 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
     export PATH=/opt/homebrew/bin:$PATH
 fi
 
-if [[ -f ~/antigen/antigen.zsh ]] && [[ ! -f /proc/sys/fs/binfmt_misc/WSLInterop ]]; then
-    source ~/antigen/antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
 
-    antigen bundle zsh-users/zsh-syntax-highlighting
-    antigen bundle zsh-users/zsh-autosuggestions
-    antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle jeffreytse/zsh-vi-mode
 
-    antigen apply
-fi
+antigen apply
