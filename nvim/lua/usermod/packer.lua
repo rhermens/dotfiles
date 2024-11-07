@@ -68,6 +68,7 @@ require('packer').startup(function (use)
 
     -- Lint
     use 'mfussenegger/nvim-lint'
+    use 'rshkarin/mason-nvim-lint'
 
     -- This is the way
     use 'github/copilot.vim'
