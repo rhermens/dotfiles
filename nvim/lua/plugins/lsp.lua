@@ -1,30 +1,19 @@
 return {
     { 'neovim/nvim-lspconfig' },
-    {
-        'nvim-lua/lsp-status.nvim',
-        init = function ()
-            require('lsp-status').register_progress()
-        end
-    },
     { 'williamboman/mason.nvim', config = true },
     {
         'williamboman/mason-lspconfig.nvim',
         dependencies = {
             { 'williamboman/mason.nvim' },
-            { 'nvim-lua/lsp-status.nvim' },
             { 'hrsh7th/cmp-nvim-lsp' },
         },
         opts = function ()
-            local lsp_status = require('lsp-status')
-            local lsp_capabilities = vim.tbl_extend('keep', require('cmp_nvim_lsp').default_capabilities(), lsp_status.capabilities)
+            local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             return {
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({
                             capabilities = lsp_capabilities,
-                            on_attach = function(client)
-                                lsp_status.on_attach(client)
-                            end
                         })
                     end,
                     lua_ls = function()
