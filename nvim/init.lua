@@ -1,4 +1,4 @@
-require('usermod.settings')
-require('usermod.keymaps')
-require('usermod.lazy')
+require('config.settings')
+require('config.keymaps')
+require('config.lazy')
 
