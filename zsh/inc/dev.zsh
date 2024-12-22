@@ -44,6 +44,8 @@ if [[ -e ~/.cargo/env ]]; then
     export PATH=/home/roy/.cargo/bin:$PATH
 fi
 
+export PATH=/home/roy/.local/share/coursier/bin:$PATH
+
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 [ -f "/home/roy/.ghcup/env" ] && source "/home/roy/.ghcup/env" # ghcup-env
 
