@@ -8,6 +8,10 @@ if [[ -e ~/chrome-shell/shell/keybindings.zsh ]]; then
     source ~/chrome-shell/shell/keybindings.zsh
 fi
 
+if [[ -e /opt/asdf-vm/asdf.sh ]]; then
+    source /opt/asdf-vm/asdf.sh
+fi
+
 if [[ -e "$HOME/.nvm/nvm.sh" ]]; then
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
