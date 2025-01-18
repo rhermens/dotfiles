@@ -5,8 +5,6 @@ WantedBy=multi-user.target
 Description=git-watch
 
 [Service]
-ExecStart=/usr/bin/git-watch ~/notes
-User=roy
-Group=roy
+ExecStart=/usr/bin/git-watch /home/roy/notes
 Type=simple
 Restart=on-failure
