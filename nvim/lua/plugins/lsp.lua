@@ -2,10 +2,24 @@ return {
     { 'neovim/nvim-lspconfig' },
     { 'williamboman/mason.nvim', config = true },
     {
+        'artemave/workspace-diagnostics.nvim',
+        init = function ()
+            vim.api.nvim_set_keymap('n', '<space>xx', '', {
+                noremap = true,
+                callback = function()
+                    for _, client in ipairs(vim.lsp.get_clients()) do
+                        require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+                    end
+                end
+            })
+        end,
+    },
+    {
         'williamboman/mason-lspconfig.nvim',
         dependencies = {
             { 'williamboman/mason.nvim' },
             { 'hrsh7th/cmp-nvim-lsp' },
+            { 'artemave/workspace-diagnostics.nvim' },
         },
         opts = function ()
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
