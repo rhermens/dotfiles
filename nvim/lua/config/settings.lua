@@ -50,3 +50,18 @@ set.shell = "/usr/bin/zsh"
 -- set.t_ut = nil
 vim.g.mapleader = ' '
 
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        source = 'if_many',
+        border = 'rounded',
+        style = 'minimal',
+        header = '',
+        prefix = '',
+    },
+})
+
