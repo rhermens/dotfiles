@@ -50,6 +50,25 @@ return {
                             }
                         })
                     end,
+                    rust_analyzer = function()
+                        require('lspconfig').rust_analyzer.setup({
+                            capabilities = lsp_capabilities,
+                            settings = {
+                                ['rust-analyzer'] = {
+                                    procMacro = {
+                                        ignored = {
+                                            leptos_macro = {"server"},
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                    end,
+                    -- jdtls = function()
+                    --     require('lspconfig').jdtls.setup({
+                    --         capabilities = lsp_capabilities,
+                    --     })
+                    -- end,
                 }
             }
         end,
@@ -60,7 +79,7 @@ return {
             { "nvim-lua/plenary.nvim" },
             { 'hrsh7th/cmp-nvim-lsp' },
         },
-        ft = { "scala", "sbt", "java" },
+        ft = { "scala", "sbt" },
         opts = function ()
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             local metals_config = require("metals").bare_config()

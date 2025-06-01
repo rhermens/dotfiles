@@ -43,6 +43,10 @@ if [[ -e ~/netcoredbg/netcoredbg ]]; then
     export PATH=$PATH:$HOME/netcoredbg
 fi
 
+if [[ -e ~/.local/share/nvim/mason/packages/jdtls/lombok.jar ]]; then
+    export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/nvim/mason/packages/jdtls/lombok.jar"
+fi
+
 if [[ -e ~/.cargo/env ]]; then
     . "$HOME/.cargo/env"
     export PATH=/home/roy/.cargo/bin:$PATH
