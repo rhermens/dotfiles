@@ -22,6 +22,7 @@
     ~/.config/dunst: dunst
     ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
+    ~/.stack/config.yaml: dev/stack/config.yaml
     ~/.Xresources: x/Xresources
     ~/.xinitrc: x/xinitrc
     ~/.xprofile: x/xprofile
