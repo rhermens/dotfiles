@@ -23,7 +23,7 @@
     ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
     ~/.stack/config.yaml: dev/stack/config.yaml
-    ~/.Xresources: x/Xresources
+    ~/.Xresources: x/Xresources_tokyonight
     ~/.xinitrc: x/xinitrc
     ~/.xprofile: x/xprofile
     ~/.config/systemd/user/git-watch.service: systemd/git-watch.service

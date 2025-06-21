@@ -28,8 +28,20 @@ require("lazy").setup({
                 ]]
             end,
         },
+        -- {
+        --     'sainnhe/everforest',
+        --     lazy = false,
+        --     priority = 1000,
+        --     config = function ()
+        --         vim.g.everforest_background = "medium"
+        --         vim.cmd [[
+        --             colorscheme everforest
+        --         ]]
+        --     end,
+        -- },
         { import = "plugins" },
     },
     install = { colorscheme = { "tokyonight" } },
+    -- install = { colorscheme = { "everforest" } },
     checker = { enabled = true },
 })
