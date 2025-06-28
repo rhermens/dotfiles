@@ -20,6 +20,7 @@
     ~/.config/i3: i3
     ~/.config/i3status: i3status
     ~/.config/dunst: dunst
+    ~/.config/home-manager: home-manager
     ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
     ~/.stack/config.yaml: dev/stack/config.yaml
