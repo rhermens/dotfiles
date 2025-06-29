@@ -7,9 +7,9 @@
 - clean: ['~']
 
 - link:
-    ~/.zsh: zsh/inc
-    ~/.zshrc: zsh/zshrc
-    ~/.zshenv: zsh/zshenv
+    # ~/.zsh: zsh/inc
+    # ~/.zshrc: zsh/zshrc
+    # ~/.zshenv: zsh/zshenv
     # ~/.p10k.zsh: zsh/p10k.zsh
     ~/.tmux.conf: tmux/tmux.conf
     ~/.omnisharp: omnisharp
