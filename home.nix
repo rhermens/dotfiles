@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, nixgl, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -15,18 +14,20 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  nixGL.packages = nixgl.packages;
+  nixGL.installScripts = [ "nvidia" ];
+  nixGL.defaultWrapper = "nvidia";
+  nixGL.vulkan.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.zsh
-    pkgs.zsh-powerlevel10k
-    pkgs.antigen
     pkgs.tmux
     pkgs.tldr
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
-    pkgs.kitty
+    (config.lib.nixGL.wrap pkgs.kitty)
 
     pkgs.obsidian
 
@@ -36,6 +37,36 @@
 
     pkgs.go
   ];
+
+  programs.fzf = {
+    enable = true;
+    changeDirWidgetCommand = "fd --type d --hidden --no-ignore --follow --exclude node_modules --exclude vendor --exclude .git";
+  };
+
+  programs.zsh = {
+    enable = true;
+    antidote = {
+      enable = true;
+      plugins = [
+        "romkatv/powerlevel10k"
+        "zsh-users/zsh-syntax-highlighting"
+        "zsh-users/zsh-autosuggestions"
+        "jeffreytse/zsh-vi-mode"
+      ];
+    };
+    plugins = [
+      {
+        name = "p10k";
+        file = "p10k.zsh";
+        src = ./zsh;
+      }
+    ];
+
+    shellAliases = {
+      ll = "ls --color=auto -alF";
+      vim = "nvim";
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -69,7 +100,7 @@
   #  /etc/profiles/per-user/roy/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   fonts = {
