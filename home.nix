@@ -36,7 +36,56 @@
     pkgs.nerd-fonts.iosevka
 
     pkgs.go
+
+    pkgs.uwsm
   ];
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+    extraConfig = builtins.readFile ./hypr/hyprland.conf;
+  };
+
+  programs.waybar = {
+    enable = true;
+    style = ./waybar/style.css;
+    settings = {
+      mainBar = {
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "cpu"
+          "memory"
+          "clock"
+          "tray"
+        ];
+
+        "hyprland/workspaces" = {
+          all-outputs = true;
+        };
+
+        "clock" = {
+          format = "{:%F %H:%M}";
+        };
+
+        "pulseaudio" = {
+          format = "Vol: {volume}%";
+        };
+
+        "cpu" = {
+          format = "Cpu: {usage}%";
+        };
+
+        "memory" = {
+          format = "Mem: {percentage}%";
+        };
+      };
+    };
+  };
 
   programs.fzf = {
     enable = true;

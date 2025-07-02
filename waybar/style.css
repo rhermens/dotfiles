@@ -1,0 +1,105 @@
+@define-color background #24283b;
+@define-color foreground #c0caf5;
+@define-color accent #414868;
+@define-color accent-forground #7aa2f7;
+
+* {
+    font-family: Iosevka Nerd Font Mono;
+    font-size: 14px;
+    border: none;
+}
+
+#window {
+    padding: 0 10px;
+}
+
+window#waybar {
+    border: none;
+    transition-duration: 0s;
+    color: @foreground;
+    background: @background;
+}
+
+#workspaces {
+    /* margin: 0 5px; */
+}
+
+#workspaces button {
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+}
+
+#workspaces button.active {
+    border-color: @accent;
+}
+
+#workspaces button.visible {
+    border-color: @accent-forground;
+}
+
+#workspaces button.urgent {
+    background-color: #a96d1f;
+    color: white;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    border-color: #bb9af7;
+    color: #bb9af7;
+}
+
+#pulseaudio {
+    /* font-size: 26px; */
+}
+
+#clock,
+#tray,
+#mode,
+#battery,
+#temperature,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#sway-language,
+#backlight,
+#custom-storage,
+#custom-cpu_speed,
+#custom-powermenu,
+#custom-spotify,
+#custom-weather,
+#custom-mail,
+#custom-media {
+    margin: 0px 0px 0px 10px;
+    padding: 0 5px;
+}
+
+#battery.warning {
+    color: rgba(255, 210, 4, 1);
+}
+
+#battery.critical {
+    color: rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color: rgba(217, 216, 216, 1);
+}
+
+#custom-storage.warning {
+    color: rgba(255, 210, 4, 1);
+}
+
+#custom-storage.critical {
+    color: rgba(238, 46, 36, 1);
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
