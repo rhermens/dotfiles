@@ -35,6 +35,7 @@
 
     pkgs.nerd-fonts.iosevka
 
+    pkgs.asdf
     pkgs.go
 
     pkgs.uwsm
@@ -151,6 +152,10 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  home.sessionPath = [
+    "\${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+  ];
 
   fonts = {
     fontconfig = {
