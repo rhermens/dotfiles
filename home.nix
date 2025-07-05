@@ -120,11 +120,13 @@
 
   programs.hyprlock = {
     enable = true;
+    package = null;
     settings = {
       background = {
         color = "rgb(24283b)";
       };
       input-field = {
+        font_family = "monospace";
         monitor = "";
       };
     };
