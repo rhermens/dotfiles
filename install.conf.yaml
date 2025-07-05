@@ -30,7 +30,6 @@
     ~/.xinitrc: x/xinitrc
     ~/.xprofile: x/xprofile
     ~/.config/systemd/user/git-watch.service: systemd/git-watch.service
-    ~/.config/ranger: ranger
     # ~/.config/kitty: kitty
     # ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     # ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
