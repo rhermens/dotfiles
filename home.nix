@@ -16,6 +16,24 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  home.file = {
+    neovim = {
+      enable = true;
+      source = ./nvim;
+      target = ".config/nvim";
+    };
+    kitty = {
+      enable = true;
+      source = ./kitty;
+      target = ".config/kitty";
+    };
+    tmux = {
+      enable = true;
+      source = ./tmux;
+      target = ".config/tmux";
+    };
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -24,7 +42,6 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
-    pkgs.kitty
 
     pkgs.obsidian
     pkgs.google-chrome

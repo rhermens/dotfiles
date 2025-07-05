@@ -15,7 +15,7 @@
     ~/.omnisharp: omnisharp
     ~/.ideavimrc: vim/ideavimrc
     ~/.vimrc: vim/vimrc
-    ~/.config/nvim: nvim
+    # ~/.config/nvim: nvim
     # ~/.config/Code/User/settings.json: vscode/settings.json
     # ~/.config/i3: i3
     # ~/.config/i3status: i3status
@@ -31,7 +31,7 @@
     ~/.xprofile: x/xprofile
     ~/.config/systemd/user/git-watch.service: systemd/git-watch.service
     ~/.config/ranger: ranger
-    ~/.config/kitty: kitty
+    # ~/.config/kitty: kitty
     # ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
     # ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
     # ~/.config/gtk-4.0/settings.ini: gtk/settings.ini
