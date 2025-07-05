@@ -21,6 +21,7 @@
       enable = true;
       source = ./nvim;
       target = ".config/nvim";
+      recursive = true;
     };
     kitty = {
       enable = true;
