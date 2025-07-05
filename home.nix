@@ -1,4 +1,4 @@
-{ config, pkgs, nixgl, ... }:
+{ config, pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   # Let Home Manager install and manage itself.
@@ -16,11 +16,6 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
-  nixGL.packages = nixgl.packages;
-  nixGL.installScripts = [ "nvidia" ];
-  nixGL.defaultWrapper = "nvidia";
-  nixGL.vulkan.enable = true;
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -29,9 +24,10 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
-    (config.lib.nixGL.wrap pkgs.kitty)
+    pkgs.kitty
 
     pkgs.obsidian
+    pkgs.google-chrome
 
     pkgs.neovim
 
@@ -45,6 +41,12 @@
     pkgs.hyprshot
     pkgs.wofi
   ];
+
+  programs.git = {
+    enable = true;
+    userEmail = "royhermens@hotmail.com";
+    userName = "rhermens";
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;

@@ -7,13 +7,7 @@
   imports =
     [ # Include the results of the hardware scan.
       inputs.home-manager.nixosModules.default
-      ./hardware-configuration.nix
     ];
-
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "roy-nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -77,6 +71,11 @@
   #   enableSSHSupport = true;
   # };
   programs.zsh.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
   # List services that you want to enable:
 

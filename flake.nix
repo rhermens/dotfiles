@@ -7,22 +7,19 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:nix-community/nixGL?ref=pull/187/head";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
-    { nixpkgs, home-manager, nixgl, ... }@inputs:
+    { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.roy = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
+          ./nixos/hardware-laptop.nix
           ./configuration.nix
         ];
       };
@@ -31,9 +28,6 @@
         inherit pkgs;
 
         modules = [ ./home.nix ];
-        extraSpecialArgs = {
-          inherit nixgl;
-        };
       };
     };
 }
