@@ -1,6 +1,8 @@
 { config, pkgs, nixgl, ... }:
 {
   nixpkgs.config.allowUnfree = true;
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   home.username = "roy";
   home.homeDirectory = "/home/roy";
@@ -39,6 +41,9 @@
     pkgs.go
 
     pkgs.uwsm
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.hyprshot
+    pkgs.wofi
   ];
 
   wayland.windowManager.hyprland = {
@@ -84,6 +89,18 @@
         "memory" = {
           format = "Mem: {percentage}%";
         };
+      };
+    };
+  };
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      background = {
+        color = "rgb(24283b)";
+      };
+      input-field = {
+        monitor = "";
       };
     };
   };
@@ -175,6 +192,7 @@
     };
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  services.hyprpolkitagent = {
+    enable = true;
+  };
 }
