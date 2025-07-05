@@ -59,7 +59,7 @@
     pkgs.asdf-vm
     pkgs.go
 
-    pkgs.uwsm
+    # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
     pkgs.wofi
