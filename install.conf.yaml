@@ -7,34 +7,15 @@
 - clean: ['~']
 
 - link:
-    # ~/.zsh: zsh/inc
-    # ~/.zshrc: zsh/zshrc
-    # ~/.zshenv: zsh/zshenv
-    # ~/.p10k.zsh: zsh/p10k.zsh
-    ~/.tmux.conf: tmux/tmux.conf
-    ~/.omnisharp: omnisharp
-    ~/.ideavimrc: vim/ideavimrc
-    ~/.vimrc: vim/vimrc
-    # ~/.config/nvim: nvim
-    # ~/.config/Code/User/settings.json: vscode/settings.json
-    # ~/.config/i3: i3
-    # ~/.config/i3status: i3status
-    ~/.config/dunst: dunst
     ~/.config/home-manager/flake.lock: flake.lock
     ~/.config/home-manager/flake.nix: flake.nix
     ~/.config/home-manager/home.nix: home.nix
-    # ~/.config/fontconfig: fontconfig
     ~/.config/pypoetry: dev/pypoetry
     ~/.stack/config.yaml: dev/stack/config.yaml
     ~/.Xresources: x/Xresources_tokyonight
     ~/.xinitrc: x/xinitrc
     ~/.xprofile: x/xprofile
     ~/.config/systemd/user/git-watch.service: systemd/git-watch.service
-    # ~/.config/kitty: kitty
-    # ~/.config/gtk-3.0/settings.ini: gtk/settings.ini
-    # ~/.config/gtk-3.0/bookmarks: gtk/bookmarks
-    # ~/.config/gtk-4.0/settings.ini: gtk/settings.ini
-    # ~/.gtkrc-2.0: gtk/gtkrc-2.0
     ~/.local/share/applications/mongodb-compass.desktop: applications/mongodb-compass.desktop
     ~/Pictures/Wallpapers: wallpapers
 
