@@ -16,11 +16,28 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.msi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos/hardware-laptop.nix
+          ./nixos/hw/nvidia.nix
+          ./nixos/hw/laptop.nix
           ./configuration.nix
+          {
+            networking.hostName = "msi";
+          }
+        ];
+      };
+
+      nixosConfigurations.omen = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./nixos/hardware-omen.nix
+          ./nixos/hw/nvidia.nix
+          ./configuration.nix
+          {
+            networking.hostName = "omen";
+          }
         ];
       };
 

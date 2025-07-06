@@ -51,6 +51,8 @@
 
     pkgs.obsidian
     pkgs.google-chrome
+    pkgs.discord
+    pkgs.vlc
 
     pkgs.neovim
 
@@ -198,6 +200,14 @@
   gtk = {
     enable = true;
     font.name = "monospace";
+    cursorTheme = {
+      name = "OpenZone_Black_Slim";
+      package = pkgs.openzone-cursors;
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
     theme = {
       package = pkgs.tokyonight-gtk-theme;
       name = "Tokyonight-Dark";
