@@ -89,16 +89,15 @@
 
   virtualisation.docker.enable = true;
 
-  services.gvfs = {
-    enable = true;
-    package = lib.mkForce pkgs.gnome.gvfs;
-  };
-  services.samba = {
-    enable = true;
-  };
-  services.tumbler.enable = true;
-  services.gnome.gnome-keyring = {
-    enable = true;
+  services = {
+    gvfs = {
+      enable = true;
+      package = lib.mkForce pkgs.gnome.gvfs;
+    };
+    samba.enable = true;
+    envfs.enable = true;
+    tumbler.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?
