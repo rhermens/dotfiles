@@ -53,6 +53,7 @@
     pkgs.google-chrome
     pkgs.discord
     pkgs.vlc
+    pkgs.mongodb-compass
 
     pkgs.neovim
 
@@ -60,11 +61,15 @@
 
     pkgs.asdf-vm
     pkgs.go
+    pkgs.rustup
 
     # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
     pkgs.wofi
+    pkgs.playerctl
+
+    pkgs.seahorse
   ];
 
   programs.git = {
@@ -211,6 +216,20 @@
     theme = {
       package = pkgs.tokyonight-gtk-theme;
       name = "Tokyonight-Dark";
+    };
+  };
+
+  xdg.desktopEntries = {
+    mongodb-compass = {
+      name = "MongoDB Compass Libsecret";
+      comment = "The MongoDB GUI";
+      genericName = "MongoDB Compass Libsecret";
+      exec="env MONGODB_COMPASS_TEST_LOG_DIR=/dev/null mongodb-compass --password-store=\"gnome-libsecret\" --ignore-additional-command-line-flags %U";
+      icon = "mongodb-compass";
+      type = "Application";
+      startupNotify = true;
+      categories = ["GNOME" "GTK" "Utility"];
+      mimeType = ["x-scheme-handler/mongodb" "x-scheme-handler/mongodb+srv"];
     };
   };
 

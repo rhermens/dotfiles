@@ -60,7 +60,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pavucontrol
     openzone-cursors
     kitty
     neovim
@@ -70,8 +69,8 @@
     gcc
     unzip
     wget
-    mongodb-compass
     cifs-utils
+    pavucontrol
   ];
 
   programs.zsh.enable = true;
@@ -84,6 +83,10 @@
 
   programs.steam.enable = true;
 
+  programs.nix-ld = {
+    enable = true;
+  };
+
   virtualisation.docker.enable = true;
 
   services.gvfs = {
@@ -94,6 +97,9 @@
     enable = true;
   };
   services.tumbler.enable = true;
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 }
