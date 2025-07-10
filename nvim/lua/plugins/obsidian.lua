@@ -3,6 +3,9 @@ return {
         'epwalsh/obsidian.nvim',
         dependencies = 'nvim-lua/plenary.nvim',
         opts = {
+            ui = {
+                enable = false,
+            },
             workspaces = {
                 {
                     name = "notes",

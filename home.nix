@@ -48,20 +48,25 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
+    pkgs.python313Packages.pylatexenc
 
     pkgs.obsidian
     pkgs.google-chrome
-    pkgs.discord
     pkgs.vlc
     pkgs.mongodb-compass
+
+    pkgs.discord
+    pkgs.slack
 
     pkgs.neovim
 
     pkgs.nerd-fonts.iosevka
 
+    pkgs.tree-sitter
     pkgs.asdf-vm
     pkgs.go
     pkgs.rustup
+    pkgs.nodejs_22
 
     # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
@@ -77,6 +82,9 @@
     enable = true;
     userEmail = "royhermens@hotmail.com";
     userName = "rhermens";
+    extraConfig = {
+      push.autoSetupRemote = true;
+    };
   };
 
   wayland.windowManager.hyprland = {
@@ -188,10 +196,12 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    PNPM_HOME = "/home/roy/.local/share/pnpm";
   };
 
   home.sessionPath = [
     "\${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+    "$PNPM_HOME"
   ];
 
   fonts = {
