@@ -48,6 +48,7 @@
     pkgs.fzf
     pkgs.ripgrep
     pkgs.fd
+    pkgs.python313Packages.pylatexenc
 
     pkgs.obsidian
     pkgs.google-chrome
@@ -61,6 +62,7 @@
 
     pkgs.nerd-fonts.iosevka
 
+    pkgs.tree-sitter
     pkgs.asdf-vm
     pkgs.go
     pkgs.rustup
