@@ -67,6 +67,7 @@
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
     pkgs.wofi
+
     pkgs.playerctl
 
     pkgs.seahorse
