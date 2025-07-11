@@ -144,6 +144,10 @@
       input-field = {
         font_family = "monospace";
         monitor = "";
+        rounding = 0;
+        outline_thickness = 0;
+        font_color = "rgb(c0caf5)";
+        inner_color = "rgb(24283b)";
       };
     };
   };
@@ -176,6 +180,11 @@
       ll = "ls --color=auto -alF";
       vim = "nvim";
     };
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   # Home Manager can also manage your environment variables through
