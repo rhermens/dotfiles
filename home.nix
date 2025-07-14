@@ -251,6 +251,12 @@
       mimeType = ["x-scheme-handler/mongodb" "x-scheme-handler/mongodb+srv"];
     };
   };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "TerminalEmulator" = "kitty-open.desktop";
+    };
+  };
 
   services.hyprpolkitagent = {
     enable = true;
