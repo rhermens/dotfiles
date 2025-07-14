@@ -66,7 +66,6 @@
     pkgs.asdf-vm
     pkgs.go
     pkgs.rustup
-    pkgs.nodejs_22
 
     # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
