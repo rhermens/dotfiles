@@ -7,10 +7,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    git-fsnotify = {
+      url = "github:rhermens/git-fsnotify";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    { nixpkgs, home-manager, git-fsnotify, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -44,7 +48,7 @@
       homeConfigurations.roy = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        modules = [ ./home.nix ];
+        modules = [ ./home.nix git-fsnotify.homeManagerModules.${system}.git-fsnotify ];
       };
     };
 }

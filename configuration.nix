@@ -71,10 +71,17 @@
     wget
     cifs-utils
     pavucontrol
+    file-roller
   ];
 
   programs.zsh.enable = true;
-  programs.thunar.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
 
   programs.hyprland = {
     enable = true;

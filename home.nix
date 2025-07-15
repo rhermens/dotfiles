@@ -84,6 +84,7 @@
     userName = "rhermens";
     extraConfig = {
       push.autoSetupRemote = true;
+      pull.rebase = false;
     };
   };
 
@@ -185,6 +186,9 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
+    nix-direnv = {
+      enable = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -252,17 +256,15 @@
       mimeType = ["x-scheme-handler/mongodb" "x-scheme-handler/mongodb+srv"];
     };
   };
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "TerminalEmulator" = "kitty-open.desktop";
-    };
-  };
 
   services.hyprpolkitagent = {
     enable = true;
   };
   services.dunst = {
     enable = true;
+  };
+  services.git-fsnotify = {
+    enable = true;
+    path = "/home/roy/notes";
   };
 }
