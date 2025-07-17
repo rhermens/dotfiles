@@ -53,7 +53,7 @@
     pkgs.obsidian
     pkgs.google-chrome
     pkgs.vlc
-    pkgs.mongodb-compass
+    pkgs.libreoffice
 
     pkgs.discord
     pkgs.slack
@@ -66,6 +66,9 @@
     pkgs.asdf-vm
     pkgs.go
     pkgs.rustup
+    pkgs.drawio
+    pkgs.postman
+    pkgs.mongodb-compass
 
     # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
