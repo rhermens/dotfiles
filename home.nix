@@ -54,6 +54,7 @@
     pkgs.google-chrome
     pkgs.vlc
     pkgs.libreoffice
+    pkgs.gedit
 
     pkgs.discord
     pkgs.slack
@@ -70,7 +71,6 @@
     pkgs.postman
     pkgs.mongodb-compass
 
-    # pkgs.uwsm
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
     pkgs.wofi

@@ -42,11 +42,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752729502,
-        "narHash": "sha256-du3EksrnUIbsZchPsQe1exqR69YyJNDUw0FTaV5/4v4=",
+        "lastModified": 1752914782,
+        "narHash": "sha256-etuthRbvaNgy6tkfg0wgmmUy8v7PrBSrrohwhC3hRhY=",
         "owner": "rhermens",
         "repo": "git-fsnotify",
-        "rev": "7aff2cca909235f2f93a6b276ee115f1363daeae",
+        "rev": "23a2543469eb60cab4105034ca5f7670e19a8307",
         "type": "github"
       },
       "original": {

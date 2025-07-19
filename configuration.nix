@@ -72,6 +72,11 @@
     cifs-utils
     pavucontrol
     file-roller
+    transmission_4-gtk
+    wine-wayland
+    wine
+    wine64
+    winetricks
   ];
 
   programs.zsh.enable = true;
