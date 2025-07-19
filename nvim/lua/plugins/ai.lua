@@ -8,21 +8,22 @@ return {
         end,
     },
     {
-        'robitx/gp.nvim',
+        'yetone/avante.nvim',
+        build = function ()
+            return "make"
+        end,
         opts = {
-            providers = {
-                copilot = {
-                    endpoint = "https://api.githubcopilot.com/chat/completions",
-                    secret = {
-                        "bash",
-                        "-c",
-                        "cat ~/.config/github-copilot/apps.json | sed -e 's/.*oauth_token...//;s/\".*//'",
-                    },
-                },
-                ollama = {
-                    endpoint = "http://localhost:11434/v1/chat/completions",
-                },
-            }
-        }
-    }
+            provider = 'copilot',
+            behaviour = {
+                auto_suggestions = false,
+            },
+            hints = {
+                enabled = false,
+            },
+        },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+    },
 }
