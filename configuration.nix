@@ -73,10 +73,10 @@
     pavucontrol
     file-roller
     transmission_4-gtk
-    wine-wayland
-    wine
-    wine64
-    winetricks
+
+    ardour
+    surge-XT
+    x42-avldrums
   ];
 
   programs.zsh.enable = true;
