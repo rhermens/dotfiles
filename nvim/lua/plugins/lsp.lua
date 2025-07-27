@@ -1,5 +1,17 @@
 return {
-    { 'neovim/nvim-lspconfig' },
+    { 
+        'neovim/nvim-lspconfig',
+        init = function ()
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+            vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+            vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
+
+            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+            vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+            vim.keymap.set({ 'n', 'x' }, '<F3>', function () vim.lsp.buf.format({ async = true }) end, opts)
+            vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
+        end,
+    },
     { 'williamboman/mason.nvim', config = true },
     {
         'artemave/workspace-diagnostics.nvim',
@@ -39,7 +51,7 @@ return {
                                         version = 'LuaJIT'
                                     },
                                     diagnostics = {
-                                        globals = {'vim'},
+                                        globals = { 'vim' },
                                     },
                                     workspace = {
                                         library = {
