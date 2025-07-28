@@ -1,6 +1,13 @@
 return {
-    { 
+    {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            {
+                'folke/neoconf.nvim',
+                cmd = { 'Neoconf' },
+                opts = {}
+            },
+        },
         init = function ()
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
