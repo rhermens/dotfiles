@@ -29,6 +29,10 @@ return {
         dependencies = {
             'jay-babu/mason-nvim-dap.nvim',
             'rcarriga/nvim-dap-ui',
+            {
+                'theHamsta/nvim-dap-virtual-text',
+                opts = {},
+            },
         },
         config = function ()
             local dap = require('dap')
@@ -43,12 +47,18 @@ return {
             vim.keymap.set('n', '<F8>', dap.step_out)
             vim.keymap.set('n', '<F9>', dap.step_back)
             vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint)
+
+            local vscode = require('dap.ext.vscode')
+            local json = require('plenary.json')
+            vscode.json_decode = function (str) 
+                return vim.json.decode(json.json_strip_comments(str))
+            end
         end,
     },
     {
         'jay-babu/mason-nvim-dap.nvim',
         dependencies = {
-            'williamboman/mason.nvim',
+            'mason-org/mason.nvim',
         },
         opts = {
             automatic_install = true,
