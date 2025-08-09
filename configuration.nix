@@ -22,6 +22,9 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.firewall.allowedUDPPortRanges = [
+    { from = 32768; to = 60999; } # Chromecast
+  ];
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -69,14 +72,8 @@
     gcc
     unzip
     wget
-    cifs-utils
     pavucontrol
     file-roller
-    transmission_4-gtk
-
-    ardour
-    surge-XT
-    x42-avldrums
   ];
 
   programs.zsh.enable = true;
@@ -93,8 +90,7 @@
     withUWSM = true;
   };
 
-  programs.steam.enable = true;
-
+  services.envfs.enable = true;
   programs.nix-ld = {
     enable = true;
   };
@@ -102,12 +98,6 @@
   virtualisation.docker.enable = true;
 
   services = {
-    gvfs = {
-      enable = true;
-      package = lib.mkForce pkgs.gnome.gvfs;
-    };
-    samba.enable = true;
-    envfs.enable = true;
     tumbler.enable = true;
     gnome.gnome-keyring.enable = true;
   };

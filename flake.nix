@@ -26,6 +26,9 @@
           ./nixos/hardware-laptop.nix
           ./nixos/hw/nvidia.nix
           ./nixos/hw/laptop.nix
+          ./nixos/feat/gaming.nix
+          ./nixos/feat/downloading.nix
+          ./nixos/feat/virtfs.nix
           ./configuration.nix
           {
             networking.hostName = "msi";
@@ -38,6 +41,10 @@
         modules = [
           ./nixos/hardware-omen.nix
           ./nixos/hw/nvidia.nix
+          ./nixos/feat/downloading.nix
+          ./nixos/feat/gaming.nix
+          ./nixos/feat/sound-engineering.nix
+          ./nixos/feat/virtfs.nix
           ./configuration.nix
           {
             networking.hostName = "omen";

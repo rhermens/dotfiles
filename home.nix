@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   # Let Home Manager install and manage itself.
@@ -74,6 +74,7 @@
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
     pkgs.wofi
+    pkgs.nwg-displays
 
     pkgs.playerctl
 
