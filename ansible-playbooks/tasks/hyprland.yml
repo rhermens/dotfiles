@@ -1,0 +1,17 @@
+- name: Install wayland
+  tags:
+    - hyprland
+  become: yes
+  package: name=wayland state=latest
+
+- name: Install hyprland
+  tags:
+    - hyprland
+  become: yes
+  package: name=hyprland state=latest
+
+- name: Install hyprland
+  tags:
+    - hyprland
+  become: yes
+  package: name=hyprland state=latest

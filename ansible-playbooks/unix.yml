@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Show facts
+      debug: msg="{{ ansible_distribution }}"
+    - import_tasks: tasks/hyprland.yml
+    - import_tasks: tasks/nix.yml
+

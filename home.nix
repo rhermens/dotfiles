@@ -43,6 +43,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.openzone-cursors
+
     pkgs.tmux
     pkgs.tldr
     pkgs.fzf
@@ -70,6 +72,7 @@
     pkgs.drawio
     pkgs.postman
     pkgs.mongodb-compass
+    pkgs.dotnet-sdk_9
 
     pkgs.xdg-desktop-portal-hyprland
     pkgs.hyprshot
@@ -213,10 +216,12 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     PNPM_HOME = "/home/roy/.local/share/pnpm";
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
   };
 
   home.sessionPath = [
     "\${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+    "/home/roy/.dotnet/tools"
     "$PNPM_HOME"
   ];
 
