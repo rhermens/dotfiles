@@ -1,35 +1,45 @@
 {
   "mcpServers": {
-    "context7": {
-      "command": "npx",
-      "env": {
-        "DEFAULT_MINIMUM_TOKENS": "6000"
-      },
-      "args": [
-        "-y",
-        "@upstash/context7-mcp"
-      ]
-    },
     "sequentialthinking": {
-      "command": "npx",
+      "autoApprove": [
+        
+      ],
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
-      ]
+      ],
+      "command": "npx"
     },
-    "fetch": {
-      "command": "uvx",
+    "context7": {
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "6000"
+      },
+      "autoApprove": [
+        
+      ],
       "args": [
-        "mcp-server-fetch"
-      ]
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "command": "npx"
     },
     "filesystem": {
-      "command": "npx",
+      "autoApprove": [
+        
+      ],
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
         "${HOME}"
-      ]
+      ],
+      "command": "npx"
+    },
+    "fetch": {
+      "disabled": false,
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "command": "uvx"
     }
   }
 }

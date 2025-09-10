@@ -56,6 +56,7 @@
     pkgs.vlc
     pkgs.libreoffice
     pkgs.gedit
+    pkgs.transmission_4-gtk
 
     pkgs.discord
     pkgs.slack
@@ -82,6 +83,7 @@
     pkgs.playerctl
 
     pkgs.seahorse
+    pkgs._1password-gui
   ];
 
   programs.git = {
@@ -272,7 +274,7 @@
     enable = true;
   };
   services.git-fsnotify = {
-    enable = true;
+    enable = false;
     path = "/home/roy/notes";
   };
 }

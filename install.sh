@@ -20,3 +20,4 @@ sudo systemctl start nix-daemon
 home-manager switch
 
 source ./install/docker.sh
+source ./install/tools.sh
