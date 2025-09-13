@@ -9,14 +9,32 @@ return {
             },
         },
         init = function ()
+            function buf_fmt()
+                vim.lsp.buf.format({ async = true, filter = function (client) return client.name ~= "ts_ls" end })
+            end
+
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
             vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
             vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts)
 
             vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
             vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'x' }, '<F3>', function () vim.lsp.buf.format({ async = true, filter = function (client) return client ~= "ts_ls" end }) end, opts)
+            vim.keymap.set({ 'n', 'x' }, '<F3>', buf_fmt, opts)
             vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
+
+            vim.api.nvim_create_autocmd('LspAttach', {
+                callback = function (event)
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    if not client then return end
+
+                    if client.supports_method('textDocument/formatting') then
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            buffer = event.buf,
+                            callback = buf_fmt,
+                        })
+                    end
+                end,
+            })
         end,
     },
     { 'mason-org/mason.nvim', opts = {} },
