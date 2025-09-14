@@ -9,7 +9,7 @@ return {
             },
         },
         init = function ()
-            function buf_fmt()
+            local function buf_fmt()
                 vim.lsp.buf.format({ async = true, filter = function (client) return client.name ~= "ts_ls" end })
             end
 
