@@ -274,7 +274,7 @@
     enable = true;
   };
   services.git-fsnotify = {
-    enable = false;
+    enable = true;
     path = "/home/roy/notes";
   };
 }
