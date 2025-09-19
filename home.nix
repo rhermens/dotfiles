@@ -248,8 +248,11 @@
       package = pkgs.papirus-icon-theme;
     };
     theme = {
-      package = pkgs.tokyonight-gtk-theme;
-      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme.override {
+        colorVariants = [ "dark" ];
+        tweakVariants = [ "storm" ];
+      };
+      name = "Tokyonight-Dark-Storm";
     };
   };
 
