@@ -1,8 +1,0 @@
-{
-    "RoslynExtensionsOptions": {
-        "enableImportCompletion": true,
-        "enableDecompilationSupport": true,
-        "enableAnalyzersSupport": true,
-        "enableAsyncCompletion": true
-    }
-}

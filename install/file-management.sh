@@ -1,1 +1,5 @@
-sudo pacman -S thunar thunar-archive-plugin thunar-volman gvfs
+pacman -S --needed --noconfirm \
+    thunar thunar-archive-plugin thunar-volman \
+    gvfs samba gvfs-smb \
+    tumbler \
+    unzip

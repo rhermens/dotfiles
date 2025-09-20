@@ -1,23 +1,17 @@
 ## Init
-sudo pacman -S git neovim zsh base-devel unzip
+mkdir -p "$HOME/.pkg"
 
-git clone "git@github.com:rhermens/notes.git" "$HOME/notes"
+source ./install/core.sh
+
 git remote set-url origin "git@github.com:rhermens/dotfiles.git"
 
-## Home Manager
-mkdir -p "$HOME/.config/home-manager/"
-ln -s "$HOME/dotfiles/flake.nix" "$HOME/.config/home-manager/flake.nix"
-ln -s "$HOME/dotfiles/flake.lock" "$HOME/.config/home-manager/flake.lock"
+git clone "git@github.com:rhermens/notes.git" "$HOME/notes"
 
-sudo groupadd nix-users
-sudo usermod -aG nix-users $USER
-su - $USER
-
-sudo pacman -S nix
-sudo systemctl enable nix-daemon
-sudo systemctl start nix-daemon
-
-home-manager switch
+git clone https://aur.archlinux.org/yay.git "$HOME/.pkg/yay"
+makepkg -si -D "$HOME/.pkg/yay"
 
 source ./install/docker.sh
-source ./install/tools.sh
+source ./install/security.sh
+source ./install/dev.sh
+source ./install/docker.sh
+source ./install/file-management.sh

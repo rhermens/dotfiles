@@ -1,1 +1,3 @@
-sudo pacman -S gnome-keyring wget
+sudo pacman -S --needed --noconfirm git zsh base-devel wget curl stow
+
+stow core
