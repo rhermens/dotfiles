@@ -4,7 +4,7 @@ sudo pacman -S --needed --noconfirm playerctl \
 yay -S --noconfirm --needed xcursor-openzone
 
 mkdir -p ~/.pkg
-if ! [ -d ~/.themes-src/Tokyonight-GTK-Theme ]; then
+if ! [ -d ~/.pkg/Tokyonight-GTK-Theme ]; then
     git clone git@github.com:Fausto-Korpsvart/Tokyonight-GTK-Theme.git ~/.pkg/Tokyonight-GTK-Theme
 fi
 
