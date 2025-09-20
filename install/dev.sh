@@ -12,9 +12,9 @@ asdf install golang latest
 asdf install rust latest
 asdf install nodejs latest
 
-asdf set golang latest
-asdf set rust latest
-asdf set nodejs latest
+asdf set --home golang latest
+asdf set --home rust latest
+asdf set --home nodejs latest
 
 stow nvim
 stow dev
