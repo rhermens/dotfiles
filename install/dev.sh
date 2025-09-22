@@ -15,6 +15,7 @@ asdf install nodejs latest
 asdf set --home golang latest
 asdf set --home rust latest
 asdf set --home nodejs latest
+asdf set --home pnpm latest
 
 stow nvim
 stow dev
