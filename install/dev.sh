@@ -1,4 +1,4 @@
-sudo pacman -S --needed --noconfirm neovim drawio-desktop
+sudo pacman -S --needed --noconfirm neovim drawio-desktop act
 
 yay -S --noconfirm --needed asdf-vm mongodb-compass-bin postman-bin
 
