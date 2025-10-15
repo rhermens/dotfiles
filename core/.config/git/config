@@ -7,3 +7,5 @@
 [user]
 	email = "royhermens@hotmail.com"
 	name = "rhermens"
+[core]
+	autocrlf = false
