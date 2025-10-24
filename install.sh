@@ -27,6 +27,6 @@ fi
 source ./install/security.sh
 source ./install/dev.sh
 source ./install/docker.sh
-source ./install/gaming.sh
+# source ./install/gaming.sh
 source ./install/programs.sh
 source ./install/terminal.sh
