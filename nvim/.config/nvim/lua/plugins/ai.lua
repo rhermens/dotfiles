@@ -15,7 +15,6 @@ return {
         build = "bundled_build.lua",
         opts = {
             use_bundled_binary = true,
-            config = vim.fn.expand("~/dotfiles/dev/mcphub/servers.json"),
             extensions = {
                 copilotchat = {
                     enabled = true,
@@ -23,6 +22,9 @@ return {
                     convert_resources_to_functions = true, -- Convert MCP resources to CopilotChat functions
                     add_mcp_prefix = false,                -- Add "mcp_" prefix to function names
                 }
+            },
+            global_env = {
+                "GITHUB_TOKEN",
             },
         },
     },
