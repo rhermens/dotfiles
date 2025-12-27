@@ -1,7 +1,11 @@
-sudo pacman -S --needed --noconfirm docker docker-compose
-
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
-sudo systemctl enable docker
-sudo systemctl start docker
+if [ -z "${WSL_DISTRO_NAME}" ]; then
+    sudo pacman -S --needed --noconfirm docker docker-compose
+
+    sudo systemctl enable docker
+    sudo systemctl start docker
+else
+    winget.exe install Docker.DockerDesktop
+fi
