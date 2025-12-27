@@ -14,8 +14,6 @@ else
     git remote set-url origin "git@github.com:rhermens/dotfiles.git"
 fi
 
-cd ~/dotfiles
-
 if ! [ -d ~/notes ]; then
     git clone "git@github.com:rhermens/notes.git" "$HOME/notes"
 fi
@@ -27,6 +25,7 @@ if [ -z "$WSL_DISTRO_NAME" ]; then
     source ./install/file-management.sh
 fi
 
+source ./install/security.sh
 source ./install/dev.sh
 source ./install/docker.sh
 source ./install/gaming.sh

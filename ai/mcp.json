@@ -1,0 +1,83 @@
+{
+    "mcpServers": {
+        "atlassian": {
+            "type": "http",
+            "url": "https://mcp.atlassian.com/v1/sse",
+            "tools": [
+                "*"
+            ]
+        },
+        "sentry": {
+            "type": "http",
+            "url": "https://mcp.sentry.dev/mcp",
+            "tools": [
+                "*"
+            ]
+        },
+        "context7": {
+            "type": "local",
+            "args": [
+                "-y",
+                "@upstash/context7-mcp"
+            ],
+            "command": "npx",
+            "tools": [
+                "*"
+            ],
+            "env": {
+                "DEFAULT_MINIMUM_TOKENS": "6000"
+            }
+        },
+        "mermaid": {
+            "type": "http",
+            "url": "https://mcp.mermaidchart.com/mcp",
+            "tools": [
+                "*"
+            ]
+        },
+        "git": {
+            "type": "local",
+            "args": [
+                "mcp-server-git",
+                "--repository",
+                "${workspaceFolder}"
+            ],
+            "tools": [
+                "*"
+            ],
+            "command": "uvx"
+        },
+        "github": {
+            "type": "http",
+            "headers": {
+                "Authorization": "Bearer ${env:GITHUB_TOKEN}"
+            },
+            "tools": [
+                "*"
+            ],
+            "url": "https://api.githubcopilot.com/mcp/"
+        },
+        "memory": {
+            "type": "local",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-memory"
+            ],
+            "tools": [
+                "*"
+            ],
+            "command": "npx"
+        },
+        "sequentialthinking": {
+            "type": "local",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-sequential-thinking"
+            ],
+            "tools": [
+                "*"
+            ],
+            "command": "npx"
+        }
+    }
+}

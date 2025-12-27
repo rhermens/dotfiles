@@ -5,5 +5,5 @@ if [ -z "${WSL_DISTRO_NAME}" ]; then
 
     yay -S --noconfirm --needed google-chrome slack-desktop
 else
-    winget install Google.Chrome SlackTechnologies.Slack Discord.Discord VideoLAN.VLC Obsidian.Obsidian
+    winget.exe install Google.Chrome SlackTechnologies.Slack Discord.Discord VideoLAN.VLC Obsidian.Obsidian
 fi

@@ -6,7 +6,7 @@ sudo pacman -S --needed --noconfirm \
 if [ -z "${WSL_DISTRO_NAME}" ]; then
     sudo pacman -S --needed --noconfirm kitty
 else
-    winget install BurntSushi.ripgrep.MSVC
+    winget.exe install BurntSushi.ripgrep.MSVC
 fi
 
 yay -S --needed --noconfirm \
