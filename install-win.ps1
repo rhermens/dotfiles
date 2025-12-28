@@ -1,4 +1,3 @@
-## Init
 . ./install/core.ps1
 . ./install/security.ps1
 . ./install/dev.ps1
