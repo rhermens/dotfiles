@@ -4,8 +4,6 @@ yay -S --noconfirm --needed asdf-vm
 
 if [ -z "${WSL_DISTRO_NAME}" ]; then
 	yay -S --noconfirm mongodb-compass-bin postman-bin
-else
-    winget.exe install MongoDB.Compass.Full Postman.Postman
 fi
 
 asdf plugin add nodejs

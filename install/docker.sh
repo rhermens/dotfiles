@@ -6,6 +6,4 @@ if [ -z "${WSL_DISTRO_NAME}" ]; then
 
     sudo systemctl enable docker
     sudo systemctl start docker
-else
-    winget.exe install Docker.DockerDesktop
 fi
