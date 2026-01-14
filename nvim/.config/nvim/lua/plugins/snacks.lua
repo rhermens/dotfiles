@@ -48,6 +48,7 @@ return {
             -- search
             { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
             { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+            { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
             { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
             { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
             { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },

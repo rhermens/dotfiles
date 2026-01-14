@@ -3,7 +3,16 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = {
             { 'nvim-tree/nvim-web-devicons' },
-            { 'arkav/lualine-lsp-progress' }
+            { 'arkav/lualine-lsp-progress' },
+            {
+                "letieu/harpoon-lualine",
+                dependencies = {
+                    {
+                        "ThePrimeagen/harpoon",
+                        branch = "harpoon2",
+                    }
+                },
+            }
         },
         opts = {
             options = {
@@ -29,9 +38,12 @@ return {
                 lualine_b = {'branch', 'diagnostics'},
                 lualine_c = {
                     {
+                        "harpoon2"
+                    },
+                    {
                         'filename',
                         path = 1,
-                    }
+                    },
                 },
                 lualine_x = {
                     'filetype',
