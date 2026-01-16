@@ -86,6 +86,7 @@ return {
                 require('dapui').eval(nil, { enter = true })
             end)
             vim.keymap.set('n', '<F5>', dap.continue)
+            vim.keymap.set('n', '<F10>', function () require('neotest').run.run({ strategy = 'dap' }) end)
             vim.keymap.set('n', '<F6>', dap.step_into)
             vim.keymap.set('n', '<F7>', dap.step_over)
             vim.keymap.set('n', '<F8>', dap.step_out)

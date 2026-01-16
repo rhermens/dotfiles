@@ -23,7 +23,15 @@ return {
         },
         config = function(_, opts)
             opts.adapters = {
-                require('neotest-jest'),
+                require('neotest-jest')({
+                    jestCommand = function (path)
+                        if string.find(path, "e2e-spec", 0, true) or string.find(path, "e2e-test", 0, true) then
+                            return "npm run test:e2e --"
+                        end
+
+                        return "npm run test --"
+                    end
+                }),
             }
             require("neotest").setup(opts)
         end,
