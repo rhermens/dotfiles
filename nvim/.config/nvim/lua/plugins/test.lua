@@ -4,6 +4,12 @@ return {
         dependencies = {
             "nvim-neotest/neotest-plenary",
             "nvim-neotest/neotest-jest",
+            {
+                "fredrikaverpil/neotest-golang",
+                build = function()
+                    vim.system({"go", "install", "gotest.tools/gotestsum@latest"}):wait() -- Optional, but recommended
+                end,
+            }
         },
         opts = {
             adapters = {}
@@ -31,6 +37,9 @@ return {
 
                         return "npm run test --"
                     end
+                }),
+                require('neotest-golang')({
+                    runner = "gotestsum",
                 }),
             }
             require("neotest").setup(opts)
