@@ -32,6 +32,7 @@ unsetopt EXTENDED_HISTORY
 
 source <(fzf --zsh)
 eval "$(direnv hook zsh)"
+eval "$(mise activate zsh)"
 
 alias -- ll='ls --color=auto -alF'
 alias -- vim=nvim
@@ -39,5 +40,4 @@ alias -- vim=nvim
 export EDITOR="nvim"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --no-ignore --follow --exclude node_modules --exclude vendor --exclude .git"
 export PNPM_HOME="/home/roy/.local/share/pnpm"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/home/roy/.dotnet/tools:$PNPM_HOME${PATH:+:}$PATH"
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
