@@ -2,10 +2,10 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            {
+            { 
                 'folke/neoconf.nvim',
                 cmd = { 'Neoconf' },
-                opts = {}
+                opts = {},
             },
         },
         init = function ()
@@ -58,6 +58,9 @@ return {
             },
             appearance = {},
             completion = {
+                accept = {
+                    resolve_timeout_ms = 5000,
+                },
                 documentation = {
                     auto_show = true,
                 },

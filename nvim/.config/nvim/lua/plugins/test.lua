@@ -36,7 +36,11 @@ return {
                         end
 
                         return "npm run test --"
-                    end
+                    end,
+                    jestArguments = function (defaultArguments, ctx)
+                        table.remove(defaultArguments, 1)
+                        return defaultArguments
+                    end,
                 }),
                 require('neotest-golang')({
                     runner = "gotestsum",

@@ -39,5 +39,8 @@ alias -- vim=nvim
 
 export EDITOR="nvim"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --no-ignore --follow --exclude node_modules --exclude vendor --exclude .git"
+
 export PNPM_HOME="/home/roy/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
