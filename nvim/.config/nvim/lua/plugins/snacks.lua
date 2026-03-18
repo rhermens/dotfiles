@@ -32,6 +32,7 @@ return {
             { "<C-p>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
             { "<C-space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<C-g>", function() Snacks.picker.grep() end, desc = "Grep" },
+            { "<C-m>", function() Snacks.picker.marks() end, desc = "Marks" },
             { "<leader>g", function() Snacks.picker.lines() end, desc = "Grep Buffer Lines" },
             { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
             { "<leader>c", function() Snacks.picker.commands() end, desc = "Commands" },
