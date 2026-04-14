@@ -45,6 +45,8 @@ set.hlsearch = false
 set.ignorecase = true
 set.smartcase = true
 
+set.autoread = true
+
 set.shell = "/usr/bin/zsh"
 -- set.t_Co = 256
 -- set.t_ut = nil
