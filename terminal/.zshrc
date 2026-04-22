@@ -45,5 +45,6 @@ export PNPM_HOME="/home/roy/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 export OPENCODE_ENABLE_EXA=true
