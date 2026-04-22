@@ -1,13 +1,19 @@
-source '/usr/share/zsh-antidote/antidote.zsh'
+if [[ -f '/usr/share/zsh-antidote/antidote.zsh' ]]; then
+    source '/usr/share/zsh-antidote/antidote.zsh'
+fi
+
+if [[ -f '/opt/homebrew/bin/brew' ]]; then
+    source "$(brew --prefix)/opt/antidote/share/antidote/antidote.zsh"
+fi
 
 antidote load
 
-path+="/home/roy/.zsh/plugins"
-fpath+="/home/roy/.zsh/plugins"
+path+="$HOME/.zsh/plugins"
+fpath+="$HOME/.zsh/plugins"
 
 autoload -U compinit && compinit
-if [[ -f "/home/roy/.zsh/plugins/p10k.zsh" ]]; then
-  source "/home/roy/.zsh/plugins/p10k.zsh"
+if [[ -f "$HOME/.zsh/plugins/p10k.zsh" ]]; then
+  source "$HOME/.zsh/plugins/p10k.zsh"
 fi
 
 # History options should be set in .zshrc and after oh-my-zsh sourcing.
@@ -15,7 +21,7 @@ fi
 HISTSIZE="10000"
 SAVEHIST="10000"
 
-HISTFILE="/home/roy/.zsh_history"
+HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
 
 setopt HIST_FCNTL_LOCK
@@ -36,12 +42,11 @@ eval "$(mise activate zsh)"
 
 alias -- ll='ls --color=auto -alF'
 alias -- vim=nvim
-alias -- op=op.exe
 
 export EDITOR="nvim"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --no-ignore --follow --exclude node_modules --exclude vendor --exclude .git"
 
-export PNPM_HOME="/home/roy/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
