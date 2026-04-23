@@ -52,3 +52,4 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 
 export OPENCODE_ENABLE_EXA=true
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
