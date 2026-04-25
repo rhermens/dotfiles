@@ -5,7 +5,12 @@
 	autoSetupRemote = true
 
 [user]
-	email = "royhermens@hotmail.com"
-	name = "rhermens"
+	email = roy@debitroom.com
+	name = Roy Hermens
 [core]
 	autocrlf = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

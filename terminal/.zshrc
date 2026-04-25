@@ -46,6 +46,8 @@ alias -- vim=nvim
 export EDITOR="nvim"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --no-ignore --follow --exclude node_modules --exclude vendor --exclude .git"
 
+export GITHUB_TOKEN=$(gh auth token)
+
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
@@ -53,4 +55,5 @@ export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 export OPENCODE_ENABLE_EXA=true
+
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
