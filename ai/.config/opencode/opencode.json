@@ -13,6 +13,18 @@
           "headers": {
               "Authorization": "Bearer {env:GITHUB_TOKEN}"
           }
+      },
+      "mongodb": {
+          "type": "local",
+          "command": [
+              "npx",
+              "-y",
+              "mongodb-mcp-server@latest",
+              "--readOnly"
+          ],
+          "environment": {
+              "MDB_MCP_CONNECTION_STRING": "mongodb://localhost:27017"
+          }
       }
   },
   "instructions": ["CONTRIBUTING.md", "AGENTS.md"]
