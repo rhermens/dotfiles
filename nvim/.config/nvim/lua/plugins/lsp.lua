@@ -2,15 +2,16 @@ return {
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            { 
+            {
                 'folke/neoconf.nvim',
                 cmd = { 'Neoconf' },
                 opts = {},
             },
         },
-        init = function ()
+        init = function()
             local function buf_fmt()
-                vim.lsp.buf.format({ async = false, filter = function (client) return client.name ~= "ts_ls" and client.name ~= "vtsls" end })
+                vim.lsp.buf.format({ async = false, filter = function(client) return client.name ~= "ts_ls" and
+                    client.name ~= "vtsls" end })
             end
 
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
@@ -23,7 +24,7 @@ return {
             vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
 
             vim.api.nvim_create_autocmd('LspAttach', {
-                callback = function (event)
+                callback = function(event)
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
                     if not client then return end
 
@@ -52,7 +53,7 @@ return {
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
-            keymap = { 
+            keymap = {
                 preset = 'default',
                 ['<CR>'] = { 'accept', 'fallback' },
             },
