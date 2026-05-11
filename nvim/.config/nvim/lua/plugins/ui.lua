@@ -9,5 +9,9 @@ return {
                 numbers = "buffer_id"
             }
         }
+    },
+    {
+        'vimpostor/vim-tpipeline',
+        enabled = false,
     }
 }
