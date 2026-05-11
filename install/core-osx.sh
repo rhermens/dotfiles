@@ -1,3 +1,3 @@
-brew install git zsh base-devel wget curl stow sudo openssh less
+brew install git zsh wget curl stow openssh less
 
 stow core

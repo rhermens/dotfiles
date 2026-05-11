@@ -2,11 +2,11 @@
 ## Init
 source ./install/core-osx.sh
 
-if ! [ -e ~/.ssh/id_ed25519 ]; then
-    ssh-keygen -t ed25519 -C royhermens@hotmail.com
-    echo "SSH Key created, add it to github.."
-    exit 0
-fi
+#if ! [ -e ~/.ssh/id_ed25519 ]; then
+#    ssh-keygen -t ed25519 -C royhermens@hotmail.com
+#    echo "SSH Key created, add it to github.."
+#    exit 0
+#fi
 
 if ! [ -d ~/dotfiles ]; then
     git clone "git@github.com:rhermens/dotfiles.git" ~/dotfiles

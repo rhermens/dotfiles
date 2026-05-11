@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(find ~ ~/Code ~/Werk -mindepth 1 -maxdepth 1 -type d | fzf --tmux) || exit 0
+selected=$(find ~ ~/Code ~/Werk ~/Projects -mindepth 1 -maxdepth 1 -type d | fzf --tmux) || exit 0
 
 selected_name=$(basename "$selected" | tr . _)
 

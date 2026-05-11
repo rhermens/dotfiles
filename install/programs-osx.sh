@@ -1,1 +1,1 @@
-brew install obsidian google-chrome slack-desktop
+brew install obsidian google-chrome slack
