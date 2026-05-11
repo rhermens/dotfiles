@@ -1,17 +1,28 @@
 return {
     {
+        'folke/neoconf.nvim',
+        opts = {
+            plugins = {
+                lspconfig = {
+                    enabled = true,
+                },
+            }
+        },
+    },
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
-            {
-                'folke/neoconf.nvim',
-                cmd = { 'Neoconf' },
-                opts = {},
-            },
+            { 'folke/neoconf.nvim' },
         },
         init = function()
             local function buf_fmt()
-                vim.lsp.buf.format({ async = false, filter = function(client) return client.name ~= "ts_ls" and
-                    client.name ~= "vtsls" end })
+                vim.lsp.buf.format({
+                    async = false,
+                    filter = function(client)
+                        return client.name ~= "ts_ls" and
+                            client.name ~= "vtsls"
+                    end
+                })
             end
 
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
