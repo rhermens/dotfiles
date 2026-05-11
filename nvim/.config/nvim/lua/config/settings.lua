@@ -1,4 +1,3 @@
-
 local set = vim.opt
 
 set.encoding = 'utf-8'
@@ -66,4 +65,3 @@ vim.diagnostic.config({
         prefix = '',
     },
 })
-

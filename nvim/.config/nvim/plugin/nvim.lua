@@ -1,0 +1,1 @@
+-- lazydev (auto-configures for lua ft, no setup needed)
