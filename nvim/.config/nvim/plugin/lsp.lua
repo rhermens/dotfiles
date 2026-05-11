@@ -36,7 +36,7 @@ require('mason').setup({})
 -- mason-lspconfig
 require('mason-lspconfig').setup({})
 
--- blink.cmp
+-- show documentation popup for completion items
 require('blink.cmp').setup({
     keymap = {
         preset = 'default',

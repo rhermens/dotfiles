@@ -34,7 +34,8 @@ vim.pack.add({
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/mason-org/mason.nvim',
     'https://github.com/mason-org/mason-lspconfig.nvim',
-    'https://github.com/saghen/blink.cmp',
+    'https://github.com/saghen/blink.lib',
+    { src = 'https://github.com/saghen/blink.cmp',     version = 'v1' },
 
     -- statusline
     'https://github.com/nvim-lualine/lualine.nvim',
