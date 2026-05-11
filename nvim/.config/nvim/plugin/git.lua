@@ -1,0 +1,1 @@
+-- git plugins (vim-fugitive, diffview) require no setup
