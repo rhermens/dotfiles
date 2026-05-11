@@ -1,19 +1,6 @@
 return {
     {
-        'folke/neoconf.nvim',
-        opts = {
-            plugins = {
-                lspconfig = {
-                    enabled = true,
-                },
-            }
-        },
-    },
-    {
         'neovim/nvim-lspconfig',
-        dependencies = {
-            { 'folke/neoconf.nvim' },
-        },
         init = function()
             local function buf_fmt()
                 vim.lsp.buf.format({
