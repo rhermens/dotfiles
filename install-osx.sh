@@ -24,3 +24,4 @@ source ./install/dev-osx.sh
 source ./install/docker-osx.sh
 source ./install/programs-osx.sh
 source ./install/terminal-osx.sh
+source ./install/ai-osx.sh
