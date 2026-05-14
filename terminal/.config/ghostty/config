@@ -1,7 +1,10 @@
+font-family = Iosevka Nerd Font Mono
 theme = TokyoNight Storm
+maximize = true
 
 window-show-tab-bar = never
 window-theme = ghostty
+window-decoration = none
 
 app-notifications = no-clipboard-copy
 
