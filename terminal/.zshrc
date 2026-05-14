@@ -45,6 +45,7 @@ eval "$(mise activate zsh)"
 
 alias -- ll='ls --color=auto -alF'
 alias -- vim=nvim
+alias -- wt=create-worktree
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
