@@ -1,5 +1,0 @@
-copy:
-  - .env
-  - .env.test
-link:
-  - node_modules

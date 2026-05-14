@@ -1,0 +1,12 @@
+copy:
+  - .env
+  - .env.test
+commands:
+  - pnpm i
+tmux:
+  create_session: true
+  additional_windows:
+    - ""
+    - "nvim"
+    - ""
+    - "opencode"
