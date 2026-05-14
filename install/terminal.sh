@@ -4,7 +4,7 @@ sudo pacman -S --needed --noconfirm \
 
 
 if [ -z "${WSL_DISTRO_NAME}" ]; then
-    sudo pacman -S --needed --noconfirm kitty
+    sudo pacman -S --needed --noconfirm kitty ghostty
 fi
 
 yay -S --needed --noconfirm \
