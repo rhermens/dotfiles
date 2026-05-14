@@ -1,0 +1,9 @@
+theme = TokyoNight Storm
+
+window-show-tab-bar = never
+window-theme = ghostty
+
+app-notifications = no-clipboard-copy
+
+gtk-titlebar = true
+gtk-toolbar-style = flat
