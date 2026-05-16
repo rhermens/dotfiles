@@ -46,7 +46,7 @@ set.smartcase = true
 
 set.autoread = true
 
-set.shell = "/usr/bin/zsh"
+set.shell = "zsh"
 -- set.t_Co = 256
 -- set.t_ut = nil
 vim.g.mapleader = ' '
