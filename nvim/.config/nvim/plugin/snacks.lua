@@ -1,11 +1,7 @@
 vim.g.snacks_animate = false
 
 require('snacks').setup({
-    animate = {},
     bigfile = { enabled = true },
-    dashboard = { enabled = false },
-    explorer = { enabled = false },
-    terminal = {},
     indent = {
         enabled = true,
         indent = {
@@ -15,13 +11,10 @@ require('snacks').setup({
     },
     input = { enabled = true },
     picker = { enabled = true },
-    notifier = { enabled = true },
     quickfile = { enabled = true },
     scope = {
         enabled = true,
     },
-    scroll = { enabled = true },
-    statuscolumn = { enabled = true },
     words = { enabled = true },
 })
 

@@ -1,1 +1,0 @@
--- nvim-lint requires no setup beyond what's configured elsewhere

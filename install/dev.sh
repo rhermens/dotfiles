@@ -6,4 +6,5 @@ fi
 
 mise install
 
+stow dev
 stow nvim

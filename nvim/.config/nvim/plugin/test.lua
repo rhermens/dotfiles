@@ -7,7 +7,7 @@ require('neotest').setup({
                 end
                 return "npm run test --"
             end,
-            jestArguments = function(defaultArguments, ctx)
+            jestArguments = function(defaultArguments, _)
                 table.remove(defaultArguments, 1)
                 return defaultArguments
             end,

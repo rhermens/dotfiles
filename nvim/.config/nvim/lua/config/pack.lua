@@ -2,6 +2,17 @@ vim.pack.add({
     -- colorscheme
     'https://github.com/folke/tokyonight.nvim',
 
+    -- lib - dev
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/folke/lazydev.nvim',
+
+    -- tmux
+    'https://github.com/vimpostor/vim-tpipeline',
+
+    -- packs
+    'https://github.com/folke/snacks.nvim',
+    'https://github.com/nvim-mini/mini.nvim',
+
     -- dap
     'https://github.com/mfussenegger/nvim-dap',
     'https://github.com/leoluz/nvim-dap-go',
@@ -10,18 +21,8 @@ vim.pack.add({
     'https://github.com/theHamsta/nvim-dap-virtual-text',
     'https://github.com/nvim-neotest/nvim-nio',
 
-    -- editor
-    'https://github.com/tpope/vim-commentary',
-    'https://github.com/tpope/vim-surround',
-    'https://github.com/echasnovski/mini.pairs',
-    'https://github.com/gpanders/editorconfig.nvim',
-    { src = 'https://github.com/ThePrimeagen/harpoon', version = 'harpoon2' },
-
-    -- navigation
-    'https://github.com/folke/flash.nvim',
-
     -- git
-    'https://github.com/tpope/vim-fugitive',
+    'https://github.com/lewis6991/gitsigns.nvim',
     'https://github.com/sindrets/diffview.nvim',
 
     -- http
@@ -35,28 +36,13 @@ vim.pack.add({
     'https://github.com/mason-org/mason.nvim',
     'https://github.com/mason-org/mason-lspconfig.nvim',
     'https://github.com/saghen/blink.lib',
-    { src = 'https://github.com/saghen/blink.cmp',     version = 'v1' },
-
-    -- statusline
-    'https://github.com/nvim-lualine/lualine.nvim',
-    'https://github.com/nvim-tree/nvim-web-devicons',
-    'https://github.com/letieu/harpoon-lualine',
+    { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 
     -- markdown
     'https://github.com/iamcco/markdown-preview.nvim',
 
-    -- lua dev
-    'https://github.com/folke/lazydev.nvim',
-
-    -- obsidian
-    'https://github.com/epwalsh/obsidian.nvim',
-    'https://github.com/nvim-lua/plenary.nvim',
-
     -- file explorer
     'https://github.com/stevearc/oil.nvim',
-
-    -- snacks
-    'https://github.com/folke/snacks.nvim',
 
     -- test
     'https://github.com/nvim-neotest/neotest',
@@ -67,5 +53,16 @@ vim.pack.add({
     -- treesitter
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
-    'https://github.com/echasnovski/mini.ai',
 })
+
+vim.api.nvim_create_user_command('PackUpdate', function()
+    vim.pack.update();
+end, {})
+
+vim.api.nvim_create_user_command('PackClean', function()
+    local inactive = vim.iter(vim.pack.get())
+        :filter(function(x) return not x.active end)
+        :map(function(x) return x.spec.name end)
+        :totable()
+    vim.pack.del(inactive)
+end, {})

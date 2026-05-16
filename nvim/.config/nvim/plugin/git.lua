@@ -1,1 +1,3 @@
--- git plugins (vim-fugitive, diffview) require no setup
+require('gitsigns').setup({
+    signcolumn = false,
+})
