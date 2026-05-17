@@ -16,8 +16,8 @@ if [[ -f "$HOME/.zsh/plugins/p10k.zsh" ]]; then
   source "$HOME/.zsh/plugins/p10k.zsh"
 fi
 
-# History options should be set in .zshrc and after oh-my-zsh sourcing.
-# See https://github.com/nix-community/home-manager/issues/177.
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+
 HISTSIZE="10000"
 SAVEHIST="10000"
 
