@@ -5,6 +5,7 @@ vim.pack.add({
     -- lib - dev
     'https://github.com/nvim-lua/plenary.nvim',
     'https://github.com/folke/lazydev.nvim',
+    'https://github.com/nvim-neotest/nvim-nio',
 
     -- tmux
     'https://github.com/vimpostor/vim-tpipeline',
@@ -19,7 +20,6 @@ vim.pack.add({
     'https://github.com/jay-babu/mason-nvim-dap.nvim',
     'https://github.com/rcarriga/nvim-dap-ui',
     'https://github.com/theHamsta/nvim-dap-virtual-text',
-    'https://github.com/nvim-neotest/nvim-nio',
 
     -- git
     'https://github.com/lewis6991/gitsigns.nvim',

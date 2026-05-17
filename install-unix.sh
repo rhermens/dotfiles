@@ -19,10 +19,7 @@ if ! [ -d ~/notes ]; then
 fi
 
 if [ -z "$WSL_DISTRO_NAME" ]; then
-    source ./install/security.sh
     source ./install/xd.sh
-    # source ./install/wm/hyprland.sh
-    # source ./install/file-management.sh
 fi
 
 source ./install/security.sh
