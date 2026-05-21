@@ -27,6 +27,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 callback = buf_fmt,
             })
         end
+
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, event.buf, {
+                autotrigger = true,
+            })
+        end
     end,
 })
 
@@ -36,29 +42,12 @@ require('mason').setup({})
 -- mason-lspconfig
 require('mason-lspconfig').setup({})
 
--- show documentation popup for completion items
-require('blink.cmp').setup({
-    keymap = {
-        preset = 'default',
-        ['<CR>'] = { 'accept', 'fallback' },
-    },
-    appearance = {},
-    completion = {
-        accept = {
-            resolve_timeout_ms = 5000,
-        },
-        documentation = {
-            auto_show = true,
-        },
-    },
-    sources = {
-        default = { 'lsp', 'path', 'buffer' },
-    },
-    fuzzy = {},
-    signature = {
-        enabled = true,
-        trigger = {
-            show_on_insert = true,
-        },
-    },
-})
+vim.o.autocomplete = true
+vim.o.completeopt = 'menuone,popup,preview'
+
+vim.keymap.set('i', '<CR>', function()
+    if vim.fn.pumvisible() == 1 then
+        return '<C-Y>'
+    end
+    return '<CR>'
+end, { expr = true })
