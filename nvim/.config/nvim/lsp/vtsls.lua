@@ -1,5 +1,3 @@
-local mason_path = require('mason.settings').current.install_root_dir
-
 return {
     settings = {
         vtsls = {
@@ -7,7 +5,8 @@ return {
                 globalPlugins = {
                     {
                         name = '@vue/typescript-plugin',
-                        location = mason_path .. '/packages/vue-language-server',
+                        location = vim.fn.expand("$MASON") ..
+                            '/packages/vue-language-server/node_modules/@vue/language-server',
                         languages = { 'vue' },
                         configNamespace = 'typescript',
                     }
@@ -15,5 +14,4 @@ return {
             },
         }
     },
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 }
