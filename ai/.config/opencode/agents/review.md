@@ -35,7 +35,7 @@ description: >-
     </commentary>
   </example>
 mode: all
-model: github-copilot/gemini-3.1-pro-preview
+model: opencode/kimi-k2.6
 temperature: 0.3
 permission:
   edit: deny

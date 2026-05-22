@@ -35,7 +35,7 @@ description: >-
     </commentary>
   </example>
 mode: primary
-model: github-copilot/claude-sonnet-4.6
+model: opencode/kimi-k2.6
 temperature: 0.3
 permission:
   edit: deny

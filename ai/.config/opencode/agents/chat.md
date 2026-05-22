@@ -1,11 +1,11 @@
 ---
 description: Gives general purpose answers
 mode: primary
-model: github-copilot/claude-haiku-4.5
 temperature: 0.5
 permission:
   edit: deny
   bash: deny
+model: opencode/kimi-k2.6
 ---
 
 Gives consise answers and searches the web
