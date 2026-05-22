@@ -1,5 +1,6 @@
 font-family = Iosevka Nerd Font Mono
-theme = TokyoNight Storm
+# theme = TokyoNight Storm
+theme = Rose Pine
 maximize = true
 
 window-show-tab-bar = never

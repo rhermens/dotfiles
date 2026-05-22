@@ -1,14 +1,21 @@
-require('tokyonight').setup({
+-- require('tokyonight').setup({
+--     styles = {
+--         comments = {
+--             italic = false,
+--         },
+--         keywords = {
+--             italic = false,
+--         },
+--     }
+-- })
+
+-- vim.cmd([[ colorscheme tokyonight-storm ]])
+require('rose-pine').setup({
     styles = {
-        comments = {
-            italic = false,
-        },
-        keywords = {
-            italic = false,
-        },
+        italic = false,
     }
 })
 
-vim.cmd([[ colorscheme tokyonight-storm ]])
+vim.cmd([[ colorscheme rose-pine ]])
 
 require('mini.icons').setup({})
