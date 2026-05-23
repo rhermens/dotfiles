@@ -1,6 +1,8 @@
 font-family = Iosevka Nerd Font Mono
 theme = TokyoNight Night
 maximize = true
+background-image = ~/dotfiles/img/bg.jpg
+background-image-opacity = 0.0015
 
 window-show-tab-bar = never
 window-theme = ghostty
