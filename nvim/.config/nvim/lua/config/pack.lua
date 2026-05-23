@@ -1,7 +1,6 @@
 vim.pack.add({
     -- colorscheme
     'https://github.com/folke/tokyonight.nvim',
-    'https://github.com/rose-pine/neovim',
 
     -- lib - dev
     'https://github.com/nvim-lua/plenary.nvim',

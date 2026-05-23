@@ -1,5 +1,9 @@
 -- picker keymaps
-vim.keymap.set('n', '<C-p>', function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
+vim.keymap.set('n', '<C-p>', function()
+    Snacks.picker.smart({
+        multi = { "buffers", "files" }
+    })
+end, { desc = "Smart Find Files" })
 vim.keymap.set('n', '<C-g>', function() Snacks.picker.grep() end, { desc = "Grep" })
 vim.keymap.set('n', '<C-space>', function()
     Snacks.picker.buffers({
