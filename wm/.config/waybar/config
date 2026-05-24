@@ -1,30 +1,30 @@
-[
-  {
+{
+    "margin": "0",
+    "spacing": "0",
     "clock": {
-      "format": "{:%F %H:%M}"
+        "format": "{:%F %H:%M}"
     },
     "cpu": {
-      "format": "Cpu: {usage}%"
+        "format": "Cpu: {usage}%"
     },
     "hyprland/workspaces": {
-      "all-outputs": true
+        "all-outputs": true
     },
     "memory": {
-      "format": "Mem: {percentage}%"
+        "format": "Mem: {percentage}%"
     },
     "modules-left": [
-      "hyprland/workspaces",
-      "hyprland/window"
+        "hyprland/workspaces",
+        "hyprland/window"
     ],
     "modules-right": [
-      "pulseaudio",
-      "cpu",
-      "memory",
-      "clock",
-      "tray"
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "clock",
+        "tray"
     ],
     "pulseaudio": {
-      "format": "Vol: {volume}%"
+        "format": "Vol: {volume}%"
     }
-  }
-]
+}

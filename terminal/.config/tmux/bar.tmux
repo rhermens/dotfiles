@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -g mode-style "fg=${fg},bg=${bg}"
+set -g mode-style "fg=${fg},bg=${bg_highlight}"
 
 set -g message-style "fg=${fg},bg=${bg}"
 set -g message-command-style "fg=${fg},bg=${bg}"
@@ -24,7 +24,7 @@ set -g status-style "fg=${fg},bg=default"
 
 
 setw -g window-status-style "NONE,fg=${fg},bg=${bg},nobold,nounderscore,noitalics"
-setw -g window-status-current-style "NONE,fg=${fg_dark},bg=${bg_dark},bold,nounderscore,noitalics"
+setw -g window-status-current-style "NONE,fg=${fg_dark},bg=${bg_highlight},bold,nounderscore,noitalics"
 setw -g window-status-activity-style "underscore,fg=${fg_dark},bg=${bg_dark}"
 
 setw -g window-status-separator ""

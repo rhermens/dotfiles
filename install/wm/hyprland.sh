@@ -1,8 +1,7 @@
+yay -S --needed --noconfirm hyprland-meta-git
+
 sudo pacman -S --needed --noconfirm \
-    uwsm \
-    hyprland \
-    xdg-desktop-portal-hyprland hyprpolkitagent \
-    hyprlock hyprshot \
+    ly \
     waybar \
     wofi \
     dunst \
