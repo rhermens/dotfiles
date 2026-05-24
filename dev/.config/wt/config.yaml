@@ -1,7 +1,0 @@
-tmux:
-  create_session: true
-  additional_windows:
-    - ""
-    - "nvim"
-    - ""
-    - "opencode"
