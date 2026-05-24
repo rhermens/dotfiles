@@ -1,5 +1,7 @@
 wt.copy({ src = ".env" })
 wt.copy({ src = ".env.test" })
+wt.copy({ glob = "**/.env", glob_ignore = ".worktrees/**" })
+wt.copy({ glob = "**/.env.test", glob_ignore = ".worktrees/**" })
 wt.link({ src = "node_modules" })
 
 wt.command("pnpm i")
