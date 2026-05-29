@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   home.username = "roy";
   home.stateVersion = "26.05";
@@ -25,9 +25,10 @@
     pkgs.google-chrome
     pkgs.discord
     pkgs.slack
-    pkgs.iosevka
+    pkgs.nerd-fonts.lilex
 
     pkgs.claude-code
+    pkgs.lazygit
     pkgs.mise
     pkgs.mongodb-compass
     pkgs.gh
@@ -37,11 +38,11 @@
 
 
   home.file = {
-    ".config/opencode".source = config.lib.file.mkOutOfStoreSymlink ../ai/.config/opencode;
-    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink ../nvim/.config/nvim;
-    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink ../terminal/.config/tmux;
-    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink ../terminal/.config/ghostty;
-    ".config/git".source = config.lib.file.mkOutOfStoreSymlink ../core/.config/git;
+    ".config/opencode".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.config/opencode";
+    ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim/.config/nvim";
+    ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/terminal/.config/tmux";
+    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/terminal/.config/ghostty";
+    ".config/git".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/core/.config/git";
   };
 
   home.sessionVariables = {
@@ -50,10 +51,19 @@
 
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host *
-        IdentityAgent "${config.home.homeDirectory}/.1password/agent.sock"
-    '';
+    enableDefaultConfig = false;
+    settings."*" = {
+      IdentityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
+    };
+  };
+
+  dconf.settings = lib.mkIf pkgs.stdenv.isLinux {
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "caps:ctrl_modifier" ];
+    };
+    "org/gnome/desktop/wm/preferences" = {
+      focus-mode = "sloppy";
+    };
   };
 
   programs.zsh = {

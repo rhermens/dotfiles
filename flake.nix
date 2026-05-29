@@ -12,7 +12,6 @@
       omen = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./nix/hardware-configuration.nix
           ./nix/configuration-omen.nix
           home-manager.nixosModules.home-manager
           {
