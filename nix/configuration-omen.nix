@@ -105,6 +105,10 @@
     zsh
     unzip
     wget
+    google-chrome
+    ghostty
+    _1password-gui
+    _1password-cli
   ];
 
   programs.zsh.enable = true;

@@ -23,5 +23,16 @@
         ];
       };
     };
+
+    homeConfigurations = {
+      "roy" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./nix/home.nix
+          { home.homeDirectory = "/Users/roy"; }
+        ];
+      };
+    };
   };
 }

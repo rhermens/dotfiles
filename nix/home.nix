@@ -9,7 +9,6 @@
     pkgs.rustup
 
     pkgs.tmux
-    pkgs.ghostty
     pkgs.tree-sitter
     pkgs.neovim
     pkgs.zsh
@@ -19,10 +18,8 @@
     pkgs.fd
     pkgs.tldr
 
-    pkgs._1password-gui
-    pkgs._1password-cli
+
     pkgs.obsidian
-    pkgs.google-chrome
     pkgs.discord
     pkgs.slack
     pkgs.nerd-fonts.lilex
