@@ -1,6 +1,7 @@
 ---
+name: Plan
 description: Use this agent when the user wants to analyse, design, or plan before building. Ideal for exploring a codebase, proposing an approach, mapping data flows, identifying risks, or producing a written plan that the build agent will later execute. Examples include planning refactors, evaluating trade-offs, and mapping architectural changes.
-model: claude-opus-4-7
+model: opus
 tools:
   - Read
   - Grep

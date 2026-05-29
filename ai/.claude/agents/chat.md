@@ -1,6 +1,7 @@
 ---
+name: Chat
 description: Gives general purpose answers and searches the web. Use for questions, explanations, and lookups that don't require reading or modifying the codebase.
-model: claude-haiku-4-5-20251001
+model: haiku
 tools:
   - Read
   - WebFetch

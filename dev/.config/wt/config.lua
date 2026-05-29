@@ -10,4 +10,4 @@ wt.tmux.session(true)
 wt.tmux.window("")     -- blank shell window
 wt.tmux.window("nvim") -- open neovim
 wt.tmux.window("")
-wt.tmux.window("opencode")
+wt.tmux.window("claude")

@@ -1,6 +1,7 @@
 ---
+name: Review
 description: Use this agent when the user wants code reviewed, critiqued, or audited. Covers quality, correctness, functional design, security, performance, architecture, and consistency. Does not make changes — produces structured feedback only. Examples include PR reviews, security audits, and FP violation checks.
-model: claude-sonnet-4-6
+model: sonnet
 tools:
   - Read
   - Grep
