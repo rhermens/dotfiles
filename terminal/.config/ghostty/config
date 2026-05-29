@@ -3,8 +3,10 @@ font-family = Lilex Nerd Font Mono
 theme = TokyoNight Night
 maximize = true
 alpha-blending = linear-corrected
+
 background-image = ~/dotfiles/img/bg.jpg
 background-image-opacity = 0.0005
+background-image-fit = cover
 
 window-show-tab-bar = never
 window-theme = ghostty
