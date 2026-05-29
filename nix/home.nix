@@ -44,6 +44,18 @@
     ".config/git".source = config.lib.file.mkOutOfStoreSymlink ../core/.config/git;
   };
 
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
+  };
+
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host *
+        IdentityAgent "${config.home.homeDirectory}/.1password/agent.sock"
+    '';
+  };
+
   programs.zsh = {
     enable = true;
     plugins = [
