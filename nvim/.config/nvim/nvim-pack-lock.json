@@ -6,7 +6,7 @@
       "version": "'v1'"
     },
     "blink.lib": {
-      "rev": "f29d8bac6549bc1e7d699c83f680823d7def98bd",
+      "rev": "41bc1199dd1f5f0687efbd522061b22002c2d4c5",
       "src": "https://github.com/saghen/blink.lib"
     },
     "diffview.nvim": {
@@ -18,7 +18,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "kulala.nvim": {
-      "rev": "6656c9d332735ca6a27725e0fb45a1715c4372d9",
+      "rev": "bccba0c4b21557ee916a82268c8993e9a84276b9",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazydev.nvim": {
@@ -38,11 +38,11 @@
       "src": "https://github.com/jay-babu/mason-nvim-dap.nvim"
     },
     "mason.nvim": {
-      "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
+      "rev": "bb639d4bf385a4d89f478b83af4d770be05ab7eb",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini.nvim": {
-      "rev": "18797ed18f347d0d0da27fec28a67979b1207f70",
+      "rev": "9d0b9b7188d5c24b5a87f0d8b383ec8bda7a0de4",
       "src": "https://github.com/nvim-mini/mini.nvim"
     },
     "neotest": {
@@ -50,7 +50,7 @@
       "src": "https://github.com/nvim-neotest/neotest"
     },
     "neotest-golang": {
-      "rev": "84c1f3be59f85a2f5bbb9290040077bc8a68a00c",
+      "rev": "f0ba097d4af098c036aac24cd647480d0d301ad2",
       "src": "https://github.com/fredrikaverpil/neotest-golang"
     },
     "neotest-jest": {
@@ -62,7 +62,7 @@
       "src": "https://github.com/nvim-neotest/neotest-plenary"
     },
     "nvim-dap": {
-      "rev": "45a69eba683a2c448dd9ecfc4de89511f0646b5f",
+      "rev": "531771530d4f82ad2d21e436e3cc052d68d7aebb",
       "src": "https://github.com/mfussenegger/nvim-dap"
     },
     "nvim-dap-go": {
@@ -78,11 +78,11 @@
       "src": "https://github.com/theHamsta/nvim-dap-virtual-text"
     },
     "nvim-lint": {
-      "rev": "665525810630701b84181e4d9eefd24b49845b29",
+      "rev": "d48f3a76189d03b2239f6df1b2f7e3fa8353743b",
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "8f7e64066e2641d5e7d494962a9c7051e3d38dd5",
+      "rev": "9573948c38bfabeec353ae7dd7d3ffec4c506a6b",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -98,7 +98,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "oil.nvim": {
-      "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
+      "rev": "b91ee5a77a6a9605d9c1aaf4fda74b66082c8297",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tokyonight.nvim": {
