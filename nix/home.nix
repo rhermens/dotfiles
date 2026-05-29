@@ -24,7 +24,7 @@
     pkgs.obsidian
     pkgs.google-chrome
     pkgs.discord
-    pkgs.slack-desktop
+    pkgs.slack
     pkgs.iosevka
 
     pkgs.claude-code
