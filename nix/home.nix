@@ -29,8 +29,6 @@
     pkgs.mise
     pkgs.mongodb-compass
     pkgs.gh
-    pkgs.docker
-    pkgs.docker-compose
   ];
 
 
