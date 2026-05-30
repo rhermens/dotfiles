@@ -110,18 +110,20 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    zsh
     unzip
     wget
     google-chrome
-    ghostty
-    _1password-gui
-    _1password-cli
   ];
 
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
+
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "roy" ];
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

@@ -18,12 +18,12 @@
     pkgs.fd
     pkgs.tldr
 
-
     pkgs.obsidian
     pkgs.discord
     pkgs.slack
     pkgs.nerd-fonts.lilex
 
+    (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty)
     pkgs.claude-code
     pkgs.lazygit
     pkgs.mise
