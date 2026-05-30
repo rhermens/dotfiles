@@ -112,7 +112,6 @@
     git
     unzip
     wget
-    google-chrome
   ];
 
   programs.nix-ld.enable = true;

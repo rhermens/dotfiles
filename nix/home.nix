@@ -29,6 +29,7 @@
     pkgs.mise
     pkgs.mongodb-compass
     pkgs.gh
+    pkgs.google-chrome
   ];
 
 
