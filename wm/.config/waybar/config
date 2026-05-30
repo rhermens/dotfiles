@@ -2,7 +2,7 @@
     "margin": "0",
     "spacing": "0",
     "clock": {
-        "format": "{:%F %H:%M}"
+        "format": "[ {:%F %H:%M} ]"
     },
     "cpu": {
         "format": "Cpu: {usage}%"
@@ -19,12 +19,11 @@
     ],
     "modules-right": [
         "pulseaudio",
-        "cpu",
-        "memory",
         "clock",
         "tray"
     ],
     "pulseaudio": {
-        "format": "Vol: {volume}%"
+        "format": "vol: {volume}%",
+        "on-click": "hyprpwcenter"
     }
 }

@@ -17,6 +17,7 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.tldr
+    pkgs.fastfetch
 
     pkgs.obsidian
     pkgs.discord
@@ -41,6 +42,9 @@
     ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/terminal/.config/ghostty";
     ".config/wt".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/dev/.config/wt";
     ".tool-versions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/dev/.tool-versions";
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wm/.config/hypr";
+    ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wm/.config/waybar";
   };
 
   home.sessionPath = [
@@ -58,19 +62,6 @@
     enableDefaultConfig = false;
     settings."*" = {
       IdentityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
-    };
-  };
-
-  dconf.settings = lib.mkIf pkgs.stdenv.isLinux {
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "caps:ctrl_modifier" ];
-    };
-    "org/gnome/desktop/wm/preferences" = {
-      focus-mode = "sloppy";
-    };
-    "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-type = "suspend";
-      sleep-inactive-ac-timeout = 1800;
     };
   };
 

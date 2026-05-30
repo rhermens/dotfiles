@@ -1,5 +1,6 @@
 # font-family = Iosevka Nerd Font Mono
 font-family = Lilex Nerd Font Mono
+adjust-cell-height = 2
 theme = TokyoNight Night
 maximize = true
 alpha-blending = linear-corrected

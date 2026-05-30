@@ -48,7 +48,7 @@ local menu     = "hyprlauncher"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar & hyprpaper")
+    hl.exec_cmd("hyprpaper")
 end)
 
 
@@ -59,7 +59,15 @@ end)
 -- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
 
 hl.env("XCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "capitaine-cursors")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("NIXOS_OZONE_WL", "1")
+
+hl.config({
+    cursor = {
+        no_hardware_cursors = true,
+    },
+})
 
 
 -----------------------
@@ -162,8 +170,9 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,   -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper    = -1,   -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo      = true,
+        disable_splash_rendering   = true,
     },
 })
 
@@ -253,6 +262,9 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+--
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | swappy -f - | wl-copy'))
 
 
 --------------------------------

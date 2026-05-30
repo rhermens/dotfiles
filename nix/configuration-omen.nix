@@ -9,6 +9,8 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration-omen.nix
+      ./gnome.nix
+      ./hyprland.nix
     ];
 
   # Allow unfree packages
@@ -70,10 +72,23 @@
     };
   };
 
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.greetd = {
+    enable = true;
+  };
 
-  programs.dconf.enable = true;
+  programs.regreet = {
+    enable = true;
+    cageArgs = [ "-m" "last" ];
+    settings = {
+      background = {
+        path = "/home/roy/dotfiles/img/bg.jpg";
+        fit = "Cover";
+      };
+      font = {
+        package = pkgs.nerd-fonts.lilex;
+      };
+    };
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -112,6 +127,7 @@
     git
     unzip
     wget
+    wl-clipboard
   ];
 
   programs.nix-ld.enable = true;
