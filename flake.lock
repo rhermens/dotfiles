@@ -40,15 +40,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1779969295,
-        "narHash": "sha256-HwIJ3tOcwSMiV75L7KqJXciXR9UfT+d7rwOZMX7cTnA=",
+        "lastModified": 1779726825,
+        "narHash": "sha256-RUkMrREjKDQrA+dA9+xZviGAxM5W1aVdyOr/bSYpHrE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "61e2c9659324181e0f0ed911958c536333b1d4f6",
+        "rev": "b179bde238977f7d4454fc770b1a727eaf55111c",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
+        "ref": "release-26.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -60,11 +61,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1780126341,
-        "narHash": "sha256-XGjYZedKN2XgToovjPZCTWhpOU6Dx8HzOZ0z/cNH8IE=",
+        "lastModified": 1780130891,
+        "narHash": "sha256-K3X+uNVZm8+LG/kN2pyAd77SMAchNPz6vTh5iAs3nIA=",
         "owner": "rhermens",
         "repo": "hp-tracerled-rs",
-        "rev": "d0ebf65bfa379460cce1b092c6c4b0263e6d469f",
+        "rev": "adf5e9450a09eccea1015b7b19bd27b930baae93",
         "type": "github"
       },
       "original": {
