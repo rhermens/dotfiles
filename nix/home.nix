@@ -69,6 +69,10 @@
     "org/gnome/desktop/wm/preferences" = {
       focus-mode = "sloppy";
     };
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "suspend";
+      sleep-inactive-ac-timeout = 1800;
+    };
   };
 
   programs.zsh = {
