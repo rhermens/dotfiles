@@ -30,6 +30,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
+vim.api.nvim_create_user_command('LspLog', function()
+    vim.cmd.edit(vim.lsp.get_log_path())
+end, {})
+
 -- mason
 require('mason').setup({})
 
@@ -62,3 +66,4 @@ require('blink.cmp').setup({
         },
     },
 })
+

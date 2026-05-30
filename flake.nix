@@ -5,15 +5,18 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, hp-tracerled, ... }@inputs: {
     nixosConfigurations = {
       omen = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
+          { nixpkgs.hostPlatform = "x86_64-linux"; }
           ./nix/configuration-omen.nix
           home-manager.nixosModules.home-manager
+          hp-tracerled.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

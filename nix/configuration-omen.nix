@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, hp-tracerled, ... }:
 
 {
   imports =
@@ -51,6 +51,12 @@
     powerManagement.finegrained = false;
     open = true;
     nvidiaSettings = true;
+  };
+  services.hp-tracerled = {
+    enable = true;
+    color = "FFFFFF";
+    mode = "static";
+    speed = 1;
   };
 
   services.xserver = {
@@ -111,6 +117,7 @@
     _1password-cli
   ];
 
+  programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
 

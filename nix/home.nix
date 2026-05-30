@@ -44,8 +44,14 @@
     ".tool-versions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/dev/.tool-versions";
   };
 
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.cargo/bin"
+  ];
+
   home.sessionVariables = {
+    EDITOR = "nvim";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
+    GITHUB_TOKEN = "\$(gh auth token)";
   };
 
   programs.ssh = {
@@ -83,5 +89,10 @@
         "jeffreytse/zsh-vi-mode"
       ];
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }
