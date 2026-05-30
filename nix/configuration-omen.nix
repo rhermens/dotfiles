@@ -101,7 +101,7 @@
   users.users.roy = {
     isNormalUser = true;
     description = "Roy";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -124,6 +124,8 @@
     enable = true;
     polkitPolicyOwners = [ "roy" ];
   };
+
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
