@@ -38,8 +38,8 @@ window#waybar {
 
 #workspaces button:hover {
     box-shadow: inherit;
-    border-color: #bb9af7;
-    color: #bb9af7;
+    border-color: @accent;
+    color: @accent-foreground;
 }
 
 

@@ -112,7 +112,7 @@ hl.config({
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing    = false,
 
-        layout           = "master",
+        layout           = "scrolling",
     },
 
     decoration = {
@@ -154,6 +154,13 @@ hl.config({
 hl.config({
     master = {
         new_status = "master",
+    },
+})
+
+hl.config({
+    scrolling = {
+        fullscreen_on_one_column = true,
+        column_width = 0.5,
     },
 })
 

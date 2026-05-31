@@ -55,6 +55,7 @@
     EDITOR = "nvim";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
     GITHUB_TOKEN = "\$(gh auth token)";
+    NIX_BUILD_SHELL = "zsh";
   };
 
   programs.ssh = {

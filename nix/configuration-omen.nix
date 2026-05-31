@@ -81,7 +81,7 @@
     cageArgs = [ "-m" "last" ];
     settings = {
       background = {
-        path = "/home/roy/dotfiles/img/bg.jpg";
+        path = "${../img/bg.jpg}";
         fit = "Cover";
       };
       font = {
