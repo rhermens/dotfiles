@@ -9,6 +9,6 @@ done
 S=$(tmux display-message -p -t "${pane:-$TMUX_PANE}" '#{session_name}' 2>/dev/null)
 active=$(tmux list-clients -F '#{client_session}' 2>/dev/null)
 if ! echo "$active" | grep -qx "$S"; then
-    [[ "$S" != 𝜏* ]] && [ -n "$S" ] && tmux rename-session -t "$S" "𝜏 $S"
+    [[ "$S" != \[𝜏\]* ]] && [ -n "$S" ] && tmux rename-session -t "$S" "[𝜏] $S"
 fi
 true
