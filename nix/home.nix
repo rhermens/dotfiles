@@ -27,7 +27,6 @@
     (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty)
     pkgs.claude-code
     pkgs.lazygit
-    pkgs.mise
     pkgs.mongodb-compass
     pkgs.gh
     pkgs.google-chrome
@@ -68,6 +67,9 @@
 
   programs.zsh = {
     enable = true;
+    shellAliases = {
+      ll = "ls --color=auto -lah";
+    };
     plugins = [
       {
         name = "p10k";
@@ -87,6 +89,11 @@
   };
 
   programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.mise = {
     enable = true;
     enableZshIntegration = true;
   };
