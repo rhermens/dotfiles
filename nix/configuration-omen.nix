@@ -90,7 +90,6 @@
     };
   };
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -128,6 +127,7 @@
     unzip
     wget
     wl-clipboard
+    ffmpegthumbnailer
   ];
 
   programs.nix-ld.enable = true;

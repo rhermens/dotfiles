@@ -12,5 +12,8 @@
     ]
   },
   "theme": "auto",
-  "editorMode": "vim"
+  "editorMode": "vim",
+  "permissions": {
+      "defaultMode": "auto"
+  }
 }
