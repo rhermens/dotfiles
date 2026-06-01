@@ -52,6 +52,15 @@
           }
         ],
         "matcher": "*"
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.config/tmux/session-notify.sh"
+          }
+        ],
+        "matcher": "*"
       }
     ],
     "SubagentStop": [
@@ -74,14 +83,6 @@
           }
         ],
         "matcher": "*"
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.config/tmux/session-notify.sh"
-          }
-        ]
       }
     ],
     "SessionEnd": [
