@@ -10,4 +10,4 @@ wt.tmux.session(true)
 wt.tmux.window("")     -- blank shell window
 wt.tmux.window("nvim") -- open neovim
 wt.tmux.window("")
-wt.tmux.window("claude" .. (wt.args[0] or ""))
+wt.tmux.window(wt.args[0] and string.format("claude \"%s\"", wt.args[0]) or "claude")
