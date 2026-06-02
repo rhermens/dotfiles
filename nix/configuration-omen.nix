@@ -128,6 +128,7 @@
     wget
     wl-clipboard
     ffmpegthumbnailer
+    playerctl
   ];
 
   programs.nix-ld.enable = true;
