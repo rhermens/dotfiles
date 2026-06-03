@@ -1,4 +1,4 @@
-{ config, pkgs, hp-tracerled, ... }:
+{ config, pkgs, hp-tracerled, home-manager, ... }:
 {
   programs.hyprland = {
     enable = true;
@@ -24,5 +24,17 @@
 
   security.polkit = {
     enable = true;
+  };
+
+  home-manager.users.roy = { config, ... }: {
+    services.swayosd = {
+      enable = true;
+    };
+
+    home.file = {
+      ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wm/.config/hypr";
+      ".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wm/.config/waybar";
+      ".config/swayosd".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wm/.config/swayosd";
+    };
   };
 }

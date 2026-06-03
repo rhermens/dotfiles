@@ -1,0 +1,23 @@
+window#osd {
+  background: #292e42;
+}
+
+image,
+label {
+    color: #a9b1d6;
+}
+
+progressbar,
+segmentedprogress {
+    background: transparent;
+}
+
+trough,
+segment {
+    background: #16161e;
+}
+
+progress,
+segment.active {
+    background: #a9b1d6;
+}
