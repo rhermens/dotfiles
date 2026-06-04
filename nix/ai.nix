@@ -24,6 +24,11 @@
     };
   };
 
+  programs.opencode = {
+    enable = true;
+    enableMcpIntegration = true;
+  };
+
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
@@ -40,49 +45,8 @@
               command = ''f="AGENTS.md"; [ -f "$f" ] && jq -n --rawfile content "$f" '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":("Contents of AGENTS.md:\n\n" + $content)}}' 2>/dev/null || true'';
             }];
           }
-          {
-            hooks = [{
-              type = "command";
-              command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" SessionStart'';
-            }];
-          }
         ];
-        PreToolUse = [{
-          matcher = "*";
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" PreToolUse'';
-          }];
-        }];
-        PostToolUse = [{
-          matcher = "*";
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" PostToolUse'';
-          }];
-        }];
-        Stop = [{
-          matcher = "*";
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" Stop'';
-          }];
-        }];
-        SubagentStop = [{
-          matcher = "*";
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" SubagentStop'';
-          }];
-        }];
-        Notification = [
-          {
-            matcher = "*";
-            hooks = [{
-              type = "command";
-              command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" Notification'';
-            }];
-          }
+        Stop = [
           {
             matcher = "*";
             hooks = [{
@@ -91,26 +55,7 @@
             }];
           }
         ];
-        SessionEnd = [{
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" SessionEnd'';
-          }];
-        }];
-        UserPromptSubmit = [{
-          hooks = [{
-            type = "command";
-            command = ''node "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor/scripts/hook-handler.js" UserPromptSubmit'';
-          }];
-        }];
       };
     };
   };
-
-  home.activation.cloneAgentMonitor = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ ! -d "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor" ]; then
-      ${pkgs.git}/bin/git clone https://github.com/hoangsonww/Claude-Code-Agent-Monitor \
-        "${config.home.homeDirectory}/Projects/Claude-Code-Agent-Monitor"
-    fi
-  '';
 }
