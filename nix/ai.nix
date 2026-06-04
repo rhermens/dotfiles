@@ -32,20 +32,13 @@
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
+    context = ./../ai/.claude/CLAUDE.md;
     settings = {
       theme = "auto";
       editorMode = "vim";
       skipAutoPermissionPrompt = true;
       permissions.defaultMode = "auto";
       hooks = {
-        SessionStart = [
-          {
-            hooks = [{
-              type = "command";
-              command = ''f="AGENTS.md"; [ -f "$f" ] && jq -n --rawfile content "$f" '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":("Contents of AGENTS.md:\n\n" + $content)}}' 2>/dev/null || true'';
-            }];
-          }
-        ];
         Stop = [
           {
             matcher = "*";
