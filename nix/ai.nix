@@ -27,12 +27,14 @@
   programs.opencode = {
     enable = true;
     enableMcpIntegration = true;
+    agents = ../ai/agents;
   };
 
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
     context = ./../ai/.claude/CLAUDE.md;
+    agentsDir = ../ai/agents;
     settings = {
       theme = "auto";
       editorMode = "vim";

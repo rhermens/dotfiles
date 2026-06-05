@@ -2,10 +2,8 @@
 name: Chat
 description: Gives general purpose answers and searches the web. Use for questions, explanations, and lookups that don't require reading or modifying the codebase.
 model: haiku
-tools:
-  - Read
-  - WebFetch
-  - WebSearch
+mode: primary
+temperature: 0.5
 ---
 
 Gives concise answers and searches the web.
