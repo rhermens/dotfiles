@@ -35,7 +35,6 @@ description: >-
     Security review with no changes needed. Use the review agent.
     </commentary>
   </example>
-model: sonnet
 temperature: 0.3
 ---
 
