@@ -9,6 +9,7 @@
   home.packages = [
     pkgs.gcc
     pkgs.rustup
+    pkgs.go
     pkgs.python3
     pkgs.nodejs
 
@@ -32,6 +33,8 @@
 
     pkgs.lazygit
     pkgs.mongodb-compass
+    pkgs.mongosh
+    pkgs.mongodb-tools
     pkgs.gh
     pkgs.google-chrome
   ];
@@ -48,6 +51,7 @@
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.cargo/bin"
+    "${config.home.homeDirectory}/.local/share/nvim/mason/bin"
   ];
 
   home.sessionVariables = {

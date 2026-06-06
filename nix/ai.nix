@@ -1,40 +1,61 @@
 { config, pkgs, lib, ... }:
 {
+  home.packages = [
+    pkgs.pi-coding-agent
+    pkgs.acli
+  ];
+
+  home.file = {
+    ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
+    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.agents/skills";
+  };
+
   programs.mcp = {
     enable = true;
     servers = {
-      jira = {
+      exa = {
         type = "http";
-        url = "https://mcp.atlassian.com/v1/mcp";
-      };
-      github = {
-        type = "http";
-        url = "https://api.githubcopilot.com/mcp/readonly";
-        headers = {
-          Authorization = "Bearer {env:GITHUB_TOKEN}";
-        };
-      };
-      mongodb = {
-        command = "npx";
-        args = [ "-y" "mongodb-mcp-server@latest" "--readOnly" ];
-        env = {
-          MDB_MCP_CONNECTION_STRING = "mongodb://localhost:27017";
-        };
+        url = "https://mcp.exa.ai/mcp";
       };
     };
-  };
-
-  programs.opencode = {
-    enable = true;
-    enableMcpIntegration = true;
-    agents = ../ai/agents;
   };
 
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
     context = ./../ai/.claude/CLAUDE.md;
+    skills = ./../ai/.agents/skills;
     agentsDir = ../ai/agents;
+    lspServers = {
+      vtsls = {
+        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/vtsls";
+        args = [ "--stdio" ];
+        extensionToLanguage = {
+          ".ts" = "typescript";
+          ".tsx" = "typescriptreact";
+          ".js" = "javascript";
+          ".jsx" = "javascriptreact";
+        };
+      };
+      gopls = {
+        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/gopls";
+        extensionToLanguage = {
+          ".go" = "go";
+        };
+      };
+      rust-analyzer = {
+        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/rust-analyzer";
+        extensionToLanguage = {
+          ".rs" = "rust";
+        };
+      };
+      rnix-lsp = {
+        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/rnix-lsp";
+        extensionToLanguage = {
+          ".nix" = "nix";
+        };
+      };
+    };
     settings = {
       theme = "auto";
       editorMode = "vim";
@@ -46,11 +67,15 @@
             matcher = "*";
             hooks = [{
               type = "command";
-              command = "~/.config/tmux/session-notify.sh";
+              command = ../terminal/.config/tmux/session-notify.sh;
             }];
           }
         ];
       };
     };
+  };
+
+  services.ollama = {
+    enable = true;
   };
 }

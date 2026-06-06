@@ -13,7 +13,10 @@
     nixosConfigurations = {
       omen = nixpkgs.lib.nixosSystem {
         modules = [
-          { nixpkgs.hostPlatform = "x86_64-linux"; }
+          {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            nixpkgs.config.cudaSupport = true;
+          }
           ./nix/configuration-omen.nix
           home-manager.nixosModules.home-manager
           hp-tracerled.nixosModules.default

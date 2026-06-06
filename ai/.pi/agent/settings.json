@@ -1,0 +1,17 @@
+{
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-mcp-adapter",
+    "npm:pi-lens",
+    "npm:pi-vim",
+    "npm:@wierdbytes/pi-tokyo-night"
+  ],
+  "prompts": [
+    "~/dotfiles/ai/agents"
+  ],
+  "theme": "tokyo-night",
+  "lastChangelogVersion": "0.75.4",
+  "defaultProvider": "opencode",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "medium"
+}
