@@ -3,7 +3,8 @@ local function buf_fmt()
         async = false,
         filter = function(client)
             return client.name ~= "ts_ls" and
-                client.name ~= "vtsls"
+                client.name ~= "vtsls" and
+                client.name ~= "vue_ls"
         end
     })
 end
@@ -66,4 +67,3 @@ require('blink.cmp').setup({
         },
     },
 })
-
