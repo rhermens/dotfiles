@@ -2,14 +2,18 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, home-manager, hp-tracerled, ... }@inputs: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, ... }@inputs: {
     nixosConfigurations = {
       omen = nixpkgs.lib.nixosSystem {
         modules = [
@@ -30,13 +34,23 @@
       };
     };
 
-    homeConfigurations = {
-      "roy" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
-        extraSpecialArgs = { inherit inputs; };
+    darwinConfigurations = {
+      MBP-Roy = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs self; };
+
         modules = [
-          ./nix/home.nix
-          { home.homeDirectory = "/Users/roy"; }
+          ./nix/configuration-mac.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.users.roy = {
+              imports = [ ./nix/home.nix ];
+              home.homeDirectory = "/Users/roy";
+            };
+          }
         ];
       };
     };

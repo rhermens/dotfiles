@@ -10,7 +10,7 @@
     "~/dotfiles/ai/agents"
   ],
   "theme": "tokyo-night",
-  "lastChangelogVersion": "0.75.4",
+  "lastChangelogVersion": "0.79.1",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.5",
   "defaultThinkingLevel": "medium"
