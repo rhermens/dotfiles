@@ -5,8 +5,7 @@
 { self, config, pkgs, ... }:
 
 {
-  imports =
-    [ ];
+  imports = [ ./aerospace.nix ];
 
   # Determinate nix
   nix.enable = false;
