@@ -16,6 +16,7 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  system.primaryUser = "roy";
   users.users.roy = {
     name = "roy";
     home = "/Users/roy";
@@ -27,6 +28,18 @@
     neovim
     git
   ];
+
+  homebrew = {
+    enable = true;
+    enableZshIntegration = true;
+    brews = [ "docker" "docker-compose" "autoraise" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" ];
+  };
+
+  programs.zsh.enable = true;
+
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
