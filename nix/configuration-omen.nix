@@ -129,6 +129,8 @@
     wl-clipboard
     ffmpegthumbnailer
     playerctl
+    vlc
+    mgba
   ];
 
   programs.nix-ld.enable = true;
