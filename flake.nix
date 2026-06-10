@@ -2,7 +2,7 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +35,7 @@
     };
 
     darwinConfigurations = {
-      "Roys-MacBook-Pro-2" = nix-darwin.lib.darwinSystem {
+      MBP-Roy = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit inputs self; };
 
@@ -51,17 +51,6 @@
               home.homeDirectory = "/Users/roy";
             };
           }
-        ];
-      };
-    };
-
-    homeConfigurations = {
-      "roy" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-darwin"; config.allowUnfree = true; };
-        extraSpecialArgs = { inherit inputs; };
-        modules = [
-          ./nix/home.nix
-          { home.homeDirectory = "/Users/roy"; }
         ];
       };
     };

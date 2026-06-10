@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 {
   home.packages = [
-    pkgs.pi-coding-agent
     pkgs.acli
   ];
 
@@ -18,6 +17,10 @@
         url = "https://mcp.exa.ai/mcp";
       };
     };
+  };
+
+  programs.pi-coding-agent = {
+    enable = true;
   };
 
   programs.claude-code = {

@@ -16,6 +16,8 @@
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  networking.hostName = "MBP-Roy";
+
   system.primaryUser = "roy";
   users.users.roy = {
     name = "roy";
@@ -40,6 +42,10 @@
 
   programs._1password.enable = true;
   programs._1password-gui.enable = true;
+
+  system.defaults.dock = {
+    autohide = true;
+  };
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = self.rev or self.dirtyRev or null;
