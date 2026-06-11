@@ -74,18 +74,11 @@
 
   services.greetd = {
     enable = true;
-  };
-
-  programs.regreet = {
-    enable = true;
-    cageArgs = [ "-m" "last" ];
+    useTextGreeter = true;
     settings = {
-      background = {
-        path = "${../img/bg.jpg}";
-        fit = "Cover";
-      };
-      font = {
-        package = pkgs.nerd-fonts.lilex;
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        user = "greeter";
       };
     };
   };
