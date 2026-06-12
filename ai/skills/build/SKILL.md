@@ -1,5 +1,5 @@
 ---
-name: Build
+name: build
 description: Use this agent when the user wants to build, implement, or create something from scratch or extend existing functionality. This is the primary workhorse agent for all construction and implementation tasks. Examples include building new features, extending existing code, scaffolding projects, and refactoring.
 ---
 

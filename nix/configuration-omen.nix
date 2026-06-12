@@ -77,7 +77,7 @@
     useTextGreeter = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd 'uwsm start hyprland-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --theme 'border=#292e42;text=#c0caf5;prompt=#c0caf5;time=#7aa2f7;action=#c0caf5;button=#292e42;container=#1a1b26;input=#c0caf5' --cmd 'uwsm start hyprland-uwsm.desktop'";
         user = "greeter";
       };
     };
@@ -123,7 +123,6 @@
     ffmpegthumbnailer
     playerctl
     vlc
-    mgba
   ];
 
   programs.nix-ld.enable = true;

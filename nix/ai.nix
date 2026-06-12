@@ -6,7 +6,7 @@
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
-    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.agents/skills";
+    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
   };
 
   programs.mcp = {
@@ -21,17 +21,33 @@
 
   programs.pi-coding-agent = {
     enable = true;
+    context = ./../ai/AGENTS.md;
   };
 
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
-    context = ./../ai/.claude/CLAUDE.md;
-    skills = ./../ai/.agents/skills;
-    agentsDir = ../ai/agents;
+    context = ./../ai/AGENTS.md;
+    skills = ./../ai/skills;
+    marketplaces = {
+      context-mode = pkgs.fetchFromGitHub {
+        owner = "mksglu";
+        repo = "context-mode";
+        tag = "v1.0.162";
+        sha256 = "sha256-yDr8N2mGwg+ejzeeMSHybaQFki6ny11Dqj6Cy+QGsdc=";
+      };
+    };
+    plugins = [
+      (pkgs.fetchFromGitHub {
+        owner = "mksglu";
+        repo = "context-mode";
+        tag = "v1.0.162";
+        sha256 = "sha256-yDr8N2mGwg+ejzeeMSHybaQFki6ny11Dqj6Cy+QGsdc=";
+      })
+    ];
     lspServers = {
       vtsls = {
-        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/vtsls";
+        command = "vtsls";
         args = [ "--stdio" ];
         extensionToLanguage = {
           ".ts" = "typescript";
@@ -41,19 +57,19 @@
         };
       };
       gopls = {
-        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/gopls";
+        command = "gopls";
         extensionToLanguage = {
           ".go" = "go";
         };
       };
       rust-analyzer = {
-        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/rust-analyzer";
+        command = "rust-analyzer";
         extensionToLanguage = {
           ".rs" = "rust";
         };
       };
       rnix-lsp = {
-        command = "${config.home.homeDirectory}/.local/share/nvim/mason/bin/rnix-lsp";
+        command = "rnix-lsp";
         extensionToLanguage = {
           ".nix" = "nix";
         };
