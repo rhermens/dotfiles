@@ -14,6 +14,7 @@ end
 hs.hotkey.bind('cmd', "1", function()
     summon("com.google.Chrome")
 end)
+
 hs.hotkey.bind('cmd', "2", function()
     summon("com.mitchellh.ghostty")
 end)
