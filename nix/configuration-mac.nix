@@ -5,7 +5,7 @@
 { self, config, pkgs, ... }:
 
 {
-  imports = [ ./aerospace.nix ];
+  imports = [ ./macwm.nix ];
 
   # Determinate nix
   nix.enable = false;
@@ -34,7 +34,7 @@
     enable = true;
     enableZshIntegration = true;
     brews = [ "docker" "docker-compose" "autoraise" ];
-    casks = [ "linearmouse" "displaylink" "docker-desktop" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" ];
   };
 
   programs.zsh.enable = true;
