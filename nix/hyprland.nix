@@ -7,6 +7,7 @@
   };
 
   programs.waybar.enable = true;
+  programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
     capitaine-cursors
