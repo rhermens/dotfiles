@@ -49,6 +49,9 @@
       {
         app = "${pkgs.google-chrome}/Applications/Google Chrome.app";
       }
+      {
+        app = "${pkgs.obsidian}/Applications/Obsidian.app";
+      }
     ];
   };
 
