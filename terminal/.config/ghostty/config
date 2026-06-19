@@ -2,8 +2,8 @@
 font-family = Lilex Nerd Font Mono
 adjust-cell-height = 2
 theme = TokyoNight Night
-maximize = true
 alpha-blending = linear-corrected
+maximize = true
 
 background-image = ~/dotfiles/img/bg.jpg
 background-image-opacity = 0.0005

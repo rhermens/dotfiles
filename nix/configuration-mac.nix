@@ -5,8 +5,6 @@
 { self, config, pkgs, ... }:
 
 {
-  imports = [ ./macwm.nix ];
-
   # Determinate nix
   nix.enable = false;
 
@@ -44,6 +42,24 @@
 
   system.defaults.dock = {
     autohide = true;
+    persistent-apps = [
+      {
+        app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";
+      }
+      {
+        app = "${pkgs.google-chrome}/Applications/Google Chrome.app";
+      }
+    ];
+  };
+
+  system.defaults = {
+    screencapture.target = "clipboard";
+    NSGlobalDomain.AppleFontSmoothing = 0;
+    CustomUserPreferences = {
+      NSGlobalDomain = {
+        CGFontRenderingFontSmoothingDisabled = false;
+      };
+    };
   };
 
   # Set Git commit hash for darwin-version.
