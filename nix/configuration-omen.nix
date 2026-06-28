@@ -101,6 +101,8 @@
     #media-session.enable = true;
   };
 
+  services.hardware.openrgb.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -123,6 +125,7 @@
     ffmpegthumbnailer
     playerctl
     vlc
+    transmission_4-qt
   ];
 
   programs.nix-ld.enable = true;
