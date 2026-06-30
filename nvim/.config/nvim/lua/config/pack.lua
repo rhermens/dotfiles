@@ -38,8 +38,9 @@ vim.pack.add({
     'https://github.com/saghen/blink.lib',
     { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 
-    -- markdown
+    -- markdown / notes
     'https://github.com/iamcco/markdown-preview.nvim',
+    'https://github.com/obsidian-nvim/obsidian.nvim',
 
     -- file explorer
     'https://github.com/stevearc/oil.nvim',

@@ -8,6 +8,9 @@
 
   home.packages = [
     pkgs.gcc
+    pkgs.gnumake
+    pkgs.cmake
+    pkgs.libtool
     pkgs.rustup
     pkgs.go
     pkgs.python3
@@ -28,6 +31,7 @@
     pkgs.discord
     pkgs.slack
     pkgs.nerd-fonts.lilex
+    pkgs.nerd-fonts.symbols-only
 
     (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty)
 
@@ -38,7 +42,6 @@
     pkgs.gh
     pkgs.google-chrome
   ];
-
 
   home.file = {
     ".config/git".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/core/.config/git";
