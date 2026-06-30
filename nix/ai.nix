@@ -95,6 +95,6 @@
   };
 
   services.ollama = {
-    enable = false;
+    enable = true;
   };
 }
