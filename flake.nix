@@ -47,7 +47,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.roy = {
-              imports = [ ./nix/home.nix ];
+              imports = [ ./nix/home.nix ./nix/home-osx.nix ];
               home.homeDirectory = "/Users/roy";
             };
           }
