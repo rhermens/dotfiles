@@ -2,7 +2,6 @@
 {
   home.packages = [
     pkgs.acli
-    pkgs.llm-agents.hermes-agent
     pkgs.llm-agents.hermes-desktop
   ];
 
