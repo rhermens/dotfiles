@@ -2,6 +2,8 @@
 {
   home.packages = [
     pkgs.acli
+    pkgs.llm-agents.hermes-agent
+    pkgs.llm-agents.hermes-desktop
   ];
 
   home.file = {
@@ -22,10 +24,12 @@
   programs.pi-coding-agent = {
     enable = true;
     context = ./../ai/AGENTS.md;
+    package = pkgs.llm-agents.pi;
   };
 
   programs.claude-code = {
     enable = true;
+    package = pkgs.llm-agents.claude-code;
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
     skills = ./../ai/skills;
@@ -96,5 +100,6 @@
 
   services.ollama = {
     enable = true;
+    host = "0.0.0.0";
   };
 }

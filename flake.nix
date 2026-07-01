@@ -10,16 +10,19 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, ... }@inputs: {
+  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs: {
     nixosConfigurations = {
       omen = nixpkgs.lib.nixosSystem {
         modules = [
           {
             nixpkgs.hostPlatform = "x86_64-linux";
             nixpkgs.config.cudaSupport = true;
+            nixpkgs.overlays = [ llm-agents.overlays.default ];
           }
           ./nix/configuration-omen.nix
           home-manager.nixosModules.home-manager
@@ -40,6 +43,9 @@
         specialArgs = { inherit inputs self; };
 
         modules = [
+          {
+            nixpkgs.overlays = [ llm-agents.overlays.default ];
+          }
           ./nix/configuration-mac.nix
           home-manager.darwinModules.home-manager
           {
