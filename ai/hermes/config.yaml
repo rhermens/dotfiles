@@ -1,5 +1,5 @@
 model:
-  default: 'google/gemma-4-e4b'
+  default: 'openai/gpt-oss-20b'
   provider: custom
   base_url: http://localhost:1234/v1
 providers: {}

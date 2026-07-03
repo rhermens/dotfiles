@@ -4,7 +4,6 @@
     pkgs.acli
     pkgs.llm-agents.hermes-agent
     pkgs.llm-agents.hermes-desktop
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
     pkgs.lmstudio
   ];
 
@@ -14,6 +13,43 @@
     ".hermes/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/config.yaml";
     ".lmstudio/mcp.json".source =
       config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    "Applications/Hermes Desktop.app/Contents/Info.plist".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+        <key>CFBundleName</key>
+        <string>Hermes Desktop</string>
+
+        <key>CFBundleDisplayName</key>
+        <string>Hermes Desktop</string>
+
+        <key>CFBundleExecutable</key>
+        <string>hermes-desktop</string>
+
+        <key>CFBundleIdentifier</key>
+        <string>com.rous.hermes-desktop</string>
+
+        <key>CFBundleIconFile</key>
+        <string>${pkgs.llm-agents.hermes-desktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png</string>
+
+        <key>CFBundleVersion</key>
+        <string>1.0</string>
+
+        <key>CFBundlePackageType</key>
+        <string>APPL</string>
+      </dict>
+      </plist>
+    '';
+
+    "Applications/Hermes Desktop.app/Contents/MacOS/hermes-desktop" = {
+      executable = true;
+      text = ''
+        #!${pkgs.runtimeShell}
+        exec ${pkgs.llm-agents.hermes-desktop}/bin/hermes-desktop "$@"
+      '';
+    };
   };
 
   xdg.desktopEntries = lib.mkIf pkgs.stdenv.isLinux {
