@@ -16,7 +16,7 @@ vim.keymap.set('n', '<C-space>', function()
         }
     })
 end, { desc = "Buffers" })
-vim.keymap.set('n', '<C-m>', function()
+vim.keymap.set('n', '<leader>sm', function()
     Snacks.picker.marks({
         win = {
             input = {
@@ -26,7 +26,7 @@ vim.keymap.set('n', '<C-m>', function()
             }
         }
     })
-end, { desc = "Grep Buffer Lines" })
+end, { desc = "Marks" })
 vim.keymap.set('n', '<leader>n', function() Snacks.picker.notifications() end, { desc = "Notification History" })
 vim.keymap.set('n', '<leader>c', function() Snacks.picker.commands() end, { desc = "Commands" })
 
