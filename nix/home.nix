@@ -15,10 +15,12 @@
     pkgs.go
     pkgs.python3
     pkgs.nodejs
+    pkgs.bun
 
     pkgs.tmux
     pkgs.tree-sitter
     pkgs.neovim
+    pkgs.emacs
     pkgs.zsh
     pkgs.antidote
     pkgs.fzf
@@ -46,6 +48,7 @@
   home.file = {
     ".config/git".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/core/.config/git";
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim/.config/nvim";
+    ".config/doom".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/emacs/.config/doom";
     ".config/tmux".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/terminal/.config/tmux";
     ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/terminal/.config/ghostty";
     ".config/wt".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/dev/.config/wt";
@@ -56,6 +59,7 @@
     "${config.home.homeDirectory}/.local/bin"
     "${config.home.homeDirectory}/.cargo/bin"
     "${config.home.homeDirectory}/.local/share/nvim/mason/bin"
+    "${config.home.homeDirectory}/.config/emacs/bin"
   ];
 
   home.sessionVariables = {

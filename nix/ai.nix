@@ -2,27 +2,11 @@
 {
   home.packages = [
     pkgs.acli
-    pkgs.llm-agents.hermes-agent
-    pkgs.llm-agents.hermes-desktop
-  ] ++ lib.optionals pkgs.stdenv.isLinux [
-    pkgs.lmstudio
   ];
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
-    ".hermes/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/config.yaml";
-    ".lmstudio/mcp.json".source =
-      config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
-  };
-
-  xdg.desktopEntries = lib.mkIf pkgs.stdenv.isLinux {
-    lm-studio = {
-      name = "LM Studio";
-      exec = "${pkgs.lmstudio}/bin/lm-studio";
-      terminal = false;
-      categories = [ "Development" "Utility" ];
-    };
   };
 
   programs.mcp = {
