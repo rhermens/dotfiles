@@ -1,11 +1,11 @@
 -- picker keymaps
-vim.keymap.set('n', '<C-p>', function()
+vim.keymap.set('n', '<leader><leader>', function()
     Snacks.picker.smart({
         multi = { "buffers", "files" }
     })
 end, { desc = "Smart Find Files" })
-vim.keymap.set('n', '<C-g>', function() Snacks.picker.grep() end, { desc = "Grep" })
-vim.keymap.set('n', '<C-space>', function()
+vim.keymap.set('n', '<leader>/', function() Snacks.picker.grep() end, { desc = "Grep" })
+vim.keymap.set('n', '<leader>bb', function()
     Snacks.picker.buffers({
         win = {
             input = {
