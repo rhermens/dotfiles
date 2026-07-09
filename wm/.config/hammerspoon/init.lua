@@ -36,6 +36,10 @@ hs.hotkey.bind('cmd', "2", function()
     summon("com.mitchellh.ghostty")
 end)
 
+hs.hotkey.bind('cmd', "3", function()
+    summon("com.tinyspeck.slackmacgap")
+end)
+
 hs.hotkey.bind('cmd', "5", function()
     summon("com.mongodb.compass")
 end)
