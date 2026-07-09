@@ -8,7 +8,7 @@ require('oil').setup({
     },
 })
 
-vim.keymap.set('n', '<Leader>b', '<CMD>Oil<CR>', {})
+vim.keymap.set('n', '<Leader>o-', '<CMD>Oil<CR>', {})
 
 -- oil rename integration
 vim.api.nvim_create_autocmd("User", {

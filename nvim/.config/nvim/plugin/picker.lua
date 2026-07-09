@@ -4,6 +4,15 @@ vim.keymap.set('n', '<leader><leader>', function()
         multi = { "buffers", "files" }
     })
 end, { desc = "Smart Find Files" })
+
+vim.keymap.set('n', '<leader>.', function()
+    Snacks.picker.files({
+        dirs = {
+            vim.fn.expand("%:p:h")
+        },
+    })
+end, { desc = "Find Files" })
+
 vim.keymap.set('n', '<leader>/', function() Snacks.picker.grep() end, { desc = "Grep" })
 vim.keymap.set('n', '<leader>bb', function()
     Snacks.picker.buffers({
