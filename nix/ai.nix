@@ -31,6 +31,9 @@
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
     skills = ./../ai/skills;
+    settings = {
+      model = "opus";
+    };
     marketplaces = {
       context-mode = pkgs.fetchFromGitHub {
         owner = "mksglu";
