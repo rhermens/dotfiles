@@ -1,5 +1,5 @@
 -- picker keymaps
-vim.keymap.set('n', '<leader><leader>', function()
+vim.keymap.set('n', '<C-p>', function()
     Snacks.picker.smart({
         multi = { "buffers", "files" }
     })
