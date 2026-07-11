@@ -58,6 +58,7 @@
     EDITOR = "nvim";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
     GITHUB_TOKEN = "\$(gh auth token)";
+    OBSIDIAN_VAULT_PATH = "${config.home.homeDirectory}/notes";
   };
 
   programs.ssh = {

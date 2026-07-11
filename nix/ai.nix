@@ -1,13 +1,20 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, llm-agents, ... }:
 {
   home.packages = [
     pkgs.acli
+    pkgs.whichllm
+    pkgs.llm-agents.hermes-desktop
   ];
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
+    ".hermes/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/config.yaml";
   };
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.hermes/bin"
+  ];
 
   programs.mcp = {
     enable = true;
@@ -16,6 +23,51 @@
         type = "http";
         url = "https://mcp.exa.ai/mcp";
       };
+    };
+  };
+
+  services.ollama = {
+    enable = true;
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "32768";
+    };
+  };
+
+  systemd.user.services.hermes-dashboard = lib.mkIf pkgs.stdenv.isLinux {
+    Unit = {
+      Description = "Hermes Agent web dashboard";
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
+
+    Service = {
+      ExecStart = "${config.home.homeDirectory}/.local/bin/hermes dashboard --host 127.0.0.1 --port 9119 --no-open --skip-build";
+      WorkingDirectory = config.home.homeDirectory;
+      Environment = [ "HERMES_HOME=${config.home.homeDirectory}/.hermes" ];
+      Restart = "always";
+      RestartSec = 5;
+    };
+
+    Install.WantedBy = [ "default.target" ];
+  };
+
+  launchd.agents.hermes-dashboard = lib.mkIf pkgs.stdenv.isDarwin {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${config.home.homeDirectory}/.local/bin/hermes"
+        "dashboard"
+        "--host"
+        "127.0.0.1"
+        "--port"
+        "9119"
+        "--no-open"
+        "--skip-build"
+      ];
+      WorkingDirectory = config.home.homeDirectory;
+      ProcessType = "Background";
+      RunAtLoad = true;
+      KeepAlive = true;
     };
   };
 
