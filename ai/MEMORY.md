@@ -1,0 +1,1 @@
+User system  at home is NixOS, and work laptop is MacOS with determinate nix. Configuration for nix is in ~/dotfiles

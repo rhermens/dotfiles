@@ -1,5 +1,6 @@
 local dap = require('dap')
-local dapui = require('dapui')
+-- local dapui = require('dapui')
+local dapview = require('dap-view')
 
 -- mason-nvim-dap
 require('mason-nvim-dap').setup({
@@ -11,17 +12,13 @@ require('mason-nvim-dap').setup({
     }
 })
 
--- dap-virtual-text
-require('nvim-dap-virtual-text').setup({})
+dapview.setup({
+    virtual_text = {
+        enabled = true,
+    }
+})
 
--- dap-ui
-dapui.setup({})
-
-vim.keymap.set('n', '<F12>', dapui.toggle)
-
-dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open({})
-end
+vim.keymap.set('n', '<F12>', dapview.toggle)
 
 -- vscode launch.json support
 local vscode = require('dap.ext.vscode')
@@ -32,7 +29,7 @@ end
 
 -- keymaps
 vim.keymap.set('n', '<leader>k', function()
-    dapui.eval(nil, { enter = true })
+    dapview.hover(nil, true, nil)
 end)
 vim.keymap.set('n', '<F5>', dap.continue)
 vim.keymap.set('n', '<F10>', function() require('neotest').run.run({ strategy = 'dap' }) end)

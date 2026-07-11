@@ -18,8 +18,7 @@ vim.pack.add({
     'https://github.com/mfussenegger/nvim-dap',
     'https://github.com/leoluz/nvim-dap-go',
     'https://github.com/jay-babu/mason-nvim-dap.nvim',
-    'https://github.com/rcarriga/nvim-dap-ui',
-    'https://github.com/theHamsta/nvim-dap-virtual-text',
+    'https://github.com/igorlfs/nvim-dap-view',
 
     -- git
     'https://github.com/lewis6991/gitsigns.nvim',
