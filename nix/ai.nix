@@ -1,15 +1,25 @@
-{ config, pkgs, lib, llm-agents, ... }:
+{ config, pkgs, lib, ... }:
+let
+  hermesDesktop = pkgs.llm-agents.hermes-desktop;
+  hermesDesktopMacLauncher = pkgs.writeShellScript "hermes-desktop-mac-launcher" ''
+    exec ${hermesDesktop}/bin/hermes-desktop "$@"
+  '';
+in
 {
   home.packages = [
     pkgs.acli
     pkgs.whichllm
-    pkgs.llm-agents.hermes-desktop
+    hermesDesktop
   ];
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
     ".hermes/config.yaml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/config.yaml";
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    "Applications/Hermes Desktop.app/Contents/Info.plist".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/Hermes.plist";
+    "Applications/Hermes Desktop.app/Contents/MacOS/hermes-desktop".source = hermesDesktopMacLauncher;
+    "Applications/Hermes Desktop.app/Contents/Resources/hermes-desktop.png".source = "${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png";
   };
 
   home.sessionPath = [
