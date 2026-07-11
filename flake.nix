@@ -11,54 +11,68 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
+    hermes-agent.url = "github:NousResearch/hermes-agent";
 
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs: {
-    nixosConfigurations = {
-      omen = nixpkgs.lib.nixosSystem {
-        modules = [
-          {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            nixpkgs.config.cudaSupport = true;
-            nixpkgs.overlays = [ llm-agents.overlays.default ];
-          }
-          ./nix/configuration-omen.nix
-          home-manager.nixosModules.home-manager
-          hp-tracerled.nixosModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.roy = ./nix/home.nix;
-          }
-        ];
+  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, hermes-agent, ... }@inputs:
+    let
+      # Keep CUDA enabled globally for AI packages, but build UCX without its
+      # optional CUDA transports. UCX 1.21.0's CUDA path currently tries to use
+      # GDA-KI/DOCA GPUNetIO headers that are not present in the nixpkgs source.
+      disableUcxCudaOverlay = final: prev: {
+        ucx = prev.ucx.override { enableCuda = false; };
+      };
+    in
+    {
+      nixosConfigurations = {
+        omen = nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              nixpkgs.hostPlatform = "x86_64-linux";
+              nixpkgs.config.cudaSupport = true;
+              nixpkgs.overlays = [
+                llm-agents.overlays.default
+                disableUcxCudaOverlay
+              ];
+            }
+            ./nix/configuration-omen.nix
+            home-manager.nixosModules.home-manager
+            hp-tracerled.nixosModules.default
+            hermes-agent.nixosModules.default
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.roy = ./nix/home.nix;
+            }
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        MBP-Roy = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit inputs self; };
+
+          modules = [
+            {
+              nixpkgs.overlays = [ llm-agents.overlays.default ];
+            }
+            ./nix/configuration-mac.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.roy = {
+                imports = [ ./nix/home.nix ./nix/home-osx.nix ];
+                home.homeDirectory = "/Users/roy";
+              };
+            }
+          ];
+        };
       };
     };
-
-    darwinConfigurations = {
-      MBP-Roy = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit inputs self; };
-
-        modules = [
-          {
-            nixpkgs.overlays = [ llm-agents.overlays.default ];
-          }
-          ./nix/configuration-mac.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.roy = {
-              imports = [ ./nix/home.nix ./nix/home-osx.nix ];
-              home.homeDirectory = "/Users/roy";
-            };
-          }
-        ];
-      };
-    };
-  };
 }
