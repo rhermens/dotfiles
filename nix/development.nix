@@ -50,6 +50,7 @@ in
     pkgs.bun
 
     pkgs.typescript-language-server
+    pkgs.python314Packages.pylatexenc
   ];
 
   home.file = {

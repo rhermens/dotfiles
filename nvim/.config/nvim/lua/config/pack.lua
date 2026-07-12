@@ -38,7 +38,7 @@ vim.pack.add({
     { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 
     -- markdown / notes
-    'https://github.com/iamcco/markdown-preview.nvim',
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/obsidian-nvim/obsidian.nvim',
 
     -- file explorer
