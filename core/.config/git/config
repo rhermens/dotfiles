@@ -9,12 +9,23 @@
 	name = Roy Hermens
 [core]
 	autocrlf = false
+    pager = delta
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[interactive]
+    diffFilter = "delta --color-only"
+
+[delta]
+    navigate = true
+    dark = true
+
+[merge]
+    conflictStyle = "zdiff3"
 
 [difftool "nvim_difftool"]
     cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"

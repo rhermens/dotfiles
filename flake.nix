@@ -14,7 +14,7 @@
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, hermes-agent, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs:
     let
       # Keep CUDA enabled globally for AI packages, but build UCX without its
       # optional CUDA transports. UCX 1.21.0's CUDA path currently tries to use

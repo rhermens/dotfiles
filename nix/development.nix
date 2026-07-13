@@ -51,6 +51,8 @@ in
 
     pkgs.typescript-language-server
     pkgs.python314Packages.pylatexenc
+
+    pkgs.delta
   ];
 
   home.file = {
