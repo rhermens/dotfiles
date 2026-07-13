@@ -11,8 +11,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     llm-agents.url = "github:numtide/llm-agents.nix";
-    hermes-agent.url = "github:NousResearch/hermes-agent";
-
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
@@ -40,7 +38,6 @@
             ./nix/configuration-omen.nix
             home-manager.nixosModules.home-manager
             hp-tracerled.nixosModules.default
-            hermes-agent.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
