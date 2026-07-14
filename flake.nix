@@ -2,7 +2,7 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,14 +15,6 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs:
-    let
-      # Keep CUDA enabled globally for AI packages, but build UCX without its
-      # optional CUDA transports. UCX 1.21.0's CUDA path currently tries to use
-      # GDA-KI/DOCA GPUNetIO headers that are not present in the nixpkgs source.
-      disableUcxCudaOverlay = final: prev: {
-        ucx = prev.ucx.override { enableCuda = false; };
-      };
-    in
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
@@ -31,8 +23,14 @@
               nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.cudaSupport = true;
               nixpkgs.overlays = [
-                llm-agents.overlays.default
-                disableUcxCudaOverlay
+                (final: prev: {
+                  mongodb-compass = prev.mongodb-compass.overrideAttrs (old: {
+                    buildCommand = builtins.replaceStrings
+                      [ "wrapGAppsHook $out/bin/mongodb-compass" ]
+                      [ "wrapGApp $out/bin/mongodb-compass" ]
+                      old.buildCommand;
+                  });
+                })
               ];
             }
             ./nix/configuration-omen.nix
@@ -54,9 +52,6 @@
           specialArgs = { inherit inputs self; };
 
           modules = [
-            {
-              nixpkgs.overlays = [ llm-agents.overlays.default ];
-            }
             ./nix/configuration-mac.nix
             home-manager.darwinModules.home-manager
             {

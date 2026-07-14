@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
-  hermesDesktop = pkgs.llm-agents.hermes-desktop;
+  llmAgentsPkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
+  hermesDesktop = llmAgentsPkgs.hermes-desktop;
   hermesDesktopMacLauncher = pkgs.writeShellScript "hermes-desktop-mac-launcher" ''
     exec ${hermesDesktop}/bin/hermes-desktop "$@"
   '';
@@ -50,53 +51,15 @@ in
     };
   };
 
-  systemd.user.services.hermes-dashboard = lib.mkIf pkgs.stdenv.isLinux {
-    Unit = {
-      Description = "Hermes Agent web dashboard";
-      After = [ "network-online.target" ];
-      Wants = [ "network-online.target" ];
-    };
-
-    Service = {
-      ExecStart = "${config.home.homeDirectory}/.local/bin/hermes dashboard --host 127.0.0.1 --port 9119 --no-open --skip-build";
-      WorkingDirectory = config.home.homeDirectory;
-      Environment = [ "HERMES_HOME=${config.home.homeDirectory}/.hermes" ];
-      Restart = "always";
-      RestartSec = 5;
-    };
-
-    Install.WantedBy = [ "default.target" ];
-  };
-
-  launchd.agents.hermes-dashboard = lib.mkIf pkgs.stdenv.isDarwin {
-    enable = true;
-    config = {
-      ProgramArguments = [
-        "${config.home.homeDirectory}/.local/bin/hermes"
-        "dashboard"
-        "--host"
-        "127.0.0.1"
-        "--port"
-        "9119"
-        "--no-open"
-        "--skip-build"
-      ];
-      WorkingDirectory = config.home.homeDirectory;
-      ProcessType = "Background";
-      RunAtLoad = true;
-      KeepAlive = true;
-    };
-  };
-
   programs.pi-coding-agent = {
     enable = true;
     context = ./../ai/AGENTS.md;
-    package = pkgs.llm-agents.pi;
+    package = llmAgentsPkgs.pi;
   };
 
   programs.claude-code = {
     enable = true;
-    package = pkgs.llm-agents.claude-code;
+    package = llmAgentsPkgs.claude-code;
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
     skills = ./../ai/skills;
