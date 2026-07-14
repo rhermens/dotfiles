@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +15,7 @@
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs:
+  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs:
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
@@ -52,8 +53,10 @@
           specialArgs = { inherit inputs self; };
 
           modules = [
+            determinate.darwinModules.default
             ./nix/configuration-mac.nix
-            home-manager.darwinModules.home-manager
+            # home-manager.darwinModules.home-manager
+            determinate.homeManageModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

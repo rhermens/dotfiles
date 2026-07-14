@@ -8,6 +8,18 @@
   # Determinate nix
   nix.enable = false;
 
+  determinateNix = {
+    enable = true;
+    customSettings = {
+      extra-substituters = [
+        "https://cache.numtide.com"
+      ];
+      extra-trusted-public-keys = [
+        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      ];
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # The platform the configuration will be used on.
