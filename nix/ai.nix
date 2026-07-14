@@ -5,12 +5,18 @@ let
   hermesDesktopMacLauncher = pkgs.writeShellScript "hermes-desktop-mac-launcher" ''
     exec ${hermesDesktop}/bin/hermes-desktop "$@"
   '';
-  # hermesDesktopIcon = pkgs.runCommand "hermes-desktop.icns"
-  #   {
-  #     nativeBuildInputs = [ pkgs.libicns ];
-  #   } ''
-  #   png2icns $out ${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png
-  # '';
+  hermesDesktopIcon = pkgs.runCommand "hermes-desktop.icns"
+    {
+      nativeBuildInputs = [ pkgs.imagemagick pkgs.libicns ];
+    } ''
+    magick ${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png \
+      -resize 512x512 \
+      -background none \
+      -gravity center \
+      -extent 512x512 \
+      hermes-desktop-512.png
+    png2icns $out hermes-desktop-512.png
+  '';
 in
 {
   home.packages = [
@@ -27,7 +33,7 @@ in
   } // lib.optionalAttrs pkgs.stdenv.isDarwin {
     "Applications/Hermes Desktop.app/Contents/Info.plist".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/Hermes.plist";
     "Applications/Hermes Desktop.app/Contents/MacOS/hermes-desktop".source = hermesDesktopMacLauncher;
-    # "Applications/Hermes Desktop.app/Contents/Resources/hermes-desktop.icns".source = hermesDesktopIcon;
+    "Applications/Hermes Desktop.app/Contents/Resources/hermes-desktop.icns".source = hermesDesktopIcon;
   };
 
   home.sessionPath = [
