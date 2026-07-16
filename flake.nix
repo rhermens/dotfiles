@@ -55,8 +55,8 @@
           modules = [
             determinate.darwinModules.default
             ./nix/configuration-mac.nix
-            # home-manager.darwinModules.home-manager
-            determinate.homeManageModules.default
+            home-manager.darwinModules.home-manager
+            determinate.homeManagerModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

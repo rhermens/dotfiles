@@ -7,9 +7,15 @@ let
   '';
   hermesDesktopIcon = pkgs.runCommand "hermes-desktop.icns"
     {
-      nativeBuildInputs = [ pkgs.libicns ];
+      nativeBuildInputs = [ pkgs.imagemagick pkgs.libicns ];
     } ''
-    png2icns $out ${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png
+    magick ${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png \
+      -resize 512x512 \
+      -background none \
+      -gravity center \
+      -extent 512x512 \
+      hermes-desktop-512.png
+    png2icns $out hermes-desktop-512.png
   '';
 in
 {
