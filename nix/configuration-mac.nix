@@ -44,7 +44,7 @@
     enable = true;
     enableZshIntegration = true;
     brews = [ "docker" "docker-compose" "autoraise" ];
-    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" ];
   };
 
   programs.zsh.enable = true;
