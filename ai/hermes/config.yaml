@@ -11,7 +11,7 @@ agent:
     helpful: You are a helpful, friendly AI assistant.
     teacher: You are a patient teacher. Explain concepts clearly with examples.
     technical: You are a technical expert. Provide detailed, accurate technical information.
-  reasoning_effort: medium
+  reasoning_effort: xhigh
   verbose: false
 terminal:
   backend: local
@@ -51,9 +51,9 @@ compression:
 prompt_caching:
   cache_ttl: 5m
 display:
-  interface: tui
   compact: false
   busy_input_mode: interrupt
+  interface: tui
   bell_on_complete: false
   show_reasoning: false
   streaming: true
