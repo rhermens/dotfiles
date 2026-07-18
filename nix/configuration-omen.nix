@@ -144,6 +144,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
+    git-lfs
     unzip
     wget
     wl-clipboard

@@ -54,7 +54,7 @@
 
           modules = [
             determinate.darwinModules.default
-            ./nix/configuration-mac.nix
+            ./nix/configuration-darwin.nix
             home-manager.darwinModules.home-manager
             determinate.homeManagerModules.default
             {
@@ -62,7 +62,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/home-osx.nix ];
+                imports = [ ./nix/home.nix ./nix/home-darwin.nix ];
                 home.homeDirectory = "/Users/roy";
               };
             }
