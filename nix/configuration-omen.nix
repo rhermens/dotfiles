@@ -115,6 +115,9 @@
                 {
                   "node.name" = "alsa_output.usb-USB_CUSTOM_Onkyo_GX-10DB_000001-00.analog-stereo";
                 }
+                {
+                  "node.name" = "~alsa_output.*";
+                }
               ];
               actions.update-props = {
                 "audio.position" = [ "FR" "FL" ];

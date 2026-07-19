@@ -12,7 +12,7 @@ agent:
     teacher: You are a patient teacher. Explain concepts clearly with examples.
     technical: You are a technical expert. Provide detailed, accurate technical 
       information.
-  reasoning_effort: xhigh
+  reasoning_effort: medium
   verbose: false
 approvals:
   mode: off
