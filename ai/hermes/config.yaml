@@ -90,7 +90,7 @@ skills:
 code_execution:
   max_tool_calls: 50
   timeout: 300
-streaming: true false
+streaming: true
 onboarding:
   seen:
     tool_progress_prompt: true
@@ -103,7 +103,6 @@ _config_version: 33
 group_sessions_per_user: true
 known_plugin_toolsets:
   cli:
-    - spotify
 platform_toolsets:
   cli:
     - browser
@@ -124,24 +123,6 @@ platform_toolsets:
     - web
   discord:
     - hermes-discord
-  google_chat:
-    - hermes-google_chat
-  homeassistant:
-    - hermes-homeassistant
-  qqbot:
-    - hermes-qqbot
-  signal:
-    - hermes-signal
-  slack:
-    - hermes-slack
-  teams:
-    - hermes-teams
-  telegram:
-    - hermes-telegram
-  whatsapp:
-    - hermes-whatsapp
-  yuanbao:
-    - hermes-yuanbao
 plugins:
   hermes-memory-store:
     auto_extract: 'false'
