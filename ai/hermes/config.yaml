@@ -84,8 +84,6 @@ memory:
 delegation:
   max_iterations: 50
 skills:
-  external_dirs:
-    - ~/dotfiles/ai/skills
   creation_nudge_interval: 15
 code_execution:
   max_tool_calls: 50
