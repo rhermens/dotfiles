@@ -234,6 +234,8 @@ AI/MCP/editor-agent candidates, if they fit the user's workflow:
 
 7. **Treating web popularity as proof.** GitHub stars and recent pushes are supporting evidence only; fit to the user's config is primary.
 
+8. **PipeWire/WirePlumber HDMI “mute” can be output-profile state, not the channel-swap rule.** When auditing NixOS audio config with `services.pipewire.wireplumber.extraConfig` and broad `monitor.alsa.rules`, verify live PipeWire state before blaming `audio.position`. For normal stereo L/R swap, `[ "FR" "FL" ]` is valid. If sound is apparently muted while `wpctl get-volume @DEFAULT_AUDIO_SINK@` says unmuted, compare the live sink/profile from `wpctl status`/`wpctl inspect @DEFAULT_AUDIO_SINK@` with persisted defaults in `~/.local/state/wireplumber/default-nodes` and `default-profile`; GPU HDMI/DP outputs can flip between `hdmi-stereo`, `hdmi-stereo-extra1`, and `hdmi-stereo-extra2`. See `references/pipewire-wireplumber-hdmi-output-state.md` for the command pattern and remediation options.
+
 ## Verification Checklist
 
 - [ ] Relevant Nix dependency skill loaded.
