@@ -128,6 +128,31 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 - If the codebase has an existing test suite, follow its patterns.
 - At minimum, identify what should be tested and how, even if not writing tests explicitly.
 
+## Monorepo Verification Pitfalls
+
+- In pnpm/Turbo monorepos, distinguish package-script arguments from Turbo arguments before reporting verification. `pnpm run build -- --filter=package` passes `--filter` into the underlying build scripts and can produce irrelevant `tsc`/tool option errors. Prefer the repo's unfiltered `pnpm run build` for final full evidence, or call Turbo directly with filters before task execution, e.g. `pnpm turbo build --filter=package`.
+- When a verification command fails because of CLI argument placement, immediately rerun the canonical command in the correct shape and report both facts: the bad invocation was invalid; the corrected verification passed/failed.
+- For pnpm script argument forwarding, use the repo's actual script shape: `pnpm run test -- <jest args>` forwards to Jest, while Turbo filters belong on `turbo`, not after `pnpm run build --`.
+- If a large combined targeted Jest run crashes at the process/native level after individual suites pass (for example a segmentation fault with no test assertion failure), do not loop the identical command. Split the same affected suite set into smaller `pnpm run test -- ... --runInBand` invocations, verify each passes, and report the original crash as a runner/process issue plus the passing split evidence.
+
+## NestJS CQRS Endpoint Refactors
+
+- When renaming a command flow, rename the class, command file, handler file, handler spec, DTO file/classes, controller imports, and module provider registration together; then search for stale old names before verification.
+- Prefer domain verbs over CRUD verbs when semantics are not creation. If a flow only attaches an existing entity to state, name it like `MonitorOrganizationCommand`, not `CreateMonitoredOrganizationCommand`.
+- If the user says the target entity must already exist, do not use `findOneAndUpdate(..., { upsert: true })`. Validate related objects, `findOne` the target, throw `NotFoundException` on miss, `updateOne` the association, then publish events.
+- Add/update tests for both the success path and the missing-entity 404 path; on 404 assert no update and no event publish.
+- See `references/nestjs-cqrs-endpoint-refactors.md` for a concise checklist and event-payload pitfalls from a DR-7395 monitoring-list endpoint refactor.
+
+## Bounded Context Refactors
+
+When splitting shared DTOs or domain-facing types by bounded context:
+- Trace definitions and usages first, then create context-owned copies under each consuming module instead of leaving context-specific DTOs in `shared`.
+- Move or duplicate nearby specs with the new context-owned files so each bounded context verifies its own copy.
+- Update all imports away from the removed shared path and search for stale shared-path references before verifying.
+- Treat each context's response shape as its own public contract. Do not blindly preserve the old shared DTO shape: update the context-owned DTO and spec expectations to reflect domain language differences (for example, one context may expose aggregate `administrationCosts` while another exposes split admin-cost fields).
+- Run targeted tests for the moved classes, typecheck/build, and targeted lint on touched files. If full lint fails only on unrelated pre-existing files, run a fresh scoped verification command after the global failure and report both facts: scoped verification passed; global lint is blocked by unrelated files. Do not leave the final verification evidence as a failure when the change itself has passing scoped evidence.
+- When intentionally duplicated context-owned specs trigger Qodana `DuplicatedCode`, preserve bounded-context integrity instead of re-sharing the tests. Add the paired spec paths to the existing `DuplicatedCode` exclude list in `qodana.yaml`, parse/validate the YAML, and rerun the targeted tests for the affected DTOs.
+
 ## Quality Checklist (apply before finalising output)
 
 - [ ] Have I read and understood every stated requirement?
