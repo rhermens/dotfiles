@@ -143,3 +143,38 @@ Use targeted `nix eval` for the exact service attribute. Confirm the generated `
 - `git diff --check` passes.
 - When there is no canonical repo test/lint/build command that exercises the Home Manager module change, create a focused temporary ad-hoc verification script under `/tmp` using an OS-safe `hermes-verify-` filename prefix. Have it evaluate the module with representative enabled/disabled services and assert exact generated names and command arguments. For cross-platform modules, evaluate both Linux and Darwin package sets in the script where possible, then clean up the temporary script/output. Report this explicitly as ad-hoc verification rather than suite green.
 - After an explicitly requested activation, use `systemctl --user status <service>` on Linux, or `launchctl print gui/$UID/<label>` / launchd logs on Darwin, and inspect startup failures.
+
+### Darwin launchd status and logs
+
+When the user gives a friendly service name rather than the full LaunchAgent label, first discover the label before printing status:
+
+```bash
+launchctl print gui/$UID/<friendly-name> 2>&1 || \
+launchctl print gui/$UID/com.<friendly-name> 2>&1 || \
+launchctl print gui/$UID | grep -i -A5 -B5 '<friendly-name>'
+
+grep -R '<friendly-name>' ~/Library/LaunchAgents /Library/LaunchAgents /Library/LaunchDaemons 2>/dev/null || true
+```
+
+Then print the actual label:
+
+```bash
+launchctl print gui/$UID/<actual.label>
+# or for system daemons:
+sudo launchctl print system/<actual.label>
+```
+
+In the output, report `state`, `pid`, `runs`, `last exit code`, the plist `path`, and the command from `program` / `arguments`.
+
+For macOS Unified Logging, the portable `journalctl -xef` equivalent is:
+
+```bash
+/usr/bin/log stream --style compact --level debug
+```
+
+Use `/usr/bin/log` (or `command log`) when a user's shell reports `log: too many arguments`; that symptom usually means something named `log` is shadowing the system binary in the interactive shell. On newer macOS versions, prefer `--level debug` over older examples using separate `--info --debug` flags. For a specific launchd service/process:
+
+```bash
+/usr/bin/log stream --style compact --level debug --process <process-name>
+/usr/bin/log stream --style compact --level debug --predicate 'process == "<process-name>" OR eventMessage CONTAINS "<launchd.label>"'
+```

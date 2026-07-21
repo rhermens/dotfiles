@@ -341,13 +341,23 @@ source "${HERMES_HOME:-$HOME/.hermes}/skills/github/github-auth/scripts/gh-env.s
 
 ### Step 2: Gather PR context
 
-Get the PR metadata, description, and list of changed files to understand scope before diving into code.
+Get the PR metadata, description, changed files, checks, and existing review discussion to understand scope before diving into code. If the user asks you to look at their comments, explicitly fetch both top-level issue comments and inline review comments, then report whether you agree with each substantive point. Do not post comments/reviews when the user says not to.
+
+When re-reviewing a PR from an existing worktree, compare the local branch HEAD with the PR head reported by GitHub. If they differ, distinguish pushed PR contents from local-only recent commits/merge commits in your Scope / Checks section instead of silently treating them as the same tree.
 
 **With gh:**
 ```bash
 gh pr view 123
 gh pr diff 123 --name-only
 gh pr checks 123
+
+gh pr view 123 --json headRefOid --jq .headRefOid
+git rev-parse HEAD
+
+# Existing discussion. `gh pr view --json comments,reviews` does not include all inline review threads,
+# so use the API for inline comments when validating reviewer/user feedback.
+gh api repos/$OWNER/$REPO/issues/123/comments --paginate
+gh api repos/$OWNER/$REPO/pulls/123/comments --paginate
 ```
 
 **With curl:**
@@ -397,6 +407,8 @@ python -m pytest 2>&1 | tail -20
 ruff check . 2>&1 | head -30
 # or: eslint, clippy, etc.
 ```
+
+For JavaScript/TypeScript projects, be careful with package-manager script argument forwarding when trying to lint only changed files. A command like `pnpm lint -- path/to/file.ts` may still execute the script's configured glob and report unrelated repository-wide findings. If the package script expands to something like `eslint "{src,apps,libs,test}/**/*.ts"`, use the underlying binary directly for a scoped review check, e.g. `pnpm exec eslint <changed-files>`, and report any full-script failures separately as pre-existing/unrelated unless they touch the branch diff.
 
 ### Step 6: Apply the review checklist (Section 3)
 

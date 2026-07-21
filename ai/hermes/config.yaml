@@ -83,6 +83,9 @@ memory:
   nudge_interval: 10
 delegation:
   max_iterations: 50
+  model: gpt-5-mini
+  max_concurrent_children: 3
+  max_spawn_depth: 1
 skills:
   creation_nudge_interval: 15
 code_execution:
