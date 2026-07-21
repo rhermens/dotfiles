@@ -65,6 +65,8 @@ Read the code carefully. Understand its intent. Then evaluate it against the cri
 
 ## Output Format
 
+- For whole-project reviews, begin with a short **Scope / Checks run** note that lists the tree state inspected (especially dirty files) and the verification commands actually executed. If the working tree is dirty, distinguish pre-existing user changes from review findings and do not imply you authored or fixed them.
+- When reviewing a fix by manually exercising a compiled CLI/binary, ensure the manual repro uses the freshly rebuilt artifact. Build first in the same verification sequence (for example `cargo build && target/debug/app ...`) or invoke through the build tool; otherwise a stale binary can create a false review finding.
 - Group feedback by the criteria headings above. Omit any section where there is nothing to flag.
 - Within each section, use a short bullet per finding. Each bullet must:
   - Reference the specific code (function name, line, or snippet)

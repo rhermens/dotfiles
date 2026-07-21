@@ -82,6 +82,7 @@ You MUST complete each phase before proceeding to the next.
 - Does the command fail for this bug and only pass once the bug is fixed?
 - Is it fast enough to run repeatedly?
 - Is it deterministic? For flaky bugs, can you raise the reproduction rate high enough to debug?
+- Does it exercise the freshly changed artifact? When testing compiled CLIs/binaries, rebuild in the same repro command (for example `cargo build && target/debug/app ...`) or run through the build tool. A stale binary can make a fixed bug look broken.
 - If not reproducible → gather more data, don't guess.
 
 **Ways to construct a loop — try in roughly this order:**

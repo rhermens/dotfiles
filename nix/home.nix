@@ -107,4 +107,12 @@
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+
+  services.git-watch = {
+    notes = {
+      enable = true;
+      logLevel = "debug";
+      path = "~/notes";
+    };
+  };
 }

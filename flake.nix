@@ -13,9 +13,10 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
+    git-watch.url = "github:rhermens/git-watch";
   };
 
-  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, llm-agents, ... }@inputs:
+  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, git-watch, llm-agents, ... }@inputs:
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
@@ -37,6 +38,7 @@
             ./nix/configuration-omen.nix
             home-manager.nixosModules.home-manager
             hp-tracerled.nixosModules.default
+            git-watch.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -56,6 +58,7 @@
             determinate.darwinModules.default
             ./nix/configuration-darwin.nix
             home-manager.darwinModules.home-manager
+            git-watch.darwinModules.default
             determinate.homeManagerModules.default
             {
               home-manager.useGlobalPkgs = true;

@@ -84,5 +84,7 @@ It writes `/tmp/obsidian_note_scan.json` and prints a human-readable summary. Th
 - Similarity based on one shared token, URLs, or very short notes is noisy. Suppress or label these as low confidence.
 - Excalidraw `.excalidraw.md` files often contain generated text; exact duplicates are useful, but thematic similarity is often less meaningful.
 - Frontmatter IDs and aliases can cause self-mentions; search only the body when looking for missing wikilinks.
+- For link insertion, match explicit title/alias mentions case-insensitively but preserve the matched surface text in the wikilink alias, e.g. `contracts` -> `[[Folder/Contracts|contracts]]`. Mask existing wikilinks, URLs, and fenced code blocks before replacement.
+- When detecting old orphan notes, remember that code-fenced diagrams, JSON, Mermaid, sheet blocks, and Excalidraw content may tokenize to zero or few words. Do not delete these as meaningless solely because word count is low; review representative content and prefer reporting/no deletion unless they are clearly empty/trash.
 - In sync-backed vaults, file mtimes may reflect sync/backup activity rather than note age; for date-titled daily/log notes, use the title/path date or frontmatter date when judging whether a note is old.
 - If archive mirrors exist, de-duplicate mirror copies in the report so the user sees one actionable recommendation instead of dozens of repeated pairs.
