@@ -114,5 +114,11 @@
       logLevel = "debug";
       path = "~/notes";
     };
+    dotfiles = {
+      enable = true;
+      interval = 120;
+      logLevel = "debug";
+      path = "~/dotfiles";
+    };
   };
 }
