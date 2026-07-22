@@ -130,6 +130,7 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 
 ## Monorepo Verification Pitfalls
 
+- For small state-removal refactors, do not only delete the declared field. First search for all direct and indirect usages, including private test access like `client['field']`, assignments in setup methods, and helper methods that were relying on the cached value. Prefer passing the value explicitly through the internal helper chain, then search for stale `this.field`, `private field`, and bracket-private access before verification.
 - In pnpm/Turbo monorepos, distinguish package-script arguments from Turbo arguments before reporting verification. `pnpm run build -- --filter=package` passes `--filter` into the underlying build scripts and can produce irrelevant `tsc`/tool option errors. Prefer the repo's unfiltered `pnpm run build` for final full evidence, or call Turbo directly with filters before task execution, e.g. `pnpm turbo build --filter=package`.
 - When a verification command fails because of CLI argument placement, immediately rerun the canonical command in the correct shape and report both facts: the bad invocation was invalid; the corrected verification passed/failed.
 - For pnpm script argument forwarding, use the repo's actual script shape: `pnpm run test -- <jest args>` forwards to Jest, while Turbo filters belong on `turbo`, not after `pnpm run build --`.
