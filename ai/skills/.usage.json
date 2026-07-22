@@ -43,13 +43,13 @@
     "created_at": "2026-07-22T07:26:32.607896+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-22T08:06:11.348529+00:00",
-    "last_used_at": "2026-07-22T08:29:08.010346+00:00",
-    "last_viewed_at": "2026-07-22T08:29:08.008871+00:00",
+    "last_used_at": "2026-07-22T09:46:22.542650+00:00",
+    "last_viewed_at": "2026-07-22T09:46:22.542225+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 5
+    "use_count": 11,
+    "view_count": 6
   },
   "github-code-review": {
     "archived_at": null,
