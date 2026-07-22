@@ -27,9 +27,9 @@ in
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
-    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
+    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
     ".hermes/memories/MEMORY.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/MEMORY.md";
-    ".hermes/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/skills";
+    ".hermes/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
     ".hermes/.no-bundled-skills" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/.no-bundled-skills";
       force = true;
@@ -76,7 +76,7 @@ in
     package = llmAgentsPkgs.claude-code;
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
-    skills = ./../ai/skills;
+    skills = "${config.home.homeDirectory}/skills";
     settings = {
       model = "opus";
     };

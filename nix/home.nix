@@ -117,8 +117,7 @@
     dotfiles = {
       enable = true;
       interval = 120;
-      logLevel = "debug";
-      path = "~/dotfiles";
+      path = "~/skills";
     };
   };
 }
