@@ -50,6 +50,9 @@ Read the code carefully. Understand its intent. Then evaluate it against the cri
 - Are dependencies flowing in the right direction?
 - Where OOP and FP patterns coexist, does new code favour the functional style?
 - Are bounded context boundaries respected — or are domain concepts leaking across seams they should not cross?
+- For entity/domain models, distinguish raw persisted state from derived domain values. Prefer derived values as explicit getters or methods over constructor-time mutation/normalisation when the value depends on other fields or external mappings. Flag constructor logic that silently transforms stored data into derived state, especially when sibling entities expose the same concept as getters.
+- Compare new design patterns against the closest existing sibling implementation, not just the current file. If a PR says it mirrors another flow/entity, inspect that source and flag meaningful deviations in modelling style, derivation points, fallback semantics, error handling, and API shape.
+- Treat broad `try/catch` fallback around domain mapping/derivation as review-worthy. It can hide unknown mapping data, malformed external payloads, and programming errors as ordinary fallback behavior. Prefer explicit optional results, typed safe wrappers, or narrow error handling that preserves observability for unexpected cases.
 
 ### 6. Readability and Domain Language
 - Are names accurate, descriptive, and consistent with the surrounding codebase?
@@ -75,6 +78,7 @@ Read the code carefully. Understand its intent. Then evaluate it against the cri
 - For date-library cutoff logic, verify units and boundary behavior instead of trusting fluent calls. In Day.js specifically, `subtract(30)` is milliseconds; use `subtract(30, 'days')` for a day cutoff. A review of stale/expiry logic should include tests or a quick probe for just-before/just-after cutoff cases, missing dates, and equality (`isBefore`/`isAfter` vs inclusive query operators).
 - When reviewing a fix by manually exercising a compiled CLI/binary, ensure the manual repro uses the freshly rebuilt artifact. Build first in the same verification sequence (for example `cargo build && target/debug/app ...`) or invoke through the build tool; otherwise a stale binary can create a false review finding.
 - When the user asks whether you agree with existing PR/review comments, include a dedicated section that evaluates each substantive comment directly (agree/disagree/partly agree) with code evidence. Respect explicit instructions not to post comments externally.
+- When evaluating comments about style/design consistency, verify them by inspecting the closest comparable implementation (for example the sibling entity/service/handler the PR claims to mirror). Do not dismiss these as mere preference when the repo already has a pattern; report whether the comment aligns with that pattern and whether the deviation affects clarity, maintainability, or correctness.
 - Group feedback by the criteria headings above. Omit any section where there is nothing to flag.
 - Within each section, use a short bullet per finding. Each bullet must:
   - Reference the specific code (function name, line, or snippet)
@@ -97,6 +101,9 @@ Read the code carefully. Understand its intent. Then evaluate it against the cri
 - [ ] Have I checked for FP violations: impure functions, side-effect leakage, unnecessary mutation?
 - [ ] Have I checked correctness, security, and performance?
 - [ ] Have I flagged inconsistencies with the surrounding codebase?
+- [ ] For derived entity/domain values, have I checked whether they belong in getters/methods rather than constructor-time state mutation?
+- [ ] Have I inspected the closest sibling implementation when a PR mirrors an existing flow or pattern?
+- [ ] Have I challenged broad `try/catch` fallback around domain mappings or external data derivation?
 - [ ] Is the summary honest and prioritised?
 - [ ] Do names reflect domain concepts rather than technical plumbing?
 - [ ] Are bounded context boundaries respected?
