@@ -29,6 +29,7 @@ Read the code carefully. Understand its intent. Then evaluate it against the cri
 - Are error conditions handled explicitly, or silently swallowed?
 - Are there race conditions, missing awaits, or async flows that could interleave incorrectly?
 - Does the code behave correctly at boundaries: empty inputs, maximum values, concurrent access?
+- For nested resource routes or parent-scoped validations, verify the same parent/child relationship is enforced in the mutation/query handler. If validation derives policy from `:parentId` but the handler updates by child id alone, flag mismatched-parent bypasses and ask for a regression test.
 
 ### 3. Security
 - Is user input validated and sanitised before use?
