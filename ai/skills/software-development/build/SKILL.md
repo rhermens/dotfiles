@@ -141,6 +141,7 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 - Prefer domain verbs over CRUD verbs when semantics are not creation. If a flow only attaches an existing entity to state, name it like `MonitorOrganizationCommand`, not `CreateMonitoredOrganizationCommand`.
 - If the user says the target entity must already exist, do not use `findOneAndUpdate(..., { upsert: true })`. Validate related objects, `findOne` the target, throw `NotFoundException` on miss, `updateOne` the association, then publish events.
 - Add/update tests for both the success path and the missing-entity 404 path; on 404 assert no update and no event publish.
+- For event-backed membership/assignment changes mirrored to an external provider, read previous state before mutating, emit add/remove events for every transition, and make saga handlers use immutable event/command target IDs rather than mutable current entity state. See `references/nestjs-event-backed-membership-sync.md`.
 - See `references/nestjs-cqrs-endpoint-refactors.md` for a concise checklist and event-payload pitfalls from a DR-7395 monitoring-list endpoint refactor.
 
 ## Bounded Context Refactors
