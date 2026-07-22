@@ -17,13 +17,13 @@
     "created_at": "2026-07-21T03:17:49.118004+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-22T10:01:48.198566+00:00",
-    "last_used_at": "2026-07-22T10:01:38.267862+00:00",
-    "last_viewed_at": "2026-07-22T10:01:38.266819+00:00",
+    "last_used_at": "2026-07-22T10:25:40.433645+00:00",
+    "last_viewed_at": "2026-07-22T10:25:40.432833+00:00",
     "patch_count": 25,
     "pinned": false,
     "state": "active",
-    "use_count": 32,
-    "view_count": 32
+    "use_count": 33,
+    "view_count": 33
   },
   "github-auth": {
     "archived_at": null,
@@ -43,13 +43,13 @@
     "created_at": "2026-07-22T07:26:32.607896+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-22T08:06:11.348529+00:00",
-    "last_used_at": "2026-07-22T10:00:43.588100+00:00",
-    "last_viewed_at": "2026-07-22T09:46:22.542225+00:00",
+    "last_used_at": "2026-07-22T10:25:40.433197+00:00",
+    "last_viewed_at": "2026-07-22T10:25:40.432366+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 12,
-    "view_count": 6
+    "use_count": 13,
+    "view_count": 7
   },
   "github-code-review": {
     "archived_at": null,
