@@ -144,6 +144,7 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 - For event-backed membership/assignment changes mirrored to an external provider, read previous state before mutating, emit add/remove events for every transition, and make saga handlers use immutable event/command target IDs rather than mutable current entity state. See `references/nestjs-event-backed-membership-sync.md`.
 - When multiple NestJS CQRS handlers duplicate monitoring-list membership side effects, extract them into an injectable feature service. The service should own complete domain operations, not just event plumbing: add-to-list/move-to-list should mutate `monitoringListId` and privately publish add/remove events; remove-from-list should scope the query, unset membership, and privately publish removal events. Have handlers pass intention-specific selectors or previous-state context. See `references/nestjs-monitoring-list-membership-service.md`.
 - See `references/nestjs-cqrs-endpoint-refactors.md` for a concise checklist and event-payload pitfalls from a DR-7395 monitoring-list endpoint refactor.
+- See `references/nestjs-e2e-endpoint-refactors.md` for e2e test updates after DTO/endpoint semantic changes, including membership-list fixture setup and Mongo `$unset` assertions.
 
 ## Bounded Context Refactors
 
