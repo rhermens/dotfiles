@@ -113,12 +113,14 @@
       enable = true;
       logLevel = "debug";
       path = "~/notes";
+      sshAuthSock = "${config.home.homeDirectory}/.1password/agent.sock";
     };
     dotfiles = {
       enable = true;
       interval = 120;
       logLevel = "debug";
       path = "~/dotfiles";
+      sshAuthSock = "${config.home.homeDirectory}/.1password/agent.sock";
     };
   };
 }
