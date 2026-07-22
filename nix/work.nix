@@ -1,6 +1,6 @@
 { config, pkgs, lib, home-manager, ... }:
 {
-  homebrew = {
+  homebrew = lib.mkIf pkgs.stdenv.isDarwin {
     brews = [ ];
     casks = [ "microsoft-office" ];
   };
@@ -9,7 +9,6 @@
     home.packages = with pkgs; [
       slack
       teams
-      microsoft-office
     ];
   };
 }

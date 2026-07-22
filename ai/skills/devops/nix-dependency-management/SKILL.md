@@ -63,6 +63,7 @@ Use this skill when the user asks whether a dependency is available on NixOS/Nix
 
 ## Pitfalls
 
+- In NixOS/nix-darwin modules, avoid wrapping the whole returned module in `lib.optionalAttrs pkgs.stdenv.isDarwin ...` (or otherwise forcing `pkgs` while the module is being imported). Under the module system this can recurse through `_module.args.pkgs`. Prefer returning a normal attrset and putting `lib.mkIf pkgs.stdenv.isDarwin` on the specific option value, e.g. `homebrew = lib.mkIf pkgs.stdenv.isDarwin { ...; };`.
 - For Powerlevel10k instant prompt under Home Manager, setting `POWERLEVEL9K_INSTANT_PROMPT=verbose` in the p10k config is not enough; the instant-prompt cache source block must appear at the very top of the generated `.zshrc`. Use `programs.zsh.initContent = lib.mkBefore '' ... '';` rather than deprecated `initExtraFirst`, and escape Zsh parameter expansion in Nix strings as `''${...}` (for example `''${XDG_CACHE_HOME:-$HOME/.cache}` and `''${(%):-%n}`). Keep the block before plugin sourcing/completion because Home Manager sources `programs.zsh.plugins` later in `initContent`.
 - For Home Manager-managed dotfile symlinks that an app may replace with a real file (for example config writers that use atomic replace), use the attrset form with `force = true;` so activation restores the symlink instead of failing with a clobbering/collision error:
   ```nix
