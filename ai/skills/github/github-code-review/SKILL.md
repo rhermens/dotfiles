@@ -408,7 +408,7 @@ ruff check . 2>&1 | head -30
 # or: eslint, clippy, etc.
 ```
 
-For JavaScript/TypeScript projects, be careful with package-manager script argument forwarding when trying to lint only changed files. A command like `pnpm lint -- path/to/file.ts` may still execute the script's configured glob and report unrelated repository-wide findings. If the package script expands to something like `eslint "{src,apps,libs,test}/**/*.ts"`, use the underlying binary directly for a scoped review check, e.g. `pnpm exec eslint <changed-files>`, and report any full-script failures separately as pre-existing/unrelated unless they touch the branch diff.
+For JavaScript/TypeScript projects, be careful with package-manager script argument forwarding when trying to lint only changed files. A command like `pnpm lint -- path/to/file.ts` may still execute the script's configured glob and report unrelated repository-wide findings. If the package script expands to something like `eslint "{src,apps,libs,test}/**/*.ts"`, use the underlying binary directly for a scoped review check, e.g. `pnpm exec eslint <changed-files>`, and report any full-script failures separately as pre-existing/unrelated unless they touch the branch diff. When ESLint reports `prettier/prettier` on changed files, also run a direct formatter check such as `pnpm exec prettier --check <files>` to confirm the formatting-only finding; report it even if remote CI currently shows green, clearly labelling it as local verification on the exact PR head.
 
 ### Step 6: Apply the review checklist (Section 3)
 
