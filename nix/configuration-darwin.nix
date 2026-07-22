@@ -5,6 +5,10 @@
 { self, config, pkgs, ... }:
 
 {
+  imports = [
+    ./work.nix
+  ];
+
   # Determinate nix
   nix.enable = false;
 

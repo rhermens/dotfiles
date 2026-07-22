@@ -14,6 +14,8 @@
     pkgs.python314Packages.pylatexenc
 
     pkgs.delta
+
+    pkgs.sentry-cli
   ];
 
   home.file = {

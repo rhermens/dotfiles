@@ -23,9 +23,9 @@
 
     pkgs.obsidian
     pkgs.discord
-    pkgs.slack
     pkgs.nerd-fonts.lilex
     pkgs.nerd-fonts.symbols-only
+    pkgs.slack
 
     (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty)
 
