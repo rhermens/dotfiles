@@ -5,6 +5,7 @@
     casks = [ "microsoft-office" ];
   };
 
+
   home-manager.users.roy = { config, ... }: {
     home.packages = with pkgs; [
       slack
