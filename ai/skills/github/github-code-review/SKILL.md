@@ -491,3 +491,23 @@ git branch -D pr-$PR_NUMBER
 - **Approve** — no critical or warning-level issues, only minor suggestions or all clear
 - **Request Changes** — any critical or warning-level issue that should be fixed before merge
 - **Comment** — observations and suggestions, but nothing blocking (use when you're unsure or the PR is a draft)
+
+---
+
+## 6. Scheduled PR Review Digest Workflow
+
+Use this when a cron/scheduled job asks to check multiple repositories for PRs needing the user's attention and deliver a concise review digest.
+
+1. Load GitHub auth for non-interactive execution. If `gh auth status` is stale but a token is available, set `GH_TOKEN` from `github-auth/scripts/gh-env.sh` and continue; do not wait for the user.
+2. List open PRs in each target repo with enough metadata to rank and filter:
+
+```bash
+gh pr list -R OWNER/REPO --state open --limit 100 \
+  --json number,title,author,headRefName,baseRefName,isDraft,updatedAt,createdAt,url,additions,deletions,changedFiles,reviewDecision,statusCheckRollup
+```
+
+3. Apply the requested filters exactly (for example, skip drafts when asked for non-draft PRs). If a repo has only skipped PRs, mention that briefly rather than producing noise.
+4. Determine whether the user has reviewed by fetching PR details with `reviews` and filtering for the user's login. Treat dismissed reviews as not sufficient when the PR still shows `REVIEW_REQUIRED`; explicitly say whether prior reviews exist but are dismissed/stale.
+5. Rank PRs by both importance and order-of-magnitude size, not raw LOC alone. Prioritize financial/destructive/auth/external-provider/date-deadline changes above cosmetic or test-only changes. Use changed files and additions/deletions as size signals.
+6. For each PR requiring attention, do a quick review pass: inspect the PR body, changed file list, CI conclusions, and targeted diffs for high-risk files. Call out concrete files/functions and the exact behavior to watch; do not present a full line-by-line review unless requested.
+7. Final digest format for the user: start with the explicit review ask ("You need to review N PRs"), then a ranked list with repo, author, size, importance, user's review status, CI, URL, and a short "important things to watch" subsection. Include a Scope / Checks run note so the user knows this was GitHub-only or locally verified.
