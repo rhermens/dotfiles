@@ -114,7 +114,7 @@
       logLevel = "debug";
       path = "~/notes";
     };
-    dotfiles = {
+    skills = {
       enable = true;
       interval = 120;
       path = "~/skills";
