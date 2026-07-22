@@ -18,9 +18,15 @@ Use this when a Jira bug references linked/commented Sentry issues or when produ
    - stack frames mapped back to source files
    - whether events changed release after a hotfix
 6. Trace the Sentry stack frame to source with `search_files`/`read_file`, then trace upstream event/saga/command paths before proposing a fix.
+7. For generic Axios issues with no in-app frames, compare individual event breadcrumbs before assigning one root cause. Sentry may group unrelated outbound HTTP failures together when the stack is only Axios/Sentry/node internals.
+
+## Related references
+
+- `references/instatus-heartbeat-sentry.md` — specific workflow for `cron.instatus.com` heartbeat failures and mixed Axios Sentry groups.
 
 ## Pitfalls
 
 - A Sentry issue that persists after a hotfix may be residual corrupted production data rather than the original code bug still being present. Compare event release tags before and after the hotfix.
 - If code appears to use a transaction, verify writes are actually bound to the session. In Mongoose, `session.withTransaction(...)` does not automatically attach the session to `model.create`, `updateOne`, etc.; pass `{ session }` to each write or use APIs that are explicitly session-bound.
 - Avoid stopping at the first thrown error. A failed operation can leave a later symptom (for example, an orphaned foreign key/reference) that is what users now see.
+- Sentry's latest event can be unrelated to the Jira-relevant event in the same issue group. Read the listed events and fetch specific event payloads when comments or timestamps point to a particular occurrence.
