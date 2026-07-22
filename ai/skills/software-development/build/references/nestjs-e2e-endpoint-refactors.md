@@ -27,6 +27,7 @@ Use this when a NestJS CQRS endpoint/DTO/handler refactor breaks e2e tests.
    - target client/list membership changed as expected;
    - other-client records or other-list records are untouched.
 5. For Mongo lean docs, an unset optional field may be absent rather than present as `undefined`; prefer `expect(doc).not.toHaveProperty('monitoringListId')` for `$unset` assertions.
+6. If two e2e specs intentionally share setup because they exercise paired endpoint semantics, first extract small fixture helpers under `test/utils/` (for example monitoring-list creation). If Qodana still reports intentional `DuplicatedCode`, add the exact spec paths under the existing `DuplicatedCode` `exclude` block in `qodana.yaml`, then parse the YAML and verify the paths are present.
 
 ## Verification
 
