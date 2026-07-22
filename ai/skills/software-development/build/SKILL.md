@@ -145,6 +145,7 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 - When multiple NestJS CQRS handlers duplicate monitoring-list membership side effects, extract them into an injectable feature service. The service should own complete domain operations, not just event plumbing: add-to-list/move-to-list should mutate `monitoringListId` and privately publish add/remove events; remove-from-list should scope the query, unset membership, and privately publish removal events. Have handlers pass intention-specific selectors or previous-state context. See `references/nestjs-monitoring-list-membership-service.md`.
 - See `references/nestjs-cqrs-endpoint-refactors.md` for a concise checklist and event-payload pitfalls from a DR-7395 monitoring-list endpoint refactor.
 - See `references/nestjs-e2e-endpoint-refactors.md` for e2e test updates after DTO/endpoint semantic changes, including membership-list fixture setup and Mongo `$unset` assertions.
+- When adding a durable NestJS data migration/backfill, wire the whole migration path, not only the migration class: package dependency, TS project reference, `MongooseMigrationsModule`, provider registration, exported cross-module injection tokens, idempotent upserts, scoped backfill, and startup/e2e verification. See `references/nestjs-mongoose-migrations.md`.
 
 ## Bounded Context Refactors
 
