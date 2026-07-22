@@ -146,6 +146,7 @@ Validate the following before shipping. If any guarantee cannot be validated, th
 - See `references/nestjs-cqrs-endpoint-refactors.md` for a concise checklist and event-payload pitfalls from a DR-7395 monitoring-list endpoint refactor.
 - See `references/nestjs-e2e-endpoint-refactors.md` for e2e test updates after DTO/endpoint semantic changes, including membership-list fixture setup and Mongo `$unset` assertions.
 - When adding a durable NestJS data migration/backfill, wire the whole migration path, not only the migration class: package dependency, TS project reference, `MongooseMigrationsModule`, provider registration, exported cross-module injection tokens, idempotent upserts, scoped backfill, and startup/e2e verification. See `references/nestjs-mongoose-migrations.md`.
+- When upstream DRS/SaaS monitoring endpoints add monitoring-list parameters, trace the exact DTO field names from the upstream PR and wire caller env config through the domain service, request types, HTTP client body/query params, `.env.example`, env validation, and client/service tests. Body and query names can differ (`addToMonitoringListId` vs `monitoringListId`). See `references/drs-monitoring-list-id-client-wiring.md`.
 
 ## Bounded Context Refactors
 
