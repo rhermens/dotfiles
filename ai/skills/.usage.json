@@ -108,13 +108,13 @@
     "created_at": "2026-07-21T08:49:20.502971+00:00",
     "created_by": null,
     "last_patched_at": null,
-    "last_used_at": "2026-07-22T10:08:39.467094+00:00",
-    "last_viewed_at": "2026-07-22T10:08:39.466183+00:00",
+    "last_used_at": "2026-07-22T11:23:04.415693+00:00",
+    "last_viewed_at": "2026-07-22T11:23:04.414844+00:00",
     "patch_count": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 7,
-    "view_count": 7
+    "use_count": 8,
+    "view_count": 8
   },
   "knowledge-base-maintenance": {
     "archived_at": null,
@@ -212,13 +212,13 @@
     "created_at": "2026-07-21T04:02:38.259375+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-21T04:44:07.775481+00:00",
-    "last_used_at": "2026-07-22T08:27:48.944542+00:00",
-    "last_viewed_at": "2026-07-22T08:27:48.938721+00:00",
+    "last_used_at": "2026-07-22T11:23:04.415200+00:00",
+    "last_viewed_at": "2026-07-22T11:23:04.414373+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 10,
-    "view_count": 10
+    "use_count": 11,
+    "view_count": 11
   },
   "test-driven-development": {
     "archived_at": null,
