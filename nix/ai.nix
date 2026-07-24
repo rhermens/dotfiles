@@ -59,7 +59,7 @@ in
   };
 
   services.ollama = {
-    enable = true;
+    enable = false;
     environmentVariables = {
       OLLAMA_CONTEXT_LENGTH = "32768";
     };
