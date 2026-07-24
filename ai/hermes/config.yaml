@@ -1,21 +1,18 @@
 model:
   base_url: https://chatgpt.com/backend-api/codex
-  default: gpt-5.5
+  default: gpt-5.6-sol
   provider: openai-codex
 agent:
   max_turns: 60
   personalities:
     concise: You are a concise assistant. Keep responses brief and to the point.
-    creative: You are a creative assistant. Think outside the box and offer 
-      innovative solutions.
+    creative: You are a creative assistant. Think outside the box and offer innovative
+      solutions.
     helpful: You are a helpful, friendly AI assistant.
     teacher: You are a patient teacher. Explain concepts clearly with examples.
-    technical: You are a technical expert. Provide detailed, accurate technical 
-      information.
+    technical: You are a technical expert. Provide detailed, accurate technical information.
   reasoning_effort: medium
   verbose: false
-approvals:
-  mode: off
 terminal:
   backend: local
   cwd: .
@@ -82,12 +79,14 @@ memory:
   flush_min_turns: 6
   nudge_interval: 10
 delegation:
-  max_iterations: 50
   model: gpt-5-mini
+  max_iterations: 50
   max_concurrent_children: 3
   max_spawn_depth: 1
 skills:
   creation_nudge_interval: 15
+approvals:
+  mode: false
 code_execution:
   max_tool_calls: 50
   timeout: 300
@@ -102,8 +101,6 @@ updates:
   non_interactive_local_changes: stash
 _config_version: 33
 group_sessions_per_user: true
-known_plugin_toolsets:
-  cli:
 platform_toolsets:
   cli:
     - browser
