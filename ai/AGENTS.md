@@ -9,9 +9,3 @@
 - Prefer concise answers.
 - Read relevant files before making claims about the codebase.
 - Ask clarifying questions when requirements are ambiguous.
-
-## Workflows
-
-- For implementation work, follow the build skill.
-- For planning/design work, follow the plan skill.
-- For code review, follow the review skill.

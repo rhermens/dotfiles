@@ -27,6 +27,8 @@ in
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
+    ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
+    ".pi/agent/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/themes";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
     ".hermes/memories/MEMORY.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/MEMORY.md";
     ".hermes/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
@@ -48,16 +50,6 @@ in
     "${config.home.homeDirectory}/.hermes/bin"
   ];
 
-  programs.mcp = {
-    enable = true;
-    servers = {
-      exa = {
-        type = "http";
-        url = "https://mcp.exa.ai/mcp";
-      };
-    };
-  };
-
   services.ollama = {
     enable = false;
     environmentVariables = {
@@ -68,7 +60,6 @@ in
   programs.pi-coding-agent = {
     enable = true;
     context = ./../ai/AGENTS.md;
-    package = llmAgentsPkgs.pi;
   };
 
   programs.claude-code = {
@@ -76,7 +67,7 @@ in
     package = llmAgentsPkgs.claude-code;
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
-    skills = "${config.home.homeDirectory}/skills";
+    skills = "${config.home.homeDirectory}/.agents/skills";
     settings = {
       model = "opus";
     };
