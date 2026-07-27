@@ -1,28 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
-let
-  llmAgentsPkgs = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system};
-  hermesDesktop = llmAgentsPkgs.hermes-desktop;
-  hermesDesktopMacLauncher = pkgs.writeShellScript "hermes-desktop-mac-launcher" ''
-    exec ${hermesDesktop}/bin/hermes-desktop "$@"
-  '';
-  hermesDesktopIcon = pkgs.runCommand "hermes-desktop.icns"
-    {
-      nativeBuildInputs = [ pkgs.imagemagick pkgs.libicns ];
-    } ''
-    magick ${hermesDesktop}/share/icons/hicolor/512x512/apps/hermes-desktop.png \
-      -resize 512x512 \
-      -background none \
-      -gravity center \
-      -extent 512x512 \
-      hermes-desktop-512.png
-    png2icns $out hermes-desktop-512.png
-  '';
-in
 {
   home.packages = [
     pkgs.acli
     pkgs.whichllm
-    hermesDesktop
   ];
 
   home.file = {
@@ -31,25 +11,7 @@ in
     ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
     ".pi/agent/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/themes";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
-    ".hermes/memories/MEMORY.md".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/MEMORY.md";
-    ".hermes/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
-    ".hermes/.no-bundled-skills" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/.no-bundled-skills";
-      force = true;
-    };
-    ".hermes/config.yaml" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/config.yaml";
-      force = true;
-    };
-  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
-    "Applications/Hermes Desktop.app/Contents/Info.plist".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/hermes/Hermes.plist";
-    "Applications/Hermes Desktop.app/Contents/MacOS/hermes-desktop".source = hermesDesktopMacLauncher;
-    "Applications/Hermes Desktop.app/Contents/Resources/hermes-desktop.icns".source = hermesDesktopIcon;
   };
-
-  home.sessionPath = [
-    "${config.home.homeDirectory}/.hermes/bin"
-  ];
 
   programs.mcp = {
     enable = true;
@@ -75,7 +37,6 @@ in
 
   programs.claude-code = {
     enable = true;
-    package = llmAgentsPkgs.claude-code;
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
     skills = "${config.home.homeDirectory}/.agents/skills";

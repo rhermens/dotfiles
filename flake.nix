@@ -11,12 +11,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
     hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
     git-watch.url = "github:rhermens/git-watch";
   };
 
-  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, git-watch, llm-agents, ... }@inputs:
+  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, git-watch, ... }@inputs:
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
