@@ -27,6 +27,7 @@ in
 
   home.file = {
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
+    ".pi/web-search.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/web-search.json";
     ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
     ".pi/agent/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/themes";
     ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
@@ -49,6 +50,16 @@ in
   home.sessionPath = [
     "${config.home.homeDirectory}/.hermes/bin"
   ];
+
+  programs.mcp = {
+    enable = true;
+    servers = {
+      exa = {
+        type = "http";
+        url = "https://mcp.exa.ai/mcp";
+      };
+    };
+  };
 
   services.ollama = {
     enable = false;
