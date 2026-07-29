@@ -43,22 +43,8 @@
     settings = {
       model = "opus";
     };
-    marketplaces = {
-      context-mode = pkgs.fetchFromGitHub {
-        owner = "mksglu";
-        repo = "context-mode";
-        tag = "v1.0.162";
-        sha256 = "sha256-yDr8N2mGwg+ejzeeMSHybaQFki6ny11Dqj6Cy+QGsdc=";
-      };
-    };
-    plugins = [
-      (pkgs.fetchFromGitHub {
-        owner = "mksglu";
-        repo = "context-mode";
-        tag = "v1.0.162";
-        sha256 = "sha256-yDr8N2mGwg+ejzeeMSHybaQFki6ny11Dqj6Cy+QGsdc=";
-      })
-    ];
+    marketplaces = { };
+    plugins = [ ];
     lspServers = {
       vtsls = {
         command = "vtsls";
