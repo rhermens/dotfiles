@@ -3,6 +3,7 @@
     "npm:pi-web-access",
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
+    "npm:pi-memory",
     "npm:pi-vim",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo"

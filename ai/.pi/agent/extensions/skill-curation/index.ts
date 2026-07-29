@@ -1,20 +1,34 @@
-import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import type {
+	ExtensionAPI,
+	ExtensionContext,
+	SessionEntry,
+} from "@earendil-works/pi-coding-agent";
 
 const SKILL_NAME = "skill-curating";
 const SKILL_COMMAND = `skill:${SKILL_NAME}`;
 const SKILL_INVOCATION = `/${SKILL_COMMAND}`;
 export const AUTO_CURATION_MARKER = "[pi-skill-curation:auto]";
 export const MIN_CURATION_CONTEXT_TOKENS = 25_000;
+const NO_RECOMMENDATION_RESPONSE = "No skill changes recommended.";
 
-const AUTO_CURATION_PROMPT =
-	`${SKILL_INVOCATION} ${AUTO_CURATION_MARKER} ` +
-	"Reflect on the session that settled immediately before this message. " +
-	"Use recommendation mode. Do not edit files. Keep the report concise.";
+const BACKGROUND_CURATION_PROMPT = `Review the completed session for reusable improvements to the agent skill library.
+
+Use recommendation mode. Do not edit files. Recommend only high-confidence changes supported by repeated evidence, an explicit user correction, or one clearly reusable high-impact failure.
+
+Accept a recommendation only when it improves future behavior, is likely to recur, remains stable beyond this task, applies across projects and domains, belongs in a skill, and is not already generic agent guidance. Reject project-specific, framework-specific, language-specific, tool-specific, speculative, temporary, or duplicated guidance.
+
+For each accepted recommendation, report the destination skill, session evidence, exact domain-neutral behavior change, expected benefit, and confidence. Limit the report to the highest-value candidates. If no candidate meets that bar, respond only: ${NO_RECOMMENDATION_RESPONSE}`;
 
 type CommandLike = {
 	name: string;
 	source: string;
 };
+
+export type BackgroundCurationRunner = (
+	entries: readonly SessionEntry[],
+	ctx: ExtensionContext,
+	signal: AbortSignal,
+) => Promise<string>;
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
 	typeof value === "object" && value !== null;
@@ -64,30 +78,133 @@ export const hasCuratingSkill = (commands: readonly CommandLike[]): boolean =>
 export const isCuratingInvocation = (text: string): boolean =>
 	text.trimStart().startsWith(SKILL_INVOCATION);
 
-export default function skillCurationExtension(pi: ExtensionAPI) {
-	let curationRunActive = false;
+const serializeSession = (entries: readonly SessionEntry[]): string =>
+	entries
+		.reduce<string[]>((parts, entry) => {
+			if (entry.type === "compaction") {
+				return [...parts, `[compaction summary]\n${entry.summary}`];
+			}
+			if (entry.type !== "message") return parts;
+
+			const text = contentText(entry.message.content);
+			if (!text) return parts;
+			const role =
+				entry.message.role === "toolResult"
+					? `tool:${entry.message.toolName}`
+					: entry.message.role;
+			return [...parts, `[${role}]\n${text}`];
+		}, [])
+		.join("\n\n");
+
+export const runBackgroundCuration: BackgroundCurationRunner = async (
+	entries,
+	ctx,
+	signal,
+) => {
+	const model = ctx.model;
+	if (!model) throw new Error("No model selected");
+
+	const auth = await ctx.modelRegistry.getApiKeyAndHeaders(model);
+	if (!auth.ok) throw new Error(auth.error);
+	if (!auth.apiKey) throw new Error(`No API key for ${model.provider}`);
+	if (signal.aborted) return "";
+
+	const conversation = serializeSession(entries);
+	const { complete } = await import("@earendil-works/pi-ai/compat");
+	const response = await complete(
+		model,
+		{
+			systemPrompt: BACKGROUND_CURATION_PROMPT,
+			messages: [
+				{
+					role: "user",
+					content: [
+						{
+							type: "text",
+							text: `<session>\n${conversation}\n</session>`,
+						},
+					],
+					timestamp: Date.now(),
+				},
+			],
+		},
+		{
+			apiKey: auth.apiKey,
+			headers: auth.headers,
+			env: auth.env,
+			maxTokens: 2_000,
+			reasoningEffort: "low",
+			signal,
+		},
+	);
+
+	if (response.stopReason === "aborted") return "";
+	return response.content
+		.filter(
+			(block): block is { type: "text"; text: string } => block.type === "text",
+		)
+		.map((block) => block.text)
+		.join("\n")
+		.trim();
+};
+
+export const registerSkillCurationExtension = (
+	pi: ExtensionAPI,
+	runCuration: BackgroundCurationRunner = runBackgroundCuration,
+) => {
+	let manualCurationRunActive = false;
 	let missingSkillWarningShown = false;
+	let backgroundController: AbortController | undefined;
+	let pendingNotice: { message: string; level: "info" | "warning" } | undefined;
+
+	const showOrDeferNotice = (
+		ctx: ExtensionContext,
+		message: string,
+		level: "info" | "warning",
+	) => {
+		if (!ctx.hasUI) return;
+		if (ctx.isIdle()) {
+			ctx.ui.notify(message, level);
+			return;
+		}
+		pendingNotice = { message, level };
+	};
 
 	pi.on("session_start", () => {
-		curationRunActive = false;
+		backgroundController?.abort();
+		backgroundController = undefined;
+		pendingNotice = undefined;
+		manualCurationRunActive = false;
 		missingSkillWarningShown = false;
 	});
 
+	pi.on("session_shutdown", () => {
+		backgroundController?.abort();
+		backgroundController = undefined;
+		pendingNotice = undefined;
+	});
+
 	pi.on("input", (event) => {
-		curationRunActive = isCuratingInvocation(event.text);
+		manualCurationRunActive = isCuratingInvocation(event.text);
 	});
 
 	pi.on("agent_settled", (_event, ctx) => {
-		const latestPrompt = latestUserText(ctx.sessionManager.getBranch());
+		if (pendingNotice && ctx.hasUI && ctx.isIdle()) {
+			ctx.ui.notify(pendingNotice.message, pendingNotice.level);
+			pendingNotice = undefined;
+		}
+
+		const branch = ctx.sessionManager.getBranch();
+		const latestPrompt = latestUserText(branch);
 		const isPersistedAutoCuration =
 			latestPrompt?.includes(AUTO_CURATION_MARKER) ?? false;
 
-		if (curationRunActive || isPersistedAutoCuration) {
-			curationRunActive = false;
+		if (manualCurationRunActive || isPersistedAutoCuration) {
+			manualCurationRunActive = false;
 			return;
 		}
 
-		if (!ctx.isIdle() || !latestPrompt) return;
+		if (!ctx.isIdle() || !latestPrompt || backgroundController) return;
 
 		const contextTokens = ctx.getContextUsage()?.tokens;
 		if (
@@ -107,15 +224,40 @@ export default function skillCurationExtension(pi: ExtensionAPI) {
 			return;
 		}
 
-		curationRunActive = true;
-		try {
-			pi.sendUserMessage(AUTO_CURATION_PROMPT);
-		} catch (error) {
-			curationRunActive = false;
-			if (ctx.hasUI) {
+		const controller = new AbortController();
+		backgroundController = controller;
+		void runCuration([...branch], ctx, controller.signal)
+			.then((result) => {
+				const recommendation = result.trim();
+				if (
+					controller.signal.aborted ||
+					!recommendation ||
+					recommendation === NO_RECOMMENDATION_RESPONSE
+				)
+					return;
+				showOrDeferNotice(
+					ctx,
+					`Skill curation recommendation:\n${recommendation}`,
+					"info",
+				);
+			})
+			.catch((error) => {
+				if (controller.signal.aborted) return;
 				const message = error instanceof Error ? error.message : String(error);
-				ctx.ui.notify(`Automatic skill curation failed: ${message}`, "error");
-			}
-		}
+				showOrDeferNotice(
+					ctx,
+					`Background skill curation failed: ${message}`,
+					"warning",
+				);
+			})
+			.finally(() => {
+				if (backgroundController === controller) {
+					backgroundController = undefined;
+				}
+			});
 	});
+};
+
+export default function skillCurationExtension(pi: ExtensionAPI) {
+	registerSkillCurationExtension(pi);
 }
