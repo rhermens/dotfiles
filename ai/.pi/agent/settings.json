@@ -5,8 +5,7 @@
     "npm:pi-lens",
     "npm:pi-vim",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:@juicesharp/rpiv-todo",
-    "npm:context-mode"
+    "npm:@juicesharp/rpiv-todo"
   ],
   "prompts": [],
   "theme": "mono",

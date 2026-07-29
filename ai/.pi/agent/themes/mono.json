@@ -2,20 +2,21 @@
   "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
   "name": "mono",
   "vars": {
-    "surface": "#1f1f1f",
-    "surfaceRaised": "#2a2a2a",
-    "surfaceSelected": "#464646",
-    "primary": "#e6edf3",
-    "text": "#c9d1d9",
-    "accent": "#aaaaaa",
-    "label": "#888888",
-    "muted": "#777777",
-    "dim": "#606060",
-    "border": "#5e5e5e",
-    "success": "#b5b5b5",
-    "warning": "#aaaaaa",
-    "error": "#d0d0d0",
-    "critical": "#f0f0f0"
+    "surfaceDark": "#16161e",
+    "surface": "#1a1b26",
+    "surfaceRaised": "#292e42",
+    "surfaceSelected": "#292e42",
+    "primary": "#c0caf5",
+    "text": "#a9b1d6",
+    "accent": "#c0caf5",
+    "label": "#a9b1d6",
+    "muted": "#a9b1d6",
+    "dim": "#565f89",
+    "border": "#292e42",
+    "success": "#a9b1d6",
+    "warning": "#a9b1d6",
+    "error": "#c0caf5",
+    "critical": "#c0caf5"
   },
   "colors": {
     "accent": "accent",
@@ -36,9 +37,9 @@
     "customMessageBg": "surfaceRaised",
     "customMessageText": "text",
     "customMessageLabel": "accent",
-    "toolPendingBg": "surface",
-    "toolSuccessBg": "#292929",
-    "toolErrorBg": "#303030",
+    "toolPendingBg": "surfaceDark",
+    "toolSuccessBg": "surface",
+    "toolErrorBg": "surfaceRaised",
     "toolTitle": "primary",
     "toolOutput": "text",
 
@@ -78,8 +79,8 @@
     "bashMode": "accent"
   },
   "export": {
-    "pageBg": "#151515",
-    "cardBg": "#1f1f1f",
-    "infoBg": "#2a2a2a"
+    "pageBg": "#16161e",
+    "cardBg": "#1a1b26",
+    "infoBg": "#292e42"
   }
 }
