@@ -41,6 +41,16 @@ require('mason').setup({})
 -- mason-lspconfig
 require('mason-lspconfig').setup({})
 
+vim.lsp.enable('hls')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('vstls')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('eslint')
+vim.lsp.enable('gopls')
+vim.lsp.enable('nixd')
+vim.lsp.enable('ruff')
+vim.lsp.enable('basedpyright')
+
 -- show documentation popup for completion items
 require('blink.cmp').setup({
     keymap = {

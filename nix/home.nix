@@ -49,8 +49,6 @@
 
   home.sessionPath = [
     "${config.home.homeDirectory}/.local/bin"
-    "${config.home.homeDirectory}/.cargo/bin"
-    "${config.home.homeDirectory}/.local/share/nvim/mason/bin"
     "${config.home.homeDirectory}/.config/emacs/bin"
   ];
 
