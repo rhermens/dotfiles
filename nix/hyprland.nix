@@ -1,4 +1,4 @@
-{ config, pkgs, hp-tracerled, home-manager, ... }:
+{ pkgs, ... }:
 {
   programs.hyprland = {
     enable = true;
@@ -7,7 +7,6 @@
   };
 
   programs.waybar.enable = true;
-  programs.hyprlock.enable = true;
 
   environment.systemPackages = with pkgs; [
     capitaine-cursors
@@ -21,7 +20,8 @@
     swappy
   ];
 
-  services.hypridle.enable = true;
+  services.hypridle.enable = false;
+  programs.hyprlock.enable = false;
 
   security.polkit = {
     enable = true;

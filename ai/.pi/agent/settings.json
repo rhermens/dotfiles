@@ -5,6 +5,7 @@
     "npm:pi-lens",
     "npm:pi-memory",
     "npm:pi-vim",
+    "npm:pi-context-view",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo"
   ],
