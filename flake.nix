@@ -42,7 +42,27 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.roy = ./nix/home.nix;
+              home-manager.users.roy = {
+                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ];
+              };
+            }
+          ];
+        };
+        msi = nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              nixpkgs.hostPlatform = "x86_64-linux";
+              nixpkgs.config.cudaSupport = true;
+            }
+            ./nix/configuration-msi.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.roy = {
+                imports = [ ./nix/home.nix ];
+              };
             }
           ];
         };
@@ -64,7 +84,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/home-darwin.nix ];
+                imports = [ ./nix/home.nix ./nix/home-darwin.nix ./nix/ai.nix ./nix/development.nix ];
                 home.homeDirectory = "/Users/roy";
               };
             }

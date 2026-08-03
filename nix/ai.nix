@@ -30,6 +30,14 @@
     };
   };
 
+  services.git-watch = {
+    skills = {
+      enable = true;
+      interval = 120;
+      path = "~/skills";
+    };
+  };
+
   programs.pi-coding-agent = {
     enable = true;
     context = ./../ai/AGENTS.md;

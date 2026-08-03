@@ -8,8 +8,8 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration-omen.nix
-      ./hyprland.nix
+      ./hardware-configuration-msi.nix
+      ./gnome.nix
     ];
 
   # Allow unfree packages
@@ -19,12 +19,8 @@
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
       "https://cache.nixos.org/"
-      "https://cache.nixos-cuda.org"
-      "https://cache.numtide.com"
     ];
     trusted-public-keys = [
-      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
-      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
   };
 
@@ -32,9 +28,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  boot.kernelParams = [ ];
 
-  networking.hostName = "omen"; # Define your hostname.
+  networking.hostName = "msi"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -65,12 +61,6 @@
     powerManagement.finegrained = false;
     nvidiaSettings = true;
   };
-  services.hp-tracerled = {
-    enable = true;
-    color = "FFFFFF";
-    mode = "static";
-    speed = 1;
-  };
 
   services.xserver = {
     enable = true;
@@ -93,27 +83,8 @@
     pulse.enable = true;
     wireplumber = {
       enable = true;
-      extraConfig = {
-        "51-swap-lr" = {
-          "monitor.alsa.rules" = [
-            {
-              matches = [
-                {
-                  "node.name" = "~alsa_output.*";
-                }
-              ];
-              actions.update-props = {
-                "audio.position" = [ "FR" "FL" ];
-                "session.suspend-timeout-seconds" = 0;
-              };
-            }
-          ];
-        };
-      };
     };
   };
-
-  services.hardware.openrgb.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -140,6 +111,7 @@
     vlc
     transmission_4-qt
     lsof
+    brightnessctl
   ];
 
   programs.nix-ld.enable = true;
@@ -152,7 +124,7 @@
     polkitPolicyOwners = [ "roy" ];
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
   virtualisation.oci-containers.backend = "docker";
 
   # Open ports in the firewall.

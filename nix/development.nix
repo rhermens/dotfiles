@@ -23,7 +23,13 @@
 
     pkgs.python314Packages.pylatexenc
 
+    pkgs.lazygit
+    pkgs.gh
     pkgs.delta
+
+    pkgs.mongodb-compass
+    pkgs.mongosh
+    pkgs.mongodb-tools
 
     pkgs.sentry-cli
   ];
@@ -41,6 +47,10 @@
   home.sessionPath = [
     "${config.home.homeDirectory}/.cargo/bin"
   ];
+
+  home.sessionVariables = {
+    GITHUB_TOKEN = "\$(gh auth token)";
+  };
 
   programs.mise = {
     enable = true;
