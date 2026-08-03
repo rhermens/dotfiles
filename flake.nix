@@ -56,6 +56,7 @@
             }
             ./nix/configuration-msi.nix
             home-manager.nixosModules.home-manager
+            git-watch.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
