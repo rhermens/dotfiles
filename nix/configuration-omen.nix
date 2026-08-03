@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration-omen.nix
+      ./hardware/hardware-configuration-omen.nix
       ./hyprland.nix
     ];
 

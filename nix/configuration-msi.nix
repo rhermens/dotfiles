@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware-configuration-msi.nix
+      ./hardware/hardware-configuration-msi.nix
       ./gnome.nix
     ];
 
