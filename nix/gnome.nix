@@ -1,7 +1,12 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   services.desktopManager.gnome.enable = true;
   services.displayManager.gdm.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    capitaine-cursors
+    gnome-tweaks
+  ];
 
   programs.dconf = {
     enable = true;

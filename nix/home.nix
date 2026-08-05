@@ -6,6 +6,8 @@
 
   home.packages = [
     (if pkgs.stdenv.isDarwin then pkgs.glibtool else pkgs.libtool)
+    pkgs.gcc
+    pkgs.delta
 
     pkgs.tmux
     pkgs.tree-sitter
