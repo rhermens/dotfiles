@@ -16,6 +16,7 @@
     pkgs.ripgrep
     pkgs.fd
     pkgs.tldr
+    pkgs.jq
     pkgs.fastfetch
 
     pkgs.obsidian

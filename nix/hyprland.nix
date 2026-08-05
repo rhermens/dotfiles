@@ -18,7 +18,10 @@
     grim
     slurp
     swappy
+    nautilus
   ];
+
+  services.gvfs.enable = true;
 
   services.hypridle.enable = false;
   programs.hyprlock.enable = false;

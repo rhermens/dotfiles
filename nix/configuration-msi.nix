@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-msi.nix
+      ./linux/filesystem.nix
       ./gnome.nix
     ];
 
@@ -106,7 +107,6 @@
     unzip
     wget
     wl-clipboard
-    ffmpegthumbnailer
     playerctl
     vlc
     transmission_4-qt

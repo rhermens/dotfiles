@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-omen.nix
+      ./linux/filesystem.nix
       ./hyprland.nix
     ];
 
@@ -135,7 +136,6 @@
     unzip
     wget
     wl-clipboard
-    ffmpegthumbnailer
     playerctl
     vlc
     transmission_4-qt
