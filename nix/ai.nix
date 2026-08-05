@@ -1,6 +1,9 @@
 { config, pkgs, lib, inputs, ... }:
 {
   home.packages = [
+    pkgs.python3
+    pkgs.nodejs
+
     pkgs.acli
     pkgs.whichllm
   ];

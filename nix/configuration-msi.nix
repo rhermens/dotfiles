@@ -24,8 +24,12 @@
     ];
   };
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # Keep the bootloader aligned with the existing NixOS-boot EFI entry.
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelParams = [ ];
