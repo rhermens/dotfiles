@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-msi.nix
       ./linux/filesystem.nix
+      ./linux/lang.nix
       ./gnome.nix
     ];
 

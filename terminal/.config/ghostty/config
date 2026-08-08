@@ -20,3 +20,7 @@ gtk-toolbar-style = flat
 
 clipboard-read = allow
 clipboard-write = allow
+
+# Keep Linux-style clipboard shortcuts available on macOS.
+keybind = ctrl+shift+c=copy_to_clipboard:mixed
+keybind = ctrl+shift+v=paste_from_clipboard

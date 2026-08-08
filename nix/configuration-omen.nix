@@ -10,6 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-omen.nix
       ./linux/filesystem.nix
+      ./linux/lang.nix
       ./hyprland.nix
     ];
 
@@ -140,6 +141,7 @@
     vlc
     transmission_4-qt
     lsof
+    gnome-disk-utility
   ];
 
   programs.nix-ld.enable = true;

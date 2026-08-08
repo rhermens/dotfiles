@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    ffmpegthumbnailer
-    gvfs
-    samba
-    ntfs3g
+    hunspell
+    hunspellDicts.nl_nl
+    hunspellDicts.en-us
   ];
 }
