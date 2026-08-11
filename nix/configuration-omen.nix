@@ -3,7 +3,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   imports =
     [
@@ -11,6 +11,7 @@
       ./hardware/hardware-configuration-omen.nix
       ./linux/filesystem.nix
       ./linux/lang.nix
+      ./linux/secure-boot.nix
       ./hyprland.nix
     ];
 
@@ -31,7 +32,7 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];

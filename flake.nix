@@ -4,18 +4,33 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
-
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    hp-tracerled.url = "github:rhermens/hp-tracerled-rs";
-    git-watch.url = "github:rhermens/git-watch";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    helium = {
+      url = "github:AlvaroParker/helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.1.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hp-tracerled = {
+      url = "github:rhermens/hp-tracerled-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    git-watch = {
+      url = "github:rhermens/git-watch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, hp-tracerled, git-watch, ... }@inputs:
+  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, helium, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
@@ -37,6 +52,7 @@
             ./nix/configuration-omen.nix
             home-manager.nixosModules.home-manager
             hp-tracerled.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
             git-watch.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
