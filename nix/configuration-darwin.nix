@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, pkgs, ... }:
+{ self, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -67,7 +67,7 @@
         app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";
       }
       {
-        app = "${pkgs.google-chrome}/Applications/Google Chrome.app";
+        app = "${inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default}/Applications/Helium.app";
       }
       {
         app = "${pkgs.obsidian}/Applications/Obsidian.app";
