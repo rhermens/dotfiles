@@ -11,6 +11,7 @@
       ./hardware/hardware-configuration-omen.nix
       ./linux/filesystem.nix
       ./linux/lang.nix
+      ./linux/bluetooth.nix
       ./linux/secure-boot.nix
       ./hyprland.nix
     ];
@@ -68,9 +69,6 @@
     powerManagement.finegrained = false;
     nvidiaSettings = true;
   };
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   services.hp-tracerled = {
     enable = true;
