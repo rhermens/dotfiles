@@ -19,11 +19,23 @@
     ],
     "modules-right": [
         "pulseaudio",
+        "bluetooth",
         "clock",
         "tray"
     ],
     "pulseaudio": {
         "format": "vol: {volume}%",
         "on-click": "hyprpwcenter"
+    },
+    "bluetooth": {
+        "format-disabled": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": "BT: {device_alias}",
+        "format-connected-battery": "BT: {device_alias} {device_battery_percentage}%",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}: {device_battery_percentage}%",
+        "on-click": "blueman-manager"
     }
 }

@@ -20,6 +20,7 @@
     pkgs.tldr
     pkgs.jq
     pkgs.fastfetch
+    pkgs.killall
 
     pkgs.obsidian
     pkgs.discord

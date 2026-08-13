@@ -10,6 +10,9 @@ vim.pack.add({
     -- tmux
     'https://github.com/vimpostor/vim-tpipeline',
 
+    -- text-objects
+    'https://github.com/chrisgrieser/nvim-spider',
+
     -- packs
     'https://github.com/folke/snacks.nvim',
     'https://github.com/nvim-mini/mini.nvim',
