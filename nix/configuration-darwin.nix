@@ -46,6 +46,7 @@
     neovim
     git
     git-lfs
+    bazecor
   ];
 
   homebrew = {

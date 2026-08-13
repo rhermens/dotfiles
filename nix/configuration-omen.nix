@@ -68,6 +68,10 @@
     powerManagement.finegrained = false;
     nvidiaSettings = true;
   };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   services.hp-tracerled = {
     enable = true;
     color = "FFFFFF";
@@ -148,6 +152,10 @@
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
+
+  programs.bazecor = {
+    enable = true;
+  };
 
   programs._1password.enable = true;
   programs._1password-gui = {
