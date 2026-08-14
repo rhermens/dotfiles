@@ -153,6 +153,14 @@
 
   programs.bazecor = {
     enable = true;
+    package = pkgs.symlinkJoin {
+      name = "bazecor-xwayland";
+      paths = [ pkgs.bazecor ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram $out/bin/bazecor --add-flags "--ozone-platform=x11"
+      '';
+    };
   };
 
   programs._1password.enable = true;

@@ -23,7 +23,9 @@ ai.setup({
 
 local spider = require('spider')
 
-spider.setup({})
+spider.setup({
+    skipInsignificantPunctuation = false,
+})
 vim.keymap.set({ "n", "o", "x" }, "w", function()
     spider.motion('w')
 end)

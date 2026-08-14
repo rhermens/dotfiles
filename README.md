@@ -17,4 +17,10 @@ sudo nixos-rebuild switch --flake .#omen
 sudo darwin-rebuild switch --flake .#MBP-Roy
 ```
 
+## Cleanup
+
+# NixOS
+sudo nix-collect-garbage -d
+```
+
 > These files are tailored to my machines. Review the configuration before using it elsewhere.
