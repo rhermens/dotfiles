@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 {
   home.packages = [
     pkgs.python3
@@ -6,6 +6,7 @@
 
     pkgs.acli
     pkgs.whichllm
+    inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.file = {
