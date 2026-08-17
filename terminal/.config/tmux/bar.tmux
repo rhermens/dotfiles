@@ -28,6 +28,6 @@ setw -g window-status-current-style "NONE,fg=${fg_dark},bg=${bg_highlight},bold,
 setw -g window-status-activity-style "underscore,fg=${fg_dark},bg=${bg_dark}"
 
 setw -g window-status-separator ""
-setw -g window-status-format "#[default] #I:#W "
-setw -g window-status-current-format " #I:#W "
+setw -g window-status-format "#[default] #{?@notify,[𝜏] ,}#I:#W "
+setw -g window-status-current-format " #{?@notify,[𝜏] ,}#I:#W "
 

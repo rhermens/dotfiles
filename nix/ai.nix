@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, ... }:
 {
   home.packages = [
     pkgs.python3
@@ -24,6 +24,10 @@
         url = "https://mcp.exa.ai/mcp";
       };
     };
+  };
+
+  programs.herdr = {
+    enable = true;
   };
 
   services.ollama = {
@@ -95,10 +99,16 @@
         Stop = [
           {
             matcher = "*";
-            hooks = [{
-              type = "command";
-              command = ../terminal/.config/tmux/session-notify.sh;
-            }];
+            hooks = [
+              {
+                type = "command";
+                command = ../terminal/.config/tmux/session-notify.sh;
+              }
+              {
+                type = "command";
+                command = ../terminal/.config/tmux/window-notify.sh;
+              }
+            ];
           }
         ];
       };

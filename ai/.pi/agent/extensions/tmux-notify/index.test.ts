@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import tmuxNotifyExtension, {
 	TMUX_NOTIFY_SCRIPT,
+	TMUX_WINDOW_NOTIFY_SCRIPT,
 	notifyWhenWaiting,
 } from "./index";
 
@@ -12,7 +13,7 @@ const waitingContext = {
 };
 
 describe("tmux notify extension", () => {
-	test("runs tmux-notify.sh after the agent settles", async () => {
+	test("runs the session and window notification scripts after the agent settles", async () => {
 		const handlers = new Map<string, Handler>();
 		const calls: Array<{ command: string; args: string[]; timeout?: number }> =
 			[];
@@ -33,6 +34,7 @@ describe("tmux notify extension", () => {
 
 		expect(calls).toEqual([
 			{ command: TMUX_NOTIFY_SCRIPT, args: [], timeout: 5_000 },
+			{ command: TMUX_WINDOW_NOTIFY_SCRIPT, args: [], timeout: 5_000 },
 		]);
 	});
 

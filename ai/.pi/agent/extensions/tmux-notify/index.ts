@@ -11,6 +11,12 @@ export const TMUX_NOTIFY_SCRIPT = join(
 	"tmux",
 	"session-notify.sh",
 );
+export const TMUX_WINDOW_NOTIFY_SCRIPT = join(
+	homedir(),
+	".config",
+	"tmux",
+	"window-notify.sh",
+);
 
 type Exec = ExtensionAPI["exec"];
 type NotifyContext = Pick<ExtensionContext, "isIdle" | "mode">;
@@ -21,7 +27,11 @@ export const notifyWhenWaiting = async (
 ): Promise<void> => {
 	if (ctx.mode !== "tui" || !ctx.isIdle()) return;
 
-	await exec(TMUX_NOTIFY_SCRIPT, [], { timeout: 5_000 });
+	await Promise.all(
+		[TMUX_NOTIFY_SCRIPT, TMUX_WINDOW_NOTIFY_SCRIPT].map((script) =>
+			exec(script, [], { timeout: 5_000 }),
+		),
+	);
 };
 
 export default function tmuxNotifyExtension(pi: ExtensionAPI) {
