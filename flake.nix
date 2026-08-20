@@ -12,10 +12,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,7 +30,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, helium, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
+  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {

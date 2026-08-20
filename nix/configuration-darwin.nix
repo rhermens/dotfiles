@@ -46,14 +46,13 @@
     neovim
     git
     git-lfs
-    bazecor
   ];
 
   homebrew = {
     enable = true;
     enableZshIntegration = true;
     brews = [ "docker" "docker-compose" "autoraise" ];
-    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" "bazecor" ];
   };
 
   programs.zsh.enable = true;
@@ -68,7 +67,7 @@
         app = "${pkgs.ghostty-bin}/Applications/Ghostty.app";
       }
       {
-        app = "${inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default}/Applications/Helium.app";
+        app = "${pkgs.google-chrome}/Applications/Google Chrome.app";
       }
       {
         app = "${pkgs.obsidian}/Applications/Obsidian.app";

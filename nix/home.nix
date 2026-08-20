@@ -31,7 +31,6 @@
     (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty)
 
     pkgs.google-chrome
-    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   home.file = {
