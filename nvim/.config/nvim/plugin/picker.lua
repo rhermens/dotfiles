@@ -36,7 +36,6 @@ vim.keymap.set('n', '<leader>sm', function()
         }
     })
 end, { desc = "Marks" })
-vim.keymap.set('n', '<leader>n', function() Snacks.picker.notifications() end, { desc = "Notification History" })
 vim.keymap.set('n', '<leader>c', function() Snacks.picker.commands() end, { desc = "Commands" })
 
 -- git
@@ -47,6 +46,7 @@ vim.keymap.set('n', '<leader>gs', function() Snacks.picker.git_status() end, { d
 vim.keymap.set('n', '<leader>gS', function() Snacks.picker.git_stash() end, { desc = "Git Stash" })
 vim.keymap.set('n', '<leader>gd', function() Snacks.picker.git_diff() end, { desc = "Git Diff (Hunks)" })
 vim.keymap.set('n', '<leader>gf', function() Snacks.picker.git_log_file() end, { desc = "Git Log File" })
+vim.keymap.set({ 'n', 'v' }, '<leader>gB', function() Snacks.gitbrowse() end, { desc = "Git Browse" })
 
 -- search
 vim.keymap.set('n', '<leader>sd', function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
@@ -62,10 +62,10 @@ vim.keymap.set('n', 'gD', function() Snacks.picker.lsp_declarations() end, { des
 vim.keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
 vim.keymap.set('n', 'gi', function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
-vim.keymap.set('n', '<leader>s', function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-vim.keymap.set('n', '<leader>S', function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+vim.keymap.set('n', '<leader>ss', function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
+vim.keymap.set('n', '<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end,
+    { desc = "LSP Workspace Symbols" })
 
 -- other
-vim.keymap.set('n', '<leader>n', function() Snacks.notifier.show_history() end, { desc = "Notification History" })
+vim.keymap.set('n', '<leader>n', function() Snacks.picker.notifications() end, { desc = "Notification History" })
 vim.keymap.set('n', '<leader>x', function() Snacks.bufdelete.other() end, { desc = "Delete Buffer" })
-vim.keymap.set({ 'n', 'v' }, '<leader>gB', function() Snacks.gitbrowse() end, { desc = "Git Browse" })
