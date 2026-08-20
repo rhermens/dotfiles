@@ -38,16 +38,6 @@
             {
               nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.cudaSupport = true;
-              nixpkgs.overlays = [
-                (final: prev: {
-                  mongodb-compass = prev.mongodb-compass.overrideAttrs (old: {
-                    buildCommand = builtins.replaceStrings
-                      [ "wrapGAppsHook $out/bin/mongodb-compass" ]
-                      [ "wrapGApp $out/bin/mongodb-compass" ]
-                      old.buildCommand;
-                  });
-                })
-              ];
             }
             ./nix/configuration-omen.nix
             home-manager.nixosModules.home-manager
