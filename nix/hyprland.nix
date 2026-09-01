@@ -7,6 +7,7 @@
   };
 
   programs.waybar.enable = true;
+  systemd.user.services.waybar.path = [ pkgs.hyprpwcenter ];
 
   environment.systemPackages = with pkgs; [
     capitaine-cursors

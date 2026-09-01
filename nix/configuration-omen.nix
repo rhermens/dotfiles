@@ -70,6 +70,8 @@
     nvidiaSettings = true;
   };
 
+  hardware.xpadneo.enable = true;
+
   services.hp-tracerled = {
     enable = true;
     color = "FFFFFF";
