@@ -32,6 +32,7 @@
     pkgs.mongodb-tools
 
     pkgs.sentry-cli
+    pkgs.awscli2
   ];
 
   home.file = {
