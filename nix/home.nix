@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 {
   home.username = "roy";
   home.stateVersion = "26.05";
@@ -8,6 +8,7 @@
     (if pkgs.stdenv.isDarwin then pkgs.glibtool else pkgs.libtool)
     pkgs.gcc
     pkgs.delta
+    pkgs.hydra-check
 
     pkgs.tmux
     pkgs.tree-sitter

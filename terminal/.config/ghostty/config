@@ -21,6 +21,11 @@ gtk-toolbar-style = flat
 clipboard-read = allow
 clipboard-write = allow
 
+# Make the left Option key send Alt (ESC) sequences instead of special
+# characters, so Option+H reaches apps as Alt+H (e.g. nvim snacks picker
+# toggle_hidden). Right Option still types special characters.
+macos-option-as-alt = left
+
 # Keep Linux-style clipboard shortcuts available on macOS.
 keybind = ctrl+shift+c=copy_to_clipboard:mixed
 keybind = ctrl+shift+v=paste_from_clipboard
