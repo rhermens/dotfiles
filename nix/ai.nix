@@ -31,6 +31,12 @@
     enable = true;
   };
 
+  programs.codex = {
+    enable = true;
+    enableMcpIntegration = true;
+    skills = "/home/roy/skills";
+  };
+
   services.ollama = {
     enable = false;
     environmentVariables = {

@@ -44,7 +44,7 @@ require('mason-lspconfig').setup({})
 vim.lsp.enable({
     'hls',
     'rust_analyzer',
-    'vstls',
+    'vtsls',
     'lua_ls',
     'eslint',
     'gopls',

@@ -24,8 +24,17 @@
         "tray"
     ],
     "pulseaudio": {
-        "format": "vol: {volume}%",
+        "format": "{icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "tooltip-format": "Volume: {volume}%",
         "on-click": "hyprpwcenter"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
     },
     "bluetooth": {
         "format-disabled": "",
