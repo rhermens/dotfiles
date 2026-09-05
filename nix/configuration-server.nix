@@ -63,6 +63,44 @@
   };
 
   services.printing.enable = true;
+  services.samba = {
+    enable = true;
+    securityType = "user";
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        "hosts allow" = "192.168.1. 127.0.0.1 localhost";
+        "hosts deny" = "0.0.0.0/0";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+      "private" = {
+        "path" = "/data/media";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "roy";
+        "force group" = "roy";
+      };
+    };
+  };
+
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = "roy";
+      PermitRootLogin = "no";
+    };
+  };
+
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -94,19 +132,15 @@
     git-lfs
     unzip
     wget
-    wl-clipboard
     playerctl
     vlc
     transmission_4-qt
     lsof
-    gnome-disk-utility
-    libreoffice-fresh
     iptvnator
   ];
 
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
-  programs.steam.enable = true;
 
   programs._1password.enable = true;
   programs._1password-gui = {
