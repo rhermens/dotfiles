@@ -68,9 +68,6 @@
     enableMcpIntegration = true;
     context = ./../ai/AGENTS.md;
     skills = "${config.home.homeDirectory}/.agents/skills";
-    settings = {
-      model = "opus";
-    };
     marketplaces = { };
     plugins = [ ];
     lspServers = {
@@ -106,6 +103,7 @@
     settings = {
       theme = "auto";
       editorMode = "vim";
+      model = "opus";
       skipAutoPermissionPrompt = true;
       permissions.defaultMode = "auto";
       hooks = {

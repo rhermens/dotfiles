@@ -8,6 +8,7 @@
     (if pkgs.stdenv.isDarwin then pkgs.glibtool else pkgs.libtool)
     pkgs.gcc
     pkgs.delta
+    pkgs.hydra-check
 
     pkgs.tmux
     pkgs.tree-sitter

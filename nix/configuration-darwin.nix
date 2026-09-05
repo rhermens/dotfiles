@@ -52,7 +52,7 @@
     enable = true;
     enableZshIntegration = true;
     brews = [ "docker" "docker-compose" "autoraise" ];
-    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" "bazecor" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" "bazecor" "chatgpt" ];
   };
 
   programs.zsh.enable = true;
@@ -71,6 +71,9 @@
       }
       {
         app = "${pkgs.obsidian}/Applications/Obsidian.app";
+      }
+      {
+        app = "/Applications/ChatGPT.app";
       }
     ];
   };
