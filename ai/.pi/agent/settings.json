@@ -4,14 +4,14 @@
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
     "npm:pi-memory",
-    "npm:pi-vim",
     "npm:pi-context-view",
     "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:@juicesharp/rpiv-todo"
+    "npm:@juicesharp/rpiv-todo",
+    "npm:pi-vim"
   ],
   "prompts": [],
   "theme": "mono",
-  "lastChangelogVersion": "0.84.2",
+  "lastChangelogVersion": "0.84.4",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
   "defaultThinkingLevel": "medium"

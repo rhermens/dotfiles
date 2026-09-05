@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 {
   home.username = "roy";
   home.stateVersion = "26.05";
@@ -22,7 +22,6 @@
     pkgs.fastfetch
     pkgs.killall
 
-    pkgs.obsidian
     pkgs.discord
     pkgs.nerd-fonts.lilex
     pkgs.nerd-fonts.symbols-only
@@ -97,13 +96,5 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
-  };
-
-  services.git-watch = {
-    notes = {
-      enable = true;
-      logLevel = "debug";
-      path = "~/notes";
-    };
   };
 }

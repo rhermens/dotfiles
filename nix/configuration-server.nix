@@ -1,19 +1,11 @@
-# Edit this configuration file to define what should be installed on
-
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { pkgs, lib, ... }:
 {
   imports =
     [
       # Include the results of the hardware scan.
-      ./hardware/hardware-configuration-omen.nix
+      ./hardware/hardware-configuration-server.nix
       ./linux/filesystem.nix
-      ./linux/lang.nix
-      ./linux/bluetooth.nix
-      ./linux/secure-boot.nix
-      ./hyprland.nix
+      ./gnome.nix
     ];
 
   # Allow unfree packages
@@ -36,9 +28,7 @@
   boot.loader.systemd-boot.enable = lib.mkForce false;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
-
-  networking.hostName = "omen"; # Define your hostname.
+  networking.hostName = "server"; # Define your hostname.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -63,25 +53,9 @@
 
   hardware.graphics.enable = true;
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    nvidiaSettings = true;
-  };
-
-  hardware.xpadneo.enable = true;
-
-  services.hp-tracerled = {
-    enable = true;
-    color = "FFFFFF";
-    mode = "static";
-    speed = 1;
-  };
-
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
     xkb = {
       layout = "us";
       variant = "";
@@ -100,30 +74,9 @@
     pulse.enable = true;
     wireplumber = {
       enable = true;
-      extraConfig = {
-        "51-swap-lr" = {
-          "monitor.alsa.rules" = [
-            {
-              matches = [
-                {
-                  "node.name" = "~alsa_output.*";
-                }
-              ];
-              actions.update-props = {
-                "audio.position" = [ "FR" "FL" ];
-                "session.suspend-timeout-seconds" = 0;
-              };
-            }
-          ];
-        };
-      };
+      extraConfig = {};
     };
   };
-
-  services.hardware.openrgb.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.roy = {
@@ -155,18 +108,6 @@
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
-  programs.bazecor = {
-    enable = true;
-    package = pkgs.symlinkJoin {
-      name = "bazecor-xwayland";
-      paths = [ pkgs.bazecor ];
-      nativeBuildInputs = [ pkgs.makeWrapper ];
-      postBuild = ''
-        wrapProgram $out/bin/bazecor --add-flags "--ozone-platform=x11"
-      '';
-    };
-  };
-
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -187,5 +128,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }
