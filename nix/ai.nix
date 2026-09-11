@@ -1,5 +1,7 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 {
+  imports = [ inputs.codex-desktop-linux.homeManagerModules.default ];
+
   home.packages = [
     pkgs.python3
     pkgs.nodejs
@@ -35,6 +37,10 @@
     enable = true;
     enableMcpIntegration = true;
     skills = "/home/roy/skills";
+  };
+
+  programs.codexDesktopLinux = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+    enable = true;
   };
 
   services.ollama = {

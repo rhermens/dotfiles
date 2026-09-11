@@ -23,7 +23,6 @@
     pkgs.fastfetch
     pkgs.killall
 
-    pkgs.obsidian
     pkgs.discord
     pkgs.nerd-fonts.lilex
     pkgs.nerd-fonts.symbols-only
@@ -98,13 +97,5 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
-  };
-
-  services.git-watch = {
-    notes = {
-      enable = true;
-      logLevel = "debug";
-      path = "~/notes";
-    };
   };
 }

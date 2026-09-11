@@ -8,6 +8,10 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +32,7 @@
       url = "github:rhermens/git-watch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
   };
 
   outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
@@ -49,7 +54,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ];
+                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ./nix/audio.nix ];
               };
             }
           ];
@@ -73,6 +78,23 @@
             }
           ];
         };
+        server = nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              nixpkgs.hostPlatform = "x86_64-linux";
+            }
+            ./nix/configuration-server.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.roy = {
+                imports = [ ./nix/home.nix ];
+              };
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
@@ -91,7 +113,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/home-darwin.nix ./nix/ai.nix ./nix/development.nix ];
+                imports = [ ./nix/home.nix ./nix/home-darwin.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ];
                 home.homeDirectory = "/Users/roy";
               };
             }
