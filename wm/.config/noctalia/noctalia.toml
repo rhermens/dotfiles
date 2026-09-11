@@ -1,3 +1,7 @@
+[shell]
+app_icon_colorize = true
+app_icon_color = "on_surface"
+
 [theme]
 mode = "dark"
 source = "builtin"
@@ -16,7 +20,7 @@ shadow = false
 radius = 0
 margin_ends = 0
 start = ["workspaces", "active_window"]
-end = ["media", "tray", "volume", "bluetooth", "network", "notifications"]
+end = ["media", "volume", "tray", "bluetooth", "network", "notifications"]
 
 [widget.active_window]
 max_length = 800
