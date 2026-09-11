@@ -8,6 +8,10 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +54,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ];
+                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ./nix/audio.nix ];
               };
             }
           ];
