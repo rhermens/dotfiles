@@ -277,7 +277,7 @@ hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 
 -- Example window rules that are useful
 
-local suppressMaximizeRule = hl.window_rule({
+hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name           = "suppress-maximize-events",
     match          = { class = ".*" },
@@ -315,5 +315,21 @@ hl.window_rule({
     match = { class = "hyprland-run" },
 
     move  = "20 monitor_h-120",
+    float = true,
+})
+
+hl.window_rule({
+    name = "float-modal",
+    match = {
+        modal = true,
+    },
+    float = true,
+})
+
+hl.window_rule({
+    name = "float-fl-studio",
+    match = {
+        class = "^fl64[.]exe$",
+    },
     float = true,
 })
