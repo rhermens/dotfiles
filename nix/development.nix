@@ -23,6 +23,7 @@
 
     pkgs.python314Packages.pylatexenc
 
+    pkgs.commitizen
     pkgs.lazygit
     pkgs.gh
     pkgs.delta

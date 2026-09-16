@@ -26,6 +26,10 @@
         type = "http";
         url = "https://mcp.exa.ai/mcp";
       };
+      chrome-devtools = {
+        command = "npx";
+        args = [ "-y" "chrome-devtools-mcp@latest" ];
+      };
     };
   };
 
