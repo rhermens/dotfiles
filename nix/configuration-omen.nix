@@ -13,6 +13,7 @@
       ./linux/lang.nix
       ./linux/bluetooth.nix
       ./linux/secure-boot.nix
+      ./wine.nix
       ./hyprland.nix
     ];
 
@@ -149,7 +150,6 @@
     lsof
     gnome-disk-utility
     libreoffice-fresh
-    iptvnator
   ];
 
   programs.nix-ld.enable = true;

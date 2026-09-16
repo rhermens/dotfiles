@@ -16,6 +16,7 @@
     hyprshutdown
     hyprpolkitagent
     nautilus
+    hyprpwcenter
   ];
 
   services.gvfs.enable = true;
