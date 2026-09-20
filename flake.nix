@@ -32,6 +32,10 @@
       url = "github:rhermens/git-watch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    exiled-exchange-2 = {
+      url = "github:rhermens/exiled-exchange-2-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
   };
 
@@ -39,6 +43,7 @@
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             {
               nixpkgs.hostPlatform = "x86_64-linux";

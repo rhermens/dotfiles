@@ -23,7 +23,6 @@
     enable = true;
     servers = {
       exa = {
-        type = "http";
         url = "https://mcp.exa.ai/mcp";
       };
       chrome-devtools = {
