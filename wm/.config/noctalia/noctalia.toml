@@ -7,6 +7,11 @@ mode = "dark"
 source = "builtin"
 builtin = "Tokyo-Night"
 
+[osd]
+position = "bottom_center"
+[osd.kinds]
+media = false
+
 [wallpaper]
 enabled = true
 directory = "/home/roy/dotfiles/img/"
