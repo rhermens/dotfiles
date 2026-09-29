@@ -1,17 +1,10 @@
 # Agent Instructions
 
-## Initialization and context
-
-- You must read and apply `AGENTS.md` at the start of each session.
-- Read it again before you answer a complex architecture question.
-- Use it to verify team roles, persona settings, and required workflows.
-- Do not assume role assignments.
-
 ## General style
 
 - Answer concisely.
 - Read relevant files before you make codebase claims.
-- Ask a clarifying question only when ambiguity prevents safe progress.
+- Ask a clarifying question when ambiguity prevents safe progress.
 
 ## Clear technical writing
 
