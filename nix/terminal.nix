@@ -6,7 +6,7 @@
     enableZshIntegration = true;
     settings = {
       font-family = "Lilex Nerd Font Mono";
-      adjust-cell-height = (if pkgs.stdenv.isDarwin then 4 else 2);
+      adjust-cell-height = (if pkgs.stdenv.isDarwin then 2 else 4);
       theme = "TokyoNight Night";
       alpha-blending = "linear-corrected";
       maximize = true;
