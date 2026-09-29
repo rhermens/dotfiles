@@ -4,6 +4,7 @@
     "npm:pi-mcp-adapter",
     "npm:pi-lens",
     "npm:pi-memory",
+    "npm:@narumitw/pi-usage",
     "npm:pi-context-view",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo",
