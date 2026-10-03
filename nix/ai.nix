@@ -6,7 +6,6 @@
     pkgs.python3
     pkgs.nodejs
 
-    pkgs.acli
     pkgs.llmfit
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
