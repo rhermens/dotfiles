@@ -9,6 +9,7 @@ vim.lsp.config('vtsls', {
                             '/packages/vue-language-server/node_modules/@vue/language-server',
                         languages = { 'vue' },
                         configNamespace = 'typescript',
+                        enableForWorkspaceTypeScriptVersions = true,
                     }
                 }
             },
