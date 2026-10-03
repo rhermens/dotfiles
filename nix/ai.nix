@@ -16,7 +16,6 @@
     ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
     ".pi/agent/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/themes";
     ".pi/agent/mcp.json".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
-    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
   };
 
   home.sessionVariables = {
@@ -27,7 +26,7 @@
   # groups them as <category>/<skill>/SKILL.md. Flatten each leaf into
   # ~/.claude/skills so they are found.
   home.activation.flattenClaudeSkills = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    skillsSrc="${config.home.homeDirectory}/skills"
+    skillsSrc="${config.home.homeDirectory}/.agents/skills"
     skillsDst="${config.home.homeDirectory}/.claude/skills"
 
     run mkdir -p $VERBOSE_ARG "$skillsDst"
@@ -75,7 +74,7 @@
     skills = {
       enable = true;
       interval = 120;
-      path = "~/skills";
+      path = "~/.agents";
     };
   };
 
