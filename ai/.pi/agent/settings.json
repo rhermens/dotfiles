@@ -1,7 +1,6 @@
 {
   "packages": [
     "npm:pi-web-access",
-    "npm:pi-mcp-adapter",
     "npm:pi-lens",
     "npm:pi-memory",
     "npm:@narumitw/pi-usage",
@@ -11,9 +10,12 @@
     "npm:pi-vim"
   ],
   "prompts": [],
+  "defaultTools": [
+    "+codemode"
+  ],
   "theme": "mono",
-  "lastChangelogVersion": "0.86.1",
+  "lastChangelogVersion": "0.99.2",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "high"
 }

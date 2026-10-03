@@ -1,4 +1,4 @@
-{ config, pkgs, lib, home-manager, ... }:
+{ pkgs, lib, ... }:
 {
   homebrew = lib.mkIf pkgs.stdenv.isDarwin {
     brews = [ ];
@@ -6,9 +6,10 @@
   };
 
 
-  home-manager.users.roy = { config, ... }: {
+  home-manager.users.roy = { ... }: {
     home.packages = with pkgs; [
       slack
+      acli
     ];
   };
 }

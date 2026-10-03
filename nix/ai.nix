@@ -6,8 +6,7 @@
     pkgs.python3
     pkgs.nodejs
 
-    pkgs.acli
-    pkgs.whichllm
+    pkgs.llmfit
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -16,7 +15,7 @@
     ".pi/web-search.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/web-search.json";
     ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
     ".pi/agent/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/themes";
-    ".agents/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/skills";
+    ".pi/agent/mcp.json".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
   };
 
   home.sessionVariables = {
@@ -27,7 +26,7 @@
   # groups them as <category>/<skill>/SKILL.md. Flatten each leaf into
   # ~/.claude/skills so they are found.
   home.activation.flattenClaudeSkills = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-    skillsSrc="${config.home.homeDirectory}/skills"
+    skillsSrc="${config.home.homeDirectory}/.agents/skills"
     skillsDst="${config.home.homeDirectory}/.claude/skills"
 
     run mkdir -p $VERBOSE_ARG "$skillsDst"
@@ -60,22 +59,12 @@
     };
   };
 
-  programs.herdr = {
-    enable = true;
-  };
-
-  programs.codex = {
-    enable = true;
-    enableMcpIntegration = true;
-    skills = "/home/roy/skills";
-  };
-
   programs.codexDesktopLinux = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     enable = true;
   };
 
   services.ollama = {
-    enable = false;
+    enable = true; 
     environmentVariables = {
       OLLAMA_CONTEXT_LENGTH = "32768";
     };
@@ -85,13 +74,33 @@
     skills = {
       enable = true;
       interval = 120;
-      path = "~/skills";
+      path = "~/.agents";
     };
   };
 
   programs.pi-coding-agent = {
     enable = true;
     context = ./../ai/AGENTS.md;
+    models = {
+      providers = {
+        ollama = {
+          api = "openai-completions";
+          apiKey= "ollama";
+          baseUrl = "http://127.0.0.1:11434/v1";
+          models = [
+            {
+              id = "gemma4:e4b";
+              contextWindow = 32768;
+              reasoning = true;
+              input= ["text" "image"];
+              samplingParams = {
+                temperature = 0.2;
+              };
+            }
+          ];
+        };
+      };
+    };
   };
 
   programs.claude-code = {
@@ -123,8 +132,8 @@
           ".rs" = "rust";
         };
       };
-      rnix-lsp = {
-        command = "rnix-lsp";
+      nixd = {
+        command = "nixd";
         extensionToLanguage = {
           ".nix" = "nix";
         };

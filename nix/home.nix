@@ -13,6 +13,7 @@
     pkgs.hydra-check
 
     pkgs.tmux
+    pkgs.tree
     pkgs.tree-sitter
     pkgs.neovim
     pkgs.zsh
