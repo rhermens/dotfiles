@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "agents": {
+      "locked": {
+        "lastModified": 1791027238,
+        "narHash": "sha256-1rKnik00ymNutJuutLQHpfM0ufYSXUyTOS2lXWi4TbA=",
+        "owner": "rhermens",
+        "repo": ".agents",
+        "rev": "5ae66c92adcc57d79b91a2d181fedb760c6ff175",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rhermens",
+        "repo": ".agents",
+        "type": "github"
+      }
+    },
     "bdwgc": {
       "flake": false,
       "locked": {
@@ -617,6 +632,7 @@
     },
     "root": {
       "inputs": {
+        "agents": "agents",
         "codex-desktop-linux": "codex-desktop-linux",
         "determinate": "determinate",
         "exiled-exchange-2": "exiled-exchange-2",
