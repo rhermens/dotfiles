@@ -24,6 +24,10 @@
       url = "github:rhermens/hp-tracerled-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agents = {
+      url = "github:rhermens/.agents";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     qmd = {
       url = "git+https://github.com/tobi/qmd?ref=refs/tags/v2.8.3";
       inputs.nixpkgs.follows = "nixpkgs";

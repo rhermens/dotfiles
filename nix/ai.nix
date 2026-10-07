@@ -1,6 +1,9 @@
 { config, inputs, lib, pkgs, ... }:
 {
-  imports = [ inputs.codex-desktop-linux.homeManagerModules.default ];
+  imports = [
+    inputs.codex-desktop-linux.homeManagerModules.default 
+    inputs.agents.homeManagerModules.default 
+  ];
 
   home.packages = [
     pkgs.python3
@@ -67,14 +70,6 @@
     enable = true;
     environmentVariables = {
       OLLAMA_CONTEXT_LENGTH = "32768";
-    };
-  };
-
-  services.git-watch = {
-    skills = {
-      enable = true;
-      interval = 120;
-      path = "~/.agents";
     };
   };
 
