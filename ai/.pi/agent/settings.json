@@ -16,6 +16,6 @@
   "theme": "mono",
   "lastChangelogVersion": "1.0.2",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-luna",
+  "defaultModel": "gpt-6-sol",
   "defaultThinkingLevel": "high"
 }

@@ -1,8 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 {
   imports = [
-    inputs.codex-desktop-linux.homeManagerModules.default 
-    inputs.agents.homeManagerModules.default 
+    inputs.codex-desktop-linux.homeManagerModules.default
+    inputs.agents.homeManagerModules.default
   ];
 
   home.packages = [
@@ -59,6 +59,9 @@
         command = "npx";
         args = [ "-y" "chrome-devtools-mcp@latest" ];
       };
+      atlassian = {
+        url = "https://mcp.atlassian.com/v2/mcp";
+      };
     };
   };
 
@@ -67,7 +70,7 @@
   };
 
   services.ollama = {
-    enable = true; 
+    enable = true;
     environmentVariables = {
       OLLAMA_CONTEXT_LENGTH = "32768";
     };
@@ -80,14 +83,14 @@
       providers = {
         ollama = {
           api = "openai-completions";
-          apiKey= "ollama";
+          apiKey = "ollama";
           baseUrl = "http://127.0.0.1:11434/v1";
           models = [
             {
               id = "gemma4:e4b";
               contextWindow = 32768;
               reasoning = true;
-              input= ["text" "image"];
+              input = [ "text" "image" ];
               samplingParams = {
                 temperature = 0.2;
               };
@@ -140,6 +143,8 @@
       model = "opus";
       skipAutoPermissionPrompt = true;
       permissions.defaultMode = "auto";
+      disableClaudeAiConnectors = true;
+      attribution = false;
       hooks = {
         Stop = [
           {

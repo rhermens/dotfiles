@@ -14,6 +14,7 @@
     pkgs.typescript-language-server
     pkgs.haskell-language-server
     pkgs.lua-language-server
+    pkgs.tailwindcss-language-server
     pkgs.vtsls
     pkgs.vscode-langservers-extracted
     pkgs.gopls
