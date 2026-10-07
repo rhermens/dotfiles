@@ -149,7 +149,7 @@
     transmission_4-qt
     lsof
     gnome-disk-utility
-    libreoffice-fresh
+    libreoffice
     inputs.exiled-exchange-2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 

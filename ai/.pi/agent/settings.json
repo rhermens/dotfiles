@@ -14,7 +14,7 @@
     "+codemode"
   ],
   "theme": "mono",
-  "lastChangelogVersion": "0.99.2",
+  "lastChangelogVersion": "1.0.2",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6-luna",
   "defaultThinkingLevel": "high"

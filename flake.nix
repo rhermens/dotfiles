@@ -24,6 +24,10 @@
       url = "github:rhermens/hp-tracerled-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wt = {
+      url = "github:rhermens/wt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agents = {
       url = "github:rhermens/.agents";
       inputs.nixpkgs.follows = "nixpkgs";
