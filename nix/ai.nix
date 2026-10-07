@@ -1,8 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 {
   imports = [
-    inputs.codex-desktop-linux.homeManagerModules.default 
-    inputs.agents.homeManagerModules.default 
+    inputs.codex-desktop-linux.homeManagerModules.default
+    inputs.agents.homeManagerModules.default
   ];
 
   home.packages = [
@@ -58,6 +58,9 @@
       chrome-devtools = {
         command = "npx";
         args = [ "-y" "chrome-devtools-mcp@latest" ];
+      };
+      atlassian = {
+        url = "https://mcp.atlassian.com/v2/mcp";
       };
     };
   };
@@ -141,6 +144,7 @@
       skipAutoPermissionPrompt = true;
       permissions.defaultMode = "auto";
       disableClaudeAiConnectors = true;
+      attribution = false;
       hooks = {
         Stop = [
           {
