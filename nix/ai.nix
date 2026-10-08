@@ -92,7 +92,7 @@
               reasoning = true;
               input = [ "text" "image" ];
               samplingParams = {
-                temperature = 0.2;
+                temperature = 0.4;
               };
             }
           ];

@@ -14,8 +14,8 @@
     "+codemode"
   ],
   "theme": "mono",
-  "lastChangelogVersion": "1.0.2",
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-sol",
+  "lastChangelogVersion": "1.0.3",
+  "defaultProvider": "ollama",
+  "defaultModel": "gemma4:e4b",
   "defaultThinkingLevel": "high"
 }
