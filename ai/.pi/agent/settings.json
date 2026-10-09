@@ -9,13 +9,15 @@
     "npm:@juicesharp/rpiv-todo",
     "npm:pi-vim"
   ],
-  "prompts": [],
+  "prompts": [
+    "~/.agents/prompts"
+  ],
   "defaultTools": [
     "+codemode"
   ],
   "theme": "mono",
   "lastChangelogVersion": "1.0.3",
-  "defaultProvider": "ollama",
-  "defaultModel": "gemma4:e4b",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-6.1-sol",
   "defaultThinkingLevel": "high"
 }

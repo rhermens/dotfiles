@@ -20,7 +20,6 @@ vim.pack.add({
     -- dap
     'https://github.com/mfussenegger/nvim-dap',
     'https://github.com/leoluz/nvim-dap-go',
-    'https://github.com/jay-babu/mason-nvim-dap.nvim',
     'https://github.com/igorlfs/nvim-dap-view',
 
     -- git
@@ -35,8 +34,6 @@ vim.pack.add({
 
     -- lsp
     'https://github.com/neovim/nvim-lspconfig',
-    'https://github.com/mason-org/mason.nvim',
-    'https://github.com/mason-org/mason-lspconfig.nvim',
     'https://github.com/saghen/blink.lib',
     { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 

@@ -16,11 +16,15 @@
     pkgs.lua-language-server
     pkgs.tailwindcss-language-server
     pkgs.vtsls
+    pkgs.vue-language-server
     pkgs.vscode-langservers-extracted
     pkgs.gopls
     pkgs.nixd
     pkgs.basedpyright
     pkgs.ruff
+
+    pkgs.vscode-js-debug
+    pkgs.delve
 
     pkgs.python314Packages.pylatexenc
 
