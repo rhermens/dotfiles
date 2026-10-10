@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 {
   home.packages = [
     pkgs.gcc
@@ -32,6 +32,8 @@
     pkgs.lazygit
     pkgs.gh
     pkgs.delta
+    inputs.wt.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.github-watch.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     pkgs.mongodb-compass
     pkgs.mongosh
