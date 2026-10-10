@@ -408,7 +408,7 @@
         "type": "github"
       }
     },
-    "github-watch": {
+    "github-stream": {
       "inputs": {
         "crane": "crane_2",
         "flake-utils": "flake-utils_3",
@@ -417,16 +417,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1791630808,
-        "narHash": "sha256-hpNjfD980YKCiYKog9nmMxea2u6KlR/N8jMmy1yWxYw=",
+        "lastModified": 1791640363,
+        "narHash": "sha256-vekHYOue7gEqLosN3NOZsPx2cLVlwTcu6+9LUU0wfsw=",
         "owner": "rhermens",
-        "repo": "github-watch",
-        "rev": "341269479bae5fb3f8f76bd06abbcb718a64d5d4",
+        "repo": "github-stream",
+        "rev": "13ce6f4396537e6394e35fd84df1b6e91eddb210",
         "type": "github"
       },
       "original": {
         "owner": "rhermens",
-        "repo": "github-watch",
+        "repo": "github-stream",
         "type": "github"
       }
     },
@@ -725,7 +725,7 @@
         "determinate": "determinate",
         "exiled-exchange-2": "exiled-exchange-2",
         "git-watch": "git-watch",
-        "github-watch": "github-watch",
+        "github-stream": "github-stream",
         "home-manager": "home-manager",
         "hp-tracerled": "hp-tracerled",
         "lanzaboote": "lanzaboote",

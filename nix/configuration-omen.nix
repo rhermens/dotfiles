@@ -156,6 +156,7 @@
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
+  programs.steam.extraCompatPackages = [ pkgs.proton-ge-bin ];
 
   programs.bazecor = {
     enable = true;

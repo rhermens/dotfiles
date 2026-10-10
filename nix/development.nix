@@ -33,7 +33,7 @@
     pkgs.gh
     pkgs.delta
     inputs.wt.packages.${pkgs.stdenv.hostPlatform.system}.default
-    inputs.github-watch.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.github-stream.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     pkgs.mongodb-compass
     pkgs.mongosh

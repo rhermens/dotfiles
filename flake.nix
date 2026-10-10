@@ -28,8 +28,8 @@
       url = "github:rhermens/wt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    github-watch = {
-      url = "github:rhermens/github-watch";
+    github-stream= {
+      url = "github:rhermens/github-stream";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agents = {
