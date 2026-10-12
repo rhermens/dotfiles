@@ -57,7 +57,11 @@
       };
       chrome-devtools = {
         command = "npx";
-        args = [ "-y" "chrome-devtools-mcp@latest" ];
+        args = [ "-y" "chrome-devtools-mcp@latest" ]
+          ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+            "--executablePath"
+            (lib.getExe pkgs.google-chrome)
+          ];
       };
       atlassian = {
         url = "https://mcp.atlassian.com/v2/mcp";

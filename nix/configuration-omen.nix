@@ -134,6 +134,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
   };
+  users.extraGroups.vboxusers.members = [ "roy" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -178,6 +179,8 @@
 
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";
+
+  virtualisation.virtualbox.host.enable = true;
 
   # Allow Chromecast discovery over multicast DNS. Cast connections use
   # outbound TCP, which the stateful firewall already permits.
