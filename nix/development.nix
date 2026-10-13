@@ -11,7 +11,12 @@
     pkgs.bun
     pkgs.ghc
 
-    pkgs.typescript-language-server
+    # Upstream pnpmDeps hash is wrong in nixpkgs; drop once fixed.
+    (pkgs.typescript-language-server.overrideAttrs (old: {
+      pnpmDeps = old.pnpmDeps.overrideAttrs {
+        outputHash = "sha256-PmyJb8090pEPc09Tbv8RgdvQpzpba2L8ve87+aVncQU=";
+      };
+    }))
     pkgs.haskell-language-server
     pkgs.lua-language-server
     pkgs.tailwindcss-language-server
