@@ -2,11 +2,11 @@
   "nodes": {
     "agents": {
       "locked": {
-        "lastModified": 1791959084,
-        "narHash": "sha256-tG0gChkulyG9KyKIAQJCA274g19UWL3G+c1dt7LUNhc=",
+        "lastModified": 1791986840,
+        "narHash": "sha256-XPqXaX5ivKf6Yqqtb+hkV9IFuQPBSvxhCJfzucox/XQ=",
         "owner": "rhermens",
         "repo": ".agents",
-        "rev": "80e3787209cdbb8534913fb11ac50d93e7cf65c9",
+        "rev": "be16d6c09deee58c1672a8dbf9e9c98446a4a585",
         "type": "github"
       },
       "original": {
@@ -38,11 +38,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1791942807,
-        "narHash": "sha256-V0HaVNS/01fE2ekzcRMg0N1J4Qcxw94xR3s7rZSVmlw=",
+        "lastModified": 1791959899,
+        "narHash": "sha256-0W1tsRa431hURrmDjLjPs8zakzkUpFyKXjUDCfJ1phk=",
         "owner": "ilysenko",
         "repo": "codex-desktop-linux",
-        "rev": "66ba35e17acd658f6fde03c11c68ef656b577f73",
+        "rev": "ac4c7c173768b53492cafbe66f6cd4f4f68a5751",
         "type": "github"
       },
       "original": {
@@ -660,11 +660,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791942860,
-        "narHash": "sha256-kHlo7IkhPivjLmHlxVZeTMBarNLPfkqQ2nlS2SQ2zfQ=",
+        "lastModified": 1791981918,
+        "narHash": "sha256-y7YXiQZvgNoJxU9ndF+NHD/W/jtTmxFw3rwdSQb/zmc=",
         "owner": "noctalia-dev",
         "repo": "noctalia",
-        "rev": "fc2af27c0e616006bf858cad3b7c9711a028e501",
+        "rev": "b0af9ffde3661f9f30d88209de4dce531240b273",
         "type": "github"
       },
       "original": {
