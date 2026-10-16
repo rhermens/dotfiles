@@ -151,6 +151,7 @@
     lsof
     gnome-disk-utility
     libreoffice
+    davinci-resolve
     inputs.exiled-exchange-2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
