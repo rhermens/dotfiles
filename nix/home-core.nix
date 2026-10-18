@@ -30,7 +30,6 @@
     pkgs.discord
     pkgs.nerd-fonts.lilex
     pkgs.nerd-fonts.symbols-only
-    pkgs.slack
 
     pkgs.google-chrome
   ];

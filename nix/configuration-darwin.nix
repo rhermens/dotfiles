@@ -53,7 +53,7 @@
     enable = true;
     enableZshIntegration = true;
     brews = [ "docker" "docker-compose" "autoraise" ];
-    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" "bazecor" "claude" ];
+    casks = [ "linearmouse" "displaylink" "docker-desktop" "hammerspoon" "monitorcontrol" "bazecor" ];
   };
 
   programs.zsh.enable = true;
@@ -71,7 +71,7 @@
         app = "${pkgs.obsidian}/Applications/Obsidian.app";
       }
       {
-        app = "/Applications/Claude.app";
+        app = "${pkgs.claude-code}/Applications/Claude.app";
       }
     ];
   };
