@@ -82,7 +82,7 @@
 
   programs.pi-coding-agent = {
     enable = true;
-    context = ./../ai/AGENTS.md;
+    context = ./../../ai/AGENTS.md;
     models = {
       providers = {
         ollama = {
@@ -108,7 +108,7 @@
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
-    context = ./../ai/AGENTS.md;
+    context = ./../../ai/AGENTS.md;
     marketplaces = { };
     plugins = [ ];
     lspServers = {
@@ -156,11 +156,11 @@
             hooks = [
               {
                 type = "command";
-                command = ../terminal/.config/tmux/session-notify.sh;
+                command = ../../terminal/.config/tmux/session-notify.sh;
               }
               {
                 type = "command";
-                command = ../terminal/.config/tmux/window-notify.sh;
+                command = ../../terminal/.config/tmux/window-notify.sh;
               }
             ];
           }
