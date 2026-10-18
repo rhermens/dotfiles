@@ -5,7 +5,8 @@
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-server.nix
       ./linux/filesystem.nix
-      ./gnome.nix
+      ./linux/wm/gnome.nix
+      ./x/security.nix
     ];
 
   # Allow unfree packages
@@ -141,12 +142,6 @@
 
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
-
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "roy" ];
-  };
 
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";

@@ -4,12 +4,4 @@
     brews = [ ];
     casks = [ "microsoft-office" "microsoft-teams" ];
   };
-
-
-  home-manager.users.roy = { ... }: {
-    home.packages = with pkgs; [
-      slack
-      acli
-    ];
-  };
 }

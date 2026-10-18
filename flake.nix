@@ -71,7 +71,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ./nix/audio.nix ];
+                imports = [ ./nix/home-core.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/media-editing.nix ];
               };
             }
           ];
@@ -90,7 +90,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/ai.nix ];
+                imports = [ ./nix/home-core.nix ./nix/home/ai.nix ];
               };
             }
           ];
@@ -107,7 +107,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ];
+                imports = [ ./nix/home-core.nix ];
               };
             }
           ];
@@ -130,7 +130,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home.nix ./nix/home-darwin.nix ./nix/ai.nix ./nix/development.nix ./nix/notes.nix ];
+                imports = [ ./nix/home-core.nix ./nix/home-darwin.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/work.nix];
                 home.homeDirectory = "/Users/roy";
               };
             }

@@ -2,11 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, pkgs, inputs, ... }:
+{ self, pkgs, ... }:
 
 {
   imports = [
-    ./work.nix
+    ./darwin/microsoft.nix
+    ./x/security.nix
   ];
 
   # Determinate nix
@@ -56,9 +57,6 @@
   };
 
   programs.zsh.enable = true;
-
-  programs._1password.enable = true;
-  programs._1password-gui.enable = true;
 
   system.defaults.dock = {
     autohide = true;

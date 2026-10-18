@@ -11,7 +11,8 @@
       ./hardware/hardware-configuration-msi.nix
       ./linux/filesystem.nix
       ./linux/lang.nix
-      ./gnome.nix
+      ./linux/wm/gnome.nix
+      ./x/security.nix
     ];
 
   # Allow unfree packages
@@ -122,12 +123,6 @@
   programs.nix-ld.enable = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
-
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "roy" ];
-  };
 
   virtualisation.docker.enable = false;
   virtualisation.oci-containers.backend = "docker";

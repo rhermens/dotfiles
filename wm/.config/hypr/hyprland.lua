@@ -16,13 +16,13 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "DP-5",
+    output   = "DP-4",
     mode     = "highrr",
     position = "auto-left",
     scale    = "auto",
 })
 hl.monitor({
-    output   = "DP-4",
+    output   = "DP-5",
     mode     = "highrr",
     position = "auto-right",
     scale    = "auto",

@@ -13,8 +13,9 @@
       ./linux/lang.nix
       ./linux/bluetooth.nix
       ./linux/secure-boot.nix
-      ./wine.nix
-      ./hyprland.nix
+      ./linux/wine.nix
+      ./linux/wm/hyprland.nix
+      ./x/security.nix
     ];
 
   # Allow unfree packages
@@ -150,9 +151,6 @@
     transmission_4-qt
     lsof
     gnome-disk-utility
-    libreoffice
-    davinci-resolve
-    inputs.exiled-exchange-2.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.nix-ld.enable = true;
@@ -170,12 +168,6 @@
         wrapProgram $out/bin/bazecor --add-flags "--ozone-platform=x11"
       '';
     };
-  };
-
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    polkitPolicyOwners = [ "roy" ];
   };
 
   virtualisation.docker.enable = true;
