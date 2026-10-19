@@ -2,6 +2,7 @@ wt.worktrees_directory("$HOME/.worktrees")
 
 wt.copy({ glob = "**/.env", glob_ignore = "**/node_modules/**" })
 wt.copy({ glob = "**/.env.test", glob_ignore = "**/node_modules/**" })
+wt.copy({ glob = "**/.env.test.local", glob_ignore = "**/node_modules/**" })
 
 wt.command("pnpm i")
 
