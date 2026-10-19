@@ -3,6 +3,7 @@
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
-    polkitPolicyOwners = lib.mkIf pkgs.stdenv.isLinux [ "roy" ];
+  } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+    polkitPolicyOwners = [ "roy" ];
   };
 }
