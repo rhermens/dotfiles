@@ -60,9 +60,4 @@
   home.sessionVariables = {
     GITHUB_TOKEN = "\$(gh auth token)";
   };
-
-  programs.mise = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 }
