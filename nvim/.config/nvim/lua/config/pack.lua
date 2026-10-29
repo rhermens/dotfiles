@@ -37,6 +37,9 @@ vim.pack.add({
     'https://github.com/saghen/blink.lib',
     { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 
+    -- embedded
+    'https://github.com/Aietes/esp32.nvim',
+
     -- markdown / notes
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
     'https://github.com/obsidian-nvim/obsidian.nvim',

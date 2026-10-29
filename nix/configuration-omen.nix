@@ -132,7 +132,7 @@
   users.users.roy = {
     isNormalUser = true;
     description = "Roy";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
     shell = pkgs.zsh;
   };
   users.extraGroups.vboxusers.members = [ "roy" ];

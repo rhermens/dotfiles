@@ -42,6 +42,7 @@ vim.lsp.enable({
     'vtsls',
     'lua_ls',
     'eslint',
+    'clangd',
     'gopls',
     'nixd',
     'ruff',

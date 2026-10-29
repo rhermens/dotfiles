@@ -44,6 +44,10 @@
       url = "github:rhermens/git-watch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jira-stream = {
+      url = "github:rhermens/jira-stream";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     exiled-exchange-2 = {
       url = "github:rhermens/exiled-exchange-2-flake";
       inputs.nixpkgs.follows = "nixpkgs";

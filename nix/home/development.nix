@@ -10,6 +10,8 @@
     pkgs.nodejs
     pkgs.bun
     pkgs.ghc
+    pkgs.cmake
+    pkgs.libllvm
 
     pkgs.typescript-language-server
     pkgs.haskell-language-server
@@ -22,6 +24,7 @@
     pkgs.nixd
     pkgs.basedpyright
     pkgs.ruff
+    pkgs.clang-tools
 
     pkgs.vscode-js-debug
     pkgs.delve

@@ -51,6 +51,8 @@ set.shell = "zsh"
 -- set.t_ut = nil
 vim.g.mapleader = ' '
 
+vim.opt.exrc = true
+
 vim.diagnostic.config({
     virtual_text = true,
     signs = true,
