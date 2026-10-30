@@ -2,11 +2,11 @@
   "nodes": {
     "agents": {
       "locked": {
-        "lastModified": 1792579022,
-        "narHash": "sha256-PdFhWWnAYaJj81g0mpYQwd1pseGnMvnY0RqRlAqO61k=",
+        "lastModified": 1793356949,
+        "narHash": "sha256-MaZHMmSH8fJYxedHViJqtHohDjxd3xQdxO2PSv21F/k=",
         "owner": "rhermens",
         "repo": ".agents",
-        "rev": "bb970afe1376945f4cc29dfac090017c36acbe91",
+        "rev": "e310dffd83f36ffbccb838e7da76952a2e3508ff",
         "type": "github"
       },
       "original": {
@@ -536,11 +536,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793255697,
-        "narHash": "sha256-1T9pOg3Cvr5QB+sKlHtV+lrMqTW5IMtw3MJeYpo1fk0=",
+        "lastModified": 1793356525,
+        "narHash": "sha256-OByE39Fv0czSAfGG2kgms1bN9T/Jf6VWj4glQ33p3WA=",
         "owner": "rhermens",
         "repo": "jira-stream",
-        "rev": "894acc4bd2c9168a2fa482a29a853d992407a9b2",
+        "rev": "75ca7e33402e5f673bfa8e23d83204df8afefdde",
         "type": "github"
       },
       "original": {
