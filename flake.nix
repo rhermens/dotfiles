@@ -51,7 +51,6 @@
       url = "github:rhermens/exiled-exchange-2-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    codex-desktop-linux.url = "github:ilysenko/codex-desktop-linux";
   };
 
   outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:

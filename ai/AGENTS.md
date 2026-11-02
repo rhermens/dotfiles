@@ -5,6 +5,7 @@
 - Answer concisely.
 - Read relevant files before you make codebase claims.
 - Ask a clarifying question when ambiguity prevents safe progress.
+- State the desired behavior directly. Do not add defensive warnings when the positive instruction already covers them.
 
 ## Clear technical writing
 

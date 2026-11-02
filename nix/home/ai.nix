@@ -1,7 +1,6 @@
 { config, inputs, lib, pkgs, ... }:
 {
   imports = [
-    inputs.codex-desktop-linux.homeManagerModules.default
     inputs.agents.homeManagerModules.default
   ];
 
