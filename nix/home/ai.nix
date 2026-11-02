@@ -10,6 +10,7 @@
     pkgs.nodejs
 
     pkgs.llmfit
+    pkgs.chatgpt
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -67,10 +68,6 @@
         url = "https://mcp.atlassian.com/v2/mcp";
       };
     };
-  };
-
-  programs.codexDesktopLinux = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
-    enable = true;
   };
 
   services.ollama = {

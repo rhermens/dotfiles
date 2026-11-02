@@ -2,11 +2,11 @@
 {
   programs.ghostty = {
     enable = true;
-    package = (if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty);
+    package = (if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty);
     enableZshIntegration = true;
     settings = {
       font-family = "Lilex Nerd Font Mono";
-      adjust-cell-height = (if pkgs.stdenv.isDarwin then 2 else 4);
+      adjust-cell-height = (if pkgs.stdenv.hostPlatform.isDarwin then 2 else 4);
       theme = "TokyoNight Night";
       alpha-blending = "linear-corrected";
       maximize = true;

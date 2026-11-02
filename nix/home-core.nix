@@ -7,7 +7,7 @@
   imports = [ ./home/terminal.nix ];
 
   home.packages = [
-    (if pkgs.stdenv.isDarwin then pkgs.glibtool else pkgs.libtool)
+    (if pkgs.stdenv.hostPlatform.isDarwin then pkgs.glibtool else pkgs.libtool)
     pkgs.gcc
     pkgs.delta
     pkgs.hydra-check
