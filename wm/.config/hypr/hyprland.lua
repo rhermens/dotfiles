@@ -16,13 +16,13 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "DP-4",
+    output   = "desc:Philips Consumer Electronics Company 27B2U3601 UK02533049617",
     mode     = "highrr",
     position = "auto-left",
     scale    = "auto",
 })
 hl.monitor({
-    output   = "DP-5",
+    output   = "desc:Philips Consumer Electronics Company 27B2U3601 UK02539000280",
     mode     = "highrr",
     position = "auto-right",
     scale    = "auto",

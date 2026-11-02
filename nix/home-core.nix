@@ -23,7 +23,7 @@
     pkgs.fd
     pkgs.tldr
     pkgs.jq
-    pkgs.fastfetch
+    pkgs.fetch
     pkgs.killall
     pkgs.btop
 
