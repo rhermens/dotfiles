@@ -14,6 +14,7 @@
   ];
 
   home.file = {
+    ".claude/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.claude/themes";
     ".pi/agent/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/settings.json";
     ".pi/web-search.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/web-search.json";
     ".pi/agent/extensions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ai/.pi/agent/extensions";
@@ -138,7 +139,7 @@
       };
     };
     settings = {
-      theme = "auto";
+      theme = "custom:mono";
       editorMode = "vim";
       model = "opus";
       skipAutoPermissionPrompt = true;
