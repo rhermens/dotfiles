@@ -56,6 +56,11 @@
     ".tool-versions".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/dev/.tool-versions";
   };
 
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.sessionPath = [
     "${config.home.homeDirectory}/.cargo/bin"
   ];

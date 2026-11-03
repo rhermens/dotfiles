@@ -18,7 +18,7 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-set -g status-left "#[fg=${fg_dark},bg=${bg_highlight},bold] #S "
+set -g status-left "#[fg=${fg_dark},bg=${bg_highlight},bold] #{?@session_notify,[𝜏] ,}#S "
 set -g status-right "#(git -C #{q:pane_current_path} branch --show-current 2>/dev/null) #[fg=${fg_dark},bg=${bg_highlight},bold] λ "
 set -g status-style "fg=${fg},bg=default"
 

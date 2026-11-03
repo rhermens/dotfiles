@@ -139,7 +139,7 @@
       };
     };
     settings = {
-      theme = "custom:mono";
+      theme = "auto";
       editorMode = "vim";
       model = "opus";
       skipAutoPermissionPrompt = true;
@@ -153,7 +153,7 @@
             hooks = [
               {
                 type = "command";
-                command = ../../terminal/.config/tmux/session-notify.sh;
+                command = ../../terminal/.config/tmux/session-option-notify.sh;
               }
               {
                 type = "command";

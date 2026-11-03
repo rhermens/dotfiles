@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Last nixpkgs revision with tmux 3.7c; tmux 3.8 segfaults in choose-tree.
+    nixpkgs-tmux.url = "github:nixos/nixpkgs/3d5072d4576db81df6e1c7fc23eadec306677491";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -53,12 +55,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-tmux, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
+    let
+      tmuxPin = {
+        nixpkgs.overlays = [
+          (final: prev: {
+            tmux = (import nixpkgs-tmux {
+              system = prev.stdenv.hostPlatform.system;
+              config = prev.config;
+            }).tmux;
+          })
+        ];
+      };
+    in
     {
       nixosConfigurations = {
         omen = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
+            tmuxPin
             {
               nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.cudaSupport = true;
@@ -80,6 +95,7 @@
         };
         msi = nixpkgs.lib.nixosSystem {
           modules = [
+            tmuxPin
             {
               nixpkgs.hostPlatform = "x86_64-linux";
               nixpkgs.config.cudaSupport = true;
@@ -99,6 +115,7 @@
         };
         server = nixpkgs.lib.nixosSystem {
           modules = [
+            tmuxPin
             {
               nixpkgs.hostPlatform = "x86_64-linux";
             }
@@ -122,6 +139,7 @@
           specialArgs = { inherit inputs self; };
 
           modules = [
+            tmuxPin
             determinate.darwinModules.default
             ./nix/configuration-darwin.nix
             home-manager.darwinModules.home-manager

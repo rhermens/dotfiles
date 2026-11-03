@@ -625,6 +625,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-tmux": {
+      "locked": {
+        "lastModified": 1791764864,
+        "narHash": "sha256-n0nobpgB70did9x0xuc8c3f3XuzZdlIZ2TPRXox4eL8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3d5072d4576db81df6e1c7fc23eadec306677491",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3d5072d4576db81df6e1c7fc23eadec306677491",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1791956154,
@@ -733,6 +749,7 @@
         "lanzaboote": "lanzaboote",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-tmux": "nixpkgs-tmux",
         "noctalia": "noctalia",
         "qmd": "qmd",
         "wt": "wt"

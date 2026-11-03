@@ -6,9 +6,9 @@ while [ "$pid" -gt 1 ] 2>/dev/null; do
     [ -n "$pane" ] && break
     pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ')
 done
-S=$(tmux display-message -p -t "${pane:-$TMUX_PANE}" '#{session_name}' 2>/dev/null)
-active=$(tmux list-clients -F '#{client_session}' 2>/dev/null)
+S=$(tmux display-message -p -t "${pane:-$TMUX_PANE}" '#{session_id}' 2>/dev/null)
+active=$(tmux list-clients -F '#{session_id}' 2>/dev/null)
 if ! echo "$active" | grep -qx "$S"; then
-    [[ "$S" != \[𝜏\]* ]] && [ -n "$S" ] && tmux rename-session -t "$S" "[𝜏] $S"
+    [ -n "$S" ] && tmux set-option -q -t "$S" @session_notify 1
 fi
 true

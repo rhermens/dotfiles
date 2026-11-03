@@ -9,7 +9,7 @@ export const TMUX_NOTIFY_SCRIPT = join(
 	homedir(),
 	".config",
 	"tmux",
-	"session-notify.sh",
+	"session-option-notify.sh",
 );
 export const TMUX_WINDOW_NOTIFY_SCRIPT = join(
 	homedir(),
