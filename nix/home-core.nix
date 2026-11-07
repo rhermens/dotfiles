@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 {
   home.username = "roy";
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
-  imports = [ ./home/terminal.nix ];
+  imports = [ ./home/terminal.nix inputs.sops-nix.homeManagerModules.sops ];
 
   home.packages = [
     (if pkgs.stdenv.hostPlatform.isDarwin then pkgs.glibtool else pkgs.libtool)
@@ -58,6 +58,13 @@
     settings."*" = {
       IdentityAgent = "${config.home.homeDirectory}/.1password/agent.sock";
     };
+  };
+
+  sops = {
+    defaultSopsFile = ./../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
   };
 
   programs.zsh = {

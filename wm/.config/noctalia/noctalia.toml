@@ -44,4 +44,4 @@ empty_color = "surface"
 enabled = true
 smart_auto_hide = true
 reserve_space = false
-pinned = ["org.gnome.Nautilus", "google-chrome", "com.mitchellh.ghostty", "discord", "steam"]
+pinned = ["org.gnome.Nautilus", "google-chrome", "chatgpt", "com.mitchellh.ghostty", "discord", "steam"]

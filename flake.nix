@@ -10,6 +10,10 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +59,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-tmux, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, nixpkgs-tmux, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
     let
       tmuxPin = {
         nixpkgs.overlays = [
@@ -80,6 +84,7 @@
             }
             ./nix/configuration-omen.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             hp-tracerled.nixosModules.default
             lanzaboote.nixosModules.lanzaboote
             git-watch.nixosModules.default
@@ -102,6 +107,7 @@
             }
             ./nix/configuration-msi.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             git-watch.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
@@ -121,6 +127,7 @@
             }
             ./nix/configuration-server.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -144,13 +151,14 @@
             ./nix/configuration-darwin.nix
             home-manager.darwinModules.home-manager
             git-watch.darwinModules.default
+            sops-nix.darwinModules.sops
             determinate.homeManagerModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.roy = {
-                imports = [ ./nix/home-core.nix ./nix/home-darwin.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/work.nix];
+                imports = [ ./nix/home-core.nix ./nix/home-darwin.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/work.nix ];
                 home.homeDirectory = "/Users/roy";
               };
             }

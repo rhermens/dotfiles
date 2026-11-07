@@ -1,0 +1,9 @@
+keys:
+  - &primary age1sfy6hssk6xwphhuptswxptpmur5wy4g6yeekhhwcdm7y7saz3p8s8k8fjk
+  - &ssh age14xnugz2e0a9uk7fu7xrwsqr08wlkqx5yjd7pqjshefr3vz6t550qkxlgxr
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *primary
+      - *ssh
