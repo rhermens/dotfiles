@@ -2,6 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     sops
+    ssh-to-age
   ];
 
   sops = {

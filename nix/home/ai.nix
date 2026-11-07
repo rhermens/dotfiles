@@ -32,8 +32,8 @@
 
   home.sessionVariables = {
     PI_JEV_AUTO = "1";
-    LANGFUSE_PUBLIC_KEY = "$(op read 'op://rnwhlmqowcnjw3y35z5wtiuoim/Langfuse/username')";
-    LANGFUSE_SECRET_KEY = "$(op read 'op://rnwhlmqowcnjw3y35z5wtiuoim/Langfuse/password')";
+    LANGFUSE_PUBLIC_KEY = "$(cat '${config.sops.secrets."langfuse/public_key".path}')";
+    LANGFUSE_SECRET_KEY = "$(cat '${config.sops.secrets."langfuse/secret_key".path}')";
     LANGFUSE_BASE_URL = "https://cloud.langfuse.com";
   };
 
