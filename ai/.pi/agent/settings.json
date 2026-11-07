@@ -4,6 +4,7 @@
     "npm:pi-lens",
     "npm:pi-memory",
     "npm:@narumitw/pi-usage",
+    "npm:@langfuse/pi-observability-plugin",
     "npm:pi-context-view",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo",

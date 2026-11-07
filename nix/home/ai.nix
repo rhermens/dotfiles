@@ -5,9 +5,12 @@
   ];
 
   home.packages = [
-    pkgs.python3
     pkgs.nodejs
+    pkgs.python3
 
+    pkgs.python314Packages.langfuse
+
+    pkgs.ccusage
     pkgs.llmfit
     pkgs.chatgpt
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -22,8 +25,16 @@
     ".pi/agent/mcp.json".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
   };
 
+  sops.secrets = {
+    "langfuse/public_key" = {};
+    "langfuse/secret_key" = {};
+  };
+
   home.sessionVariables = {
     PI_JEV_AUTO = "1";
+    LANGFUSE_PUBLIC_KEY = "$(op read 'op://rnwhlmqowcnjw3y35z5wtiuoim/Langfuse/username')";
+    LANGFUSE_SECRET_KEY = "$(op read 'op://rnwhlmqowcnjw3y35z5wtiuoim/Langfuse/password')";
+    LANGFUSE_BASE_URL = "https://cloud.langfuse.com";
   };
 
   # Claude Code discovers skills at <skills-dir>/<skill>/SKILL.md, but ~/skills
@@ -158,6 +169,10 @@
               {
                 type = "command";
                 command = ../../terminal/.config/tmux/window-notify.sh;
+              }
+              {
+                type = "command";
+                command = ../../ai/.claude/hooks/langfuse_hook.py;
               }
             ];
           }

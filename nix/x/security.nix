@@ -1,5 +1,16 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    sops
+  ];
+
+  sops = {
+    defaultSopsFile = ./../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+  };
+
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
