@@ -14,6 +14,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +63,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, nixpkgs-tmux, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
+  outputs = { self, nixpkgs, disko, sops-nix, nixpkgs-tmux, determinate, nix-darwin, home-manager, lanzaboote, hp-tracerled, git-watch, ... }@inputs:
     let
       tmuxPin = {
         nixpkgs.overlays = [
@@ -126,6 +130,7 @@
               nixpkgs.hostPlatform = "x86_64-linux";
             }
             ./nix/configuration-server.nix
+            disko.nixosModules.disko
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             {

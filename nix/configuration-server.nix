@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-server.nix
-      ./linux/filesystem.nix
-      ./linux/wm/gnome.nix
+      ./disks/disks-server.nix
+      ./server/home-assistant.nix
       ./x/security.nix
     ];
 
@@ -23,16 +23,21 @@
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
     ];
+    trusted-users = [ "roy" "root" ];
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "server"; # Define your hostname.
-
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "server"; # Define your hostname.
+    # Enable networking
+    networkmanager.enable = true;
+    # Allow Chromecast discovery over multicast DNS. Cast connections use
+    # outbound TCP, which the stateful firewall already permits.
+    firewall.allowedTCPPorts = [ 8123 ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -53,15 +58,6 @@
   };
 
   hardware.graphics.enable = true;
-
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "amdgpu" ];
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
 
   services.printing.enable = true;
   services.samba = {
@@ -87,7 +83,7 @@
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = "roy";
-        "force group" = "roy";
+        "force group" = "users";
       };
     };
   };
@@ -97,25 +93,12 @@
     openFirewall = true;
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = "roy";
+      AllowUsers = [ "roy" ];
       PermitRootLogin = "no";
     };
   };
 
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    wireplumber = {
-      enable = true;
-      extraConfig = {};
-    };
-  };
+  security.sudo.wheelNeedsPassword = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.roy = {
@@ -123,6 +106,7 @@
     description = "Roy";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG5ZGucs7n4jsJNHLfdj96oq565qVXZeB1QW8/fvFQM7" ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -133,11 +117,7 @@
     git-lfs
     unzip
     wget
-    playerctl
-    vlc
-    transmission_4-qt
     lsof
-    iptvnator
   ];
 
   programs.nix-ld.enable = true;
@@ -145,10 +125,6 @@
 
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";
-
-  # Allow Chromecast discovery over multicast DNS. Cast connections use
-  # outbound TCP, which the stateful firewall already permits.
-  networking.firewall.allowedUDPPorts = [ 5353 ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
