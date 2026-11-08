@@ -2,11 +2,11 @@
   "nodes": {
     "agents": {
       "locked": {
-        "lastModified": 1793783200,
-        "narHash": "sha256-DPHnULwA93UX8v6zEEet/xxej1OFkNiPb+dRZMpXcNk=",
+        "lastModified": 1793783762,
+        "narHash": "sha256-cNZmVf8N0uWh7cAiW1G1aZuygaKzBcleuTWFtCTVz9M=",
         "owner": "rhermens",
         "repo": ".agents",
-        "rev": "875683f994a36e7c9efd3ed38d39e3f2ac586393",
+        "rev": "de9aba29712f56831b01477e597156dde0fdae85",
         "type": "github"
       },
       "original": {
