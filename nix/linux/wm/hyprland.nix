@@ -21,7 +21,7 @@
 
   services.gvfs.enable = true;
 
-  services.hypridle.enable = false;
+  services.hypridle.enable = true;
   programs.hyprlock.enable = false;
 
   services.greetd = {

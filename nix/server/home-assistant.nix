@@ -44,13 +44,13 @@ in
           conditions = [
             {
               condition = "template";
-              value_template = "{{ states('person.roy') not in ['home', 'unknown', 'unavailable'] }}";
+              value_template = "{{ states('person.roy') not in ['home'] }}";
             }
           ];
           actions = [
             {
               action = "vacuum.start";
-              target.device_id = "2ecc458c2d48fee71eade0239bb822a8";
+              target.entity_id = "vacuum.robot_vacuum_self_emptying";
             }
           ];
           mode = "single";
