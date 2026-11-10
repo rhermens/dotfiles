@@ -6,6 +6,7 @@
       ./hardware/hardware-configuration-server.nix
       ./disks/disks-server.nix
       ./server/home-assistant.nix
+      ./server/http.nix
       ./x/security.nix
     ];
 
@@ -31,12 +32,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking = {
-    hostName = "server"; # Define your hostname.
-    # Enable networking
+    hostName = "server";
     networkmanager.enable = true;
-    # Allow Chromecast discovery over multicast DNS. Cast connections use
-    # outbound TCP, which the stateful firewall already permits.
-    firewall.allowedTCPPorts = [ 8123 ];
   };
 
   # Set your time zone.
@@ -92,7 +89,7 @@
     enable = true;
     openFirewall = true;
     settings = {
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
       AllowUsers = [ "roy" ];
       PermitRootLogin = "no";
     };
