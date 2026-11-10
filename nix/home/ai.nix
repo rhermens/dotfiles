@@ -10,7 +10,6 @@
 
     pkgs.python314Packages.langfuse
 
-    pkgs.ccusage
     pkgs.llmfit
     pkgs.chatgpt
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
