@@ -8,8 +8,10 @@
     pkgs.nodejs
     pkgs.python3
 
-    pkgs.python314Packages.langfuse
-
+    # zstd-sys requires system libzstd instead of the bundled copy.
+    (pkgs.ccusage.overrideAttrs (old: {
+      buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.zstd ];
+    }))
     pkgs.llmfit
     (pkgs.chatgpt.override {
       # The Cargo hook now requires these system libraries instead of bundled copies.
@@ -38,16 +40,8 @@
     ".pi/agent/mcp.json".source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/mcp/mcp.json";
   };
 
-  sops.secrets = {
-    "langfuse/public_key" = {};
-    "langfuse/secret_key" = {};
-  };
-
   home.sessionVariables = {
     PI_JEV_AUTO = "1";
-    LANGFUSE_PUBLIC_KEY = "$(cat '${config.sops.secrets."langfuse/public_key".path}')";
-    LANGFUSE_SECRET_KEY = "$(cat '${config.sops.secrets."langfuse/secret_key".path}')";
-    LANGFUSE_BASE_URL = "https://cloud.langfuse.com";
   };
 
   # Claude Code discovers skills at <skills-dir>/<skill>/SKILL.md, but ~/skills
@@ -182,10 +176,6 @@
               {
                 type = "command";
                 command = ../../terminal/.config/tmux/window-notify.sh;
-              }
-              {
-                type = "command";
-                command = ../../ai/.claude/hooks/langfuse_hook.py;
               }
             ];
           }

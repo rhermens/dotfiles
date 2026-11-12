@@ -50,6 +50,7 @@
     EDITOR = "nvim";
     SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
     OBSIDIAN_VAULT_PATH = "${config.home.homeDirectory}/notes";
+    SOPS_AGE_KEY_FILE = config.sops.age.keyFile;
   };
 
   programs.ssh = {
