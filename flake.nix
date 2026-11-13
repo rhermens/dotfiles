@@ -53,6 +53,10 @@
       url = "github:rhermens/git-watch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    inventory-mcp = {
+      url = "github:rhermens/inventory-mcp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     jira-stream = {
       url = "github:rhermens/jira-stream";
       inputs.nixpkgs.follows = "nixpkgs";

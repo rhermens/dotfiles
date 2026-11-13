@@ -7,6 +7,7 @@
   home.packages = [
     pkgs.nodejs
     pkgs.python3
+    inputs.inventory-mcp.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # zstd-sys requires system libzstd instead of the bundled copy.
     (pkgs.ccusage.overrideAttrs (old: {
@@ -59,6 +60,9 @@
     servers = {
       exa = {
         url = "https://mcp.exa.ai/mcp";
+      };
+      inventory = {
+        command = "inventory-mcp";
       };
       chrome-devtools = {
         command = "npx";
