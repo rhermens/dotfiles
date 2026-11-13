@@ -13,21 +13,7 @@
       buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.zstd ];
     }))
     pkgs.llmfit
-    (pkgs.chatgpt.override {
-      # The Cargo hook now requires these system libraries instead of bundled copies.
-      codex = pkgs.codex.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [
-          pkgs.aws-lc
-          pkgs.oniguruma
-          pkgs.sqlite
-          pkgs.zstd
-        ];
-      });
-      # Tectonic's Rust dependencies require system AWS-LC in this nixpkgs revision.
-      tectonic-unwrapped = pkgs.tectonic-unwrapped.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ pkgs.aws-lc ];
-      });
-    })
+    pkgs.chatgpt
     inputs.qmd.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
