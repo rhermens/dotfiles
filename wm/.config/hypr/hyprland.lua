@@ -228,9 +228,22 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + M",
     hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+
+-- Keep Super copy/paste native in Ghostty; translate to Ctrl in other apps.
+for _, key in ipairs({ "C", "V" }) do
+    hl.bind(mainMod .. " + " .. key, function()
+        local window = hl.get_active_window()
+        if not window then
+            return
+        end
+
+        local mods = window.class == "com.mitchellh.ghostty" and "SUPER" or "CTRL"
+        hl.dispatch(hl.dsp.send_shortcut({ mods = mods, key = key }))
+    end)
+end
 
 -- Move focus
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))

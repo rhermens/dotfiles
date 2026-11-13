@@ -34,8 +34,8 @@
 
       # Keep Linux-style clipboard shortcuts available on macOS.
       keybind = [
-        "ctrl+shift+c=copy_to_clipboard:mixed"
-        "ctrl+shift+v=paste_from_clipboard"
+        "super+c=copy_to_clipboard:mixed"
+        "super+v=paste_from_clipboard"
       ];
     };
   };
