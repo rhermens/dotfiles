@@ -3,10 +3,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports =
     [
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
+      inputs.git-watch.nixosModules.default
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-msi.nix
       ./linux/filesystem.nix
@@ -16,7 +19,13 @@
     ];
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
+  };
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -102,6 +111,15 @@
     description = "Roy";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.roy = {
+      imports = [ ./nix/home-core.nix ./nix/home/ai.nix ];
+    };
   };
 
   # List packages installed in system profile. To search, run:

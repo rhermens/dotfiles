@@ -24,11 +24,13 @@ in
       "essent"
       "homewizard"
       "tuya"
+      "mcp_server"
     ];
     themes = with pkgs.home-assistant-themes; [
       catppuccin
     ];
     config = {
+      homeassistant.external_url = "https://hm.rh-development.nl";
       default_config = {};
       "automation ui" = "!include automations.yaml";
       automation = [

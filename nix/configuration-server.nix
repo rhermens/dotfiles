@@ -1,7 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports =
     [
+      inputs.disko.nixosModules.disko
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-server.nix
       ./disks/disks-server.nix
@@ -10,8 +13,10 @@
       ./x/security.nix
     ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    config.allowUnfree = true;
+  };
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -104,6 +109,15 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG5ZGucs7n4jsJNHLfdj96oq565qVXZeB1QW8/fvFQM7" ];
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.roy = {
+      imports = [ ./nix/home-core.nix ];
+    };
   };
 
   # List packages installed in system profile. To search, run:

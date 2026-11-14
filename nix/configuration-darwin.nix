@@ -2,10 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, pkgs, ... }:
+{ self, pkgs, inputs, ... }:
 
 {
   imports = [
+    inputs.determinate.darwinModules.default
+    inputs.home-manager.darwinModules.home-manager
+    inputs.git-watch.darwinModules.default
+    inputs.sops-nix.darwinModules.sops
+    inputs.determinate.homeManagerModules.default
     ./darwin/microsoft.nix
     ./x/security.nix
   ];
@@ -39,6 +44,23 @@
   users.users.roy = {
     name = "roy";
     home = "/Users/roy";
+  };
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.roy = {
+      imports = [
+        ./nix/home-core.nix
+        ./nix/home-darwin.nix
+        ./nix/home/ai.nix
+        ./nix/home/development.nix
+        ./nix/home/notes.nix
+        ./nix/home/work.nix
+      ];
+      home.homeDirectory = "/Users/roy";
+    };
   };
 
   # List packages installed in system profile. To search by name, run:

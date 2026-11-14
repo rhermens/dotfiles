@@ -7,6 +7,11 @@
 {
   imports =
     [
+      inputs.home-manager.nixosModules.home-manager
+      inputs.sops-nix.nixosModules.sops
+      inputs.hp-tracerled.nixosModules.default
+      inputs.lanzaboote.nixosModules.lanzaboote
+      inputs.git-watch.nixosModules.default
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-omen.nix
       ./linux/filesystem.nix
@@ -19,7 +24,13 @@
     ];
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+    config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
+  };
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -135,6 +146,21 @@
     shell = pkgs.zsh;
   };
   users.extraGroups.vboxusers.members = [ "roy" ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.roy = {
+      imports = [
+        ./home-core.nix 
+        ./home/ai.nix 
+        ./home/development.nix 
+        ./home/notes.nix 
+        ./home/media-editing.nix 
+      ];
+    };
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

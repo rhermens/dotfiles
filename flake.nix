@@ -86,69 +86,24 @@
           specialArgs = { inherit inputs; };
           modules = [
             tmuxPin
-            {
-              nixpkgs.hostPlatform = "x86_64-linux";
-              nixpkgs.config.cudaSupport = true;
-            }
             ./nix/configuration-omen.nix
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            hp-tracerled.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
-            git-watch.nixosModules.default
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.roy = {
-                imports = [ ./nix/home-core.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/media-editing.nix ];
-              };
-            }
           ];
         };
         msi = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             tmuxPin
-            {
-              nixpkgs.hostPlatform = "x86_64-linux";
-              nixpkgs.config.cudaSupport = true;
-            }
             ./nix/configuration-msi.nix
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            git-watch.nixosModules.default
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.roy = {
-                imports = [ ./nix/home-core.nix ./nix/home/ai.nix ];
-              };
-            }
           ];
         };
         server = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
           modules = [
             tmuxPin
-            {
-              nixpkgs.hostPlatform = "x86_64-linux";
-            }
             ./nix/configuration-server.nix
-            disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            sops-nix.nixosModules.sops
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.roy = {
-                imports = [ ./nix/home-core.nix ];
-              };
-            }
           ];
         };
       };
-
       darwinConfigurations = {
         MBP-Roy = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
@@ -156,21 +111,7 @@
 
           modules = [
             tmuxPin
-            determinate.darwinModules.default
             ./nix/configuration-darwin.nix
-            home-manager.darwinModules.home-manager
-            git-watch.darwinModules.default
-            sops-nix.darwinModules.sops
-            determinate.homeManagerModules.default
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.users.roy = {
-                imports = [ ./nix/home-core.nix ./nix/home-darwin.nix ./nix/home/ai.nix ./nix/home/development.nix ./nix/home/notes.nix ./nix/home/work.nix ];
-                home.homeDirectory = "/Users/roy";
-              };
-            }
           ];
         };
       };

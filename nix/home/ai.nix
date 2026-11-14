@@ -75,6 +75,9 @@
       atlassian = {
         url = "https://mcp.atlassian.com/v2/mcp";
       };
+      home-assistant = {
+        url = "https://hm.rh-development.nl/api/mcp";
+      };
     };
   };
 
