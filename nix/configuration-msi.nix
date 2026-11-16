@@ -16,6 +16,7 @@
       ./linux/lang.nix
       ./linux/wm/gnome.nix
       ./x/security.nix
+      ./x/tailscale.nix
     ];
 
   # Allow unfree packages
@@ -118,7 +119,7 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users.roy = {
-      imports = [ ./nix/home-core.nix ./nix/home/ai.nix ];
+      imports = [ ./home-core.nix ./home/ai.nix ];
     };
   };
 

@@ -38,12 +38,17 @@
       url = "github:rhermens/wt";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    github-stream= {
+    github-stream = {
       url = "github:rhermens/github-stream";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agents = {
       url = "github:rhermens/.agents";
+    };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      # Match Hermes's upstream lockfile: its patchelf patch requires 0.19.2.
+      inputs.nixpkgs.url = "github:NixOS/nixpkgs/02c087f3fe673c9e317f206a627cb6b910336dbe";
     };
     qmd = {
       url = "git+https://github.com/tobi/qmd?ref=refs/tags/v2.8.3";

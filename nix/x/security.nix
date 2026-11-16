@@ -13,6 +13,8 @@
   };
 
   sops.secrets.github_token = {};
+  sops.secrets.github_pat = {};
+
   sops.templates."nix-github.conf" = {
     owner = "roy";
     mode = "0400";

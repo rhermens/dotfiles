@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.agents.homeManagerModules.default
+    ./hermes.nix
   ];
 
   home.packages = [

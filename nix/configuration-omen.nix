@@ -21,6 +21,7 @@
       ./linux/wine.nix
       ./linux/wm/hyprland.nix
       ./x/security.nix
+      ./x/tailscale.nix
     ];
 
   # Allow unfree packages

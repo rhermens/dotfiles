@@ -13,6 +13,7 @@
     inputs.determinate.homeManagerModules.default
     ./darwin/microsoft.nix
     ./x/security.nix
+    ./x/tailscale.nix
   ];
 
   # Determinate nix
@@ -52,12 +53,12 @@
     extraSpecialArgs = { inherit inputs; };
     users.roy = {
       imports = [
-        ./nix/home-core.nix
-        ./nix/home-darwin.nix
-        ./nix/home/ai.nix
-        ./nix/home/development.nix
-        ./nix/home/notes.nix
-        ./nix/home/work.nix
+        ./home-core.nix
+        ./home-darwin.nix
+        ./home/ai.nix
+        ./home/development.nix
+        ./home/notes.nix
+        ./home/work.nix
       ];
       home.homeDirectory = "/Users/roy";
     };
