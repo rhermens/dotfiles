@@ -7,6 +7,14 @@
     owner = "hermes";
   };
 
+  sops.templates."hermes-github.env" = {
+    owner = "hermes";
+    mode = "0400";
+    content = ''
+      GITHUB_MCP_TOKEN=${config.sops.placeholder.github_pat}
+    '';
+  };
+
   users.users.roy.extraGroups = [ config.services.hermes-agent.group ];
   users.users.hermes.openssh.authorizedKeys.keys =
     config.users.users.roy.openssh.authorizedKeys.keys;
@@ -18,6 +26,7 @@
     enable = true;
     environmentFiles = [
       config.sops.secrets."hermes/env".path
+      config.sops.templates."hermes-github.env".path
     ];
     addToSystemPackages = true;
     backend = {
@@ -27,28 +36,11 @@
       sessionTokenFile = config.sops.secrets."hermes/session_token".path;
     };
 
-    settings = {
-      a2a_agents.omen = {
-        url = "http://omen:9900";
-        auth = {
-          type = "bearer";
-          token = "\${env:A2A_BEARER_TOKEN}";
-        };
-        timeout = 300;
-      };
-      a2a_agents.MBP-Roy = {
-        url = "http://mbp-roy:9900";
-        auth = {
-          type = "bearer";
-          token = "\${env:A2A_BEARER_TOKEN}";
-        };
-        timeout = 300;
-      };
-
-      platform_toolsets.cli = [ "hermes-cli" "a2a" ];
-    };
-
     mcpServers = {
+      github = {
+        url = "https://api.githubcopilot.com/mcp";
+        headers.Authorization = "Bearer \${env:GITHUB_MCP_TOKEN}";
+      };
       home-assistant = {
         url = "https://hm.rh-development.nl/api/mcp";
         auth = "oauth";
