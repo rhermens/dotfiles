@@ -95,7 +95,7 @@
     openFirewall = true;
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ "roy" "hermes" ];
+      AllowUsers = [ "roy" ];
       PermitRootLogin = "no";
     };
   };
