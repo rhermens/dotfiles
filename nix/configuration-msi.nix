@@ -119,7 +119,11 @@
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users.roy = {
-      imports = [ ./home-core.nix ./home/ai.nix ];
+      imports = [ 
+        ./home-core.nix
+        ./home/terminal.nix
+        ./home/ai.nix
+      ];
     };
   };
 

@@ -4,7 +4,7 @@
   home.stateVersion = "26.05";
   programs.home-manager.enable = true;
 
-  imports = [ ./home/terminal.nix inputs.sops-nix.homeManagerModules.sops ];
+  imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
   home.packages = [
     (if pkgs.stdenv.hostPlatform.isDarwin then pkgs.glibtool else pkgs.libtool)

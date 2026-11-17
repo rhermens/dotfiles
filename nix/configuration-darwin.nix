@@ -55,6 +55,7 @@
       imports = [
         ./home-core.nix
         ./home-darwin.nix
+        ./home/terminal.nix
         ./home/ai.nix
         ./home/development.nix
         ./home/notes.nix

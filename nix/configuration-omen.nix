@@ -154,11 +154,13 @@
     extraSpecialArgs = { inherit inputs; };
     users.roy = {
       imports = [
-        ./home-core.nix 
-        ./home/ai.nix 
-        ./home/development.nix 
-        ./home/notes.nix 
-        ./home/media-editing.nix 
+        ./home-core.nix
+        ./home/terminal.nix
+        ./home/ai.nix
+        ./home/fs.nix
+        ./home/development.nix
+        ./home/notes.nix
+        ./home/media-editing.nix
       ];
     };
   };

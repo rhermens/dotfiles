@@ -5,13 +5,11 @@
       inputs.disko.nixosModules.disko
       inputs.home-manager.nixosModules.home-manager
       inputs.sops-nix.nixosModules.sops
-      inputs.hermes-agent.nixosModules.default
       # Include the results of the hardware scan.
       ./hardware/hardware-configuration-server.nix
       ./disks/disks-server.nix
       ./server/home-assistant.nix
       ./server/http.nix
-      ./server/hermes.nix
       ./x/security.nix
       ./x/tailscale.nix
     ];

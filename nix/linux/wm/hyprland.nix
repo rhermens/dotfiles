@@ -16,10 +16,13 @@
     hyprshutdown
     hyprpolkitagent
     nautilus
+    seahorse
     hyprpwcenter
   ];
 
   services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services.hypridle.enable = true;
   programs.hyprlock.enable = false;
