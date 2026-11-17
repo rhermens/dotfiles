@@ -96,6 +96,12 @@
       {
         app = "/Applications/Claude.app";
       }
+      {
+        app = "${import ./darwin/hermes-electron.nix {
+          inherit inputs pkgs;
+          username = "roy";
+        }}/Applications/Hermes.app";
+      }
     ];
   };
 

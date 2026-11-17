@@ -44,6 +44,14 @@
         };
         timeout = 300;
       };
+      a2a_agents.MBP-Roy = {
+        url = "http://mbp-roy:9900";
+        auth = {
+          type = "bearer";
+          token = "\${env:A2A_BEARER_TOKEN}";
+        };
+        timeout = 300;
+      };
 
       platform_toolsets.cli = [ "hermes-cli" "a2a" ];
     };
