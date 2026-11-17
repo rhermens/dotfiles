@@ -28,14 +28,6 @@
     };
 
     settings = {
-      platforms.a2a = {
-        enabled = true;
-        extra = {
-          enabled = true;
-          port = 9900;
-        };
-      };
-
       a2a_agents.omen = {
         url = "http://omen:9900";
         auth = {
