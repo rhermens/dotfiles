@@ -57,6 +57,7 @@
         ./home-darwin.nix
         ./home/terminal.nix
         ./home/ai.nix
+        ./home/fs.nix
         ./home/development.nix
         ./home/notes.nix
         ./home/work.nix
