@@ -17,6 +17,7 @@
       ./linux/wm/gnome.nix
       ./x/security.nix
       ./x/tailscale.nix
+      ./x/nix.nix
     ];
 
   # Allow unfree packages

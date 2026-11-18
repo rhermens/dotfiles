@@ -12,6 +12,7 @@
       ./server/http.nix
       ./x/security.nix
       ./x/tailscale.nix
+      ./x/nix.nix
     ];
 
   nixpkgs = {
