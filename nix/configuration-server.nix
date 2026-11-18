@@ -12,6 +12,7 @@
       ./server/http.nix
       ./x/security.nix
       ./x/tailscale.nix
+      ./x/nix.nix
     ];
 
   nixpkgs = {
@@ -95,7 +96,7 @@
     openFirewall = true;
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ "roy" "hermes" ];
+      AllowUsers = [ "roy" ];
       PermitRootLogin = "no";
     };
   };

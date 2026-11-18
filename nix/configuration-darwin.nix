@@ -12,6 +12,7 @@
     inputs.sops-nix.darwinModules.sops
     inputs.determinate.homeManagerModules.default
     ./darwin/microsoft.nix
+    ./x/nix.nix
     ./x/security.nix
     ./x/tailscale.nix
   ];
@@ -97,12 +98,6 @@
       }
       {
         app = "/Applications/Claude.app";
-      }
-      {
-        app = "${import ./darwin/hermes-electron.nix {
-          inherit inputs pkgs;
-          username = "roy";
-        }}/Applications/Hermes.app";
       }
     ];
   };
