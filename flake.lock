@@ -988,11 +988,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795206313,
-        "narHash": "sha256-K9RymXpLE+DpuZgy1b0p5HtLS7lRU23rOumFzTLHcOI=",
+        "lastModified": 1795207036,
+        "narHash": "sha256-oKmuo5dc3wXcKsXn+oh0ELwmDloQxo4A9IvL1diwDdY=",
         "owner": "rhermens",
         "repo": "wt",
-        "rev": "73741f72ff34ed76d557b7f237db20cfc074a4f4",
+        "rev": "8e8d6fc151cc9f0684d9c5f0276f563661d38bab",
         "type": "github"
       },
       "original": {
