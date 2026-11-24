@@ -10,7 +10,9 @@ wt.command("pnpm i")
 wt.tmux.session(true)
 local ticket = wt.worktree and wt.worktree:match("^[A-Z]+%-%d+$")
 if ticket then
-    wt.tmux.window({ "jira-stream watch --ticket " .. ticket, "github-stream" })
+    wt.tmux.window({ "jira-stream watch --ticket " .. ticket .. " --socket /tmp/" .. wt.worktree .. "-jira-stream.sock",
+        "github-stream --socket /tmp/" ..
+        wt.worktree .. "-github-stream.sock" })
 else
     wt.tmux.window(nil) -- blank shell window
 end
