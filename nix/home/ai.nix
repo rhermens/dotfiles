@@ -62,7 +62,8 @@
         url = "https://mcp.exa.ai/mcp";
       };
       inventory = {
-        command = "inventory-mcp serve";
+        command = "inventory-mcp";
+        args = [ "serve" ];
       };
       chrome-devtools = {
         command = "npx";
