@@ -35,6 +35,7 @@ vim.pack.add({
     -- lsp
     'https://github.com/neovim/nvim-lspconfig',
     'https://github.com/saghen/blink.lib',
+    'https://github.com/stevearc/aerial.nvim',
     { src = 'https://github.com/saghen/blink.cmp', version = 'v1' },
 
     -- embedded

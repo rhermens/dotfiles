@@ -62,9 +62,6 @@ vim.keymap.set('n', 'gD', function() Snacks.picker.lsp_declarations() end, { des
 vim.keymap.set('n', 'gr', function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
 vim.keymap.set('n', 'gi', function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 vim.keymap.set('n', 'gy', function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
-vim.keymap.set('n', '<leader>ss', function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
-vim.keymap.set('n', '<leader>sS', function() Snacks.picker.lsp_workspace_symbols() end,
-    { desc = "LSP Workspace Symbols" })
 
 -- other
 vim.keymap.set('n', '<leader>n', function() Snacks.picker.notifications() end, { desc = "Notification History" })
