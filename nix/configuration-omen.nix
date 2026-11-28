@@ -202,8 +202,6 @@
   virtualisation.docker.enable = true;
   virtualisation.oci-containers.backend = "docker";
 
-  virtualisation.virtualbox.host.enable = true;
-
   # Allow Chromecast discovery over multicast DNS. Cast connections use
   # outbound TCP, which the stateful firewall already permits.
   networking.firewall.allowedUDPPorts = [ 5353 ];
