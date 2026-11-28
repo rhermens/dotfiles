@@ -16,15 +16,15 @@
     "+codemode"
   ],
   "theme": "mono",
-  "lastChangelogVersion": "1.5.2",
+  "lastChangelogVersion": "1.6.0",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-6.1-sol",
   "defaultThinkingLevel": "high",
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
-    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.5.1",
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.5.2",
     "{\"source\":\"npm:pi-memory\",\"scope\":\"user\"}": "0.4.2",
-    "{\"source\":\"npm:@narumitw/pi-usage\",\"scope\":\"user\"}": "0.69.3",
+    "{\"source\":\"npm:@narumitw/pi-usage\",\"scope\":\"user\"}": "0.70.0",
     "{\"source\":\"npm:pi-context-view\",\"scope\":\"user\"}": "0.8.4"
   }
 }

@@ -40,6 +40,10 @@ hs.hotkey.bind('cmd', "3", function()
     summon("com.tinyspeck.slackmacgap")
 end)
 
+hs.hotkey.bind('cmd', "4", function()
+    summon("com.anthropic.claudefordesktop")
+end)
+
 hs.hotkey.bind('cmd', "5", function()
     summon("com.mongodb.compass")
 end)

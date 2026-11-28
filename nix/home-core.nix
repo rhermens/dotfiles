@@ -26,6 +26,7 @@
     pkgs.fetch
     pkgs.killall
     pkgs.btop
+    pkgs.socat
 
     pkgs.discord
     pkgs.nerd-fonts.lilex
